@@ -4,8 +4,10 @@
 *.log
 *.lot
 *.fls
-*.out
+*.out*
 *.toc
+*.ps
+*.pdf
 
 ## Intermediate documents:
 *.dvi
