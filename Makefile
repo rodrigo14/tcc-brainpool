@@ -39,21 +39,24 @@ all:
      
 $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
-#	$(BIBTEX) $(AUX_FILE)
-#$(LATEX) $(MAIN_FILE) $(SOURCES)
-#$(LATEX) $(MAIN_FILE) $(SOURCES)
+	$(BIBTEX) $(AUX_FILE)
+	$(LATEX) $(MAIN_FILE) $(SOURCES)
+	$(LATEX) $(MAIN_FILE) $(SOURCES)
+
 	$(DVIPS) $(DVI_FILE)
 	$(PS2PDF) $(PS_FILE)
-	@cp $(PDF_FILE) $(TARGET)
 	@make clean
+	@evince tcc.pdf
+
+aspell:
+	aspell -c -d pt_BR -t $(MAIN_FILE)
 
 clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
-	rm -f tcc.pdf
-	
+
 dist: clean
 	tar vczf tcc-fga-latex-$(VERSION).tar.gz *
 
 dist-clean: clean
-	rm -f $(PDF_FILE) $(TARGET)
+	rm -f *.pdf
