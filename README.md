@@ -1,2 +1,2 @@
-# tcc-brainpool
-TCC - Curva Elíptica Brainpool
+# Criptografia de Curva Elíptica
+TCC - Rodrigo Gonçalves e Carlos Alberto
