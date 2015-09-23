@@ -1,34 +1,59 @@
 \chapter{Fundamentação Teórica}\label{cap:fundamentacao}
-(Texto...)
 
 %
 % ARITMÉTICA MODULAR
 %
 
 \section{Aritmética Modular} \label{sec:aritmeticamodular}
-Na Teoria dos Números \cite{niven2014} (ramo da matemática pura que estuda os números inteiros), uma importante ferramenta é a aritmética modular,  a qual estuda as propriedades de conjuntos formados a partir dos restos da divisão de números inteiros por um inteiro $n$, denominado módulo.
-\par Uma congruência é  uma relação entre dois números inteiros que, quando divididos por um mesmo número (chamado de módulo da congruência), deixam o mesmo resto.  Em termos formais, dois números inteiros \(a\) e \(b\) são congruentes módulo \(n\) se n divide a diferença \(a - b\).  Esta relação pode ser expressa pela Equação \ref{eq:1}.
+% Na Teoria dos Números \cite{niven:2014} (ramo da matemática pura que estuda os números inteiros), uma importante ferramenta é a aritmética modular,  a qual estuda as propriedades de conjuntos formados a partir dos restos da divisão de números inteiros por um inteiro $n$, denominado módulo.
+% \par Uma congruência é  uma relação entre dois números inteiros que, quando divididos por um mesmo número (chamado de módulo da congruência), deixam o mesmo resto.  Em termos formais, dois números inteiros \(a\) e \(b\) são congruentes módulo \(n\) se n divide a diferença \(a - b\).  Esta relação pode ser expressa pela Equação \ref{eq:1}.
 
-\begin{equation}
-  a \equiv b \pmod n \label{eq:1}
-\end{equation}
+% \begin{equation}
+%   a \equiv b \pmod n \label{eq:1}
+% \end{equation}
 
-Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as propriedades listadas nas Equações \ref{eq:2}, \ref{eq:3} e \ref{eq:4}.
-\begin{eqnarray}
-  a + c \equiv + c \pmod n \label{eq:2} \\
-  a - c \equiv - c \pmod n \label{eq:3} \\
-  a \times c \equiv \times c \pmod n \label{eq:4} 
-\end{eqnarray}
+% Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as propriedades listadas nas Equações \ref{eq:2}, \ref{eq:3} e \ref{eq:4}.
+% \begin{eqnarray}
+%   a + c \equiv + c \pmod n \label{eq:2} \\
+%   a - c \equiv - c \pmod n \label{eq:3} \\
+%   a \times c \equiv \times c \pmod n \label{eq:4}
+% \end{eqnarray}
 
-Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde \((n, d)\) é o maior divisor comum entre \(n\) e \(d\).
+% Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde \((n, d)\) é o maior divisor comum entre \(n\) e \(d\).
 
-\begin{equation}
-  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}%\pmod {\frac{n}{(n, d)}}
-\end{equation} 
+% \begin{equation}
+%   \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}%\pmod {\frac{n}{(n, d)}}
+% \end{equation}
 
-O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, $a$ e $n$ são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{halim2013}.
-\par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado à um número inteiro \(k\) e é dividído por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
+% O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, $a$ e $n$ são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{halim2013}.
+% \par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado à um número inteiro \(k\) e é dividído por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
 
-\begin{equation}
-  c \equiv b^{k}\pmod m \label{eq:6}
-\end{equation}
+% \begin{equation}
+%   c \equiv b^{k}\pmod m \label{eq:6}
+% \end{equation}
+
+%
+% ESTRUTURAS ALGÉBRICAS
+%
+\section{Estruturas Algébricas}
+
+%
+% ARITMÉTICA DE CURVAS ELÍPTICAS
+%
+\section{Aritmética de Curvas Elípticas}
+
+%
+% CRIPTOGRAFIA
+%
+\section{Criptografia} \label{sec:criptografia}
+Criptografia é a ciência que trata de cifrar a escrita, de modo a torná-la ininteligível para os que não tenham os métodos convencionados para ter acesso a ela. Em Tecnologia da Informação, esta definição é ampliada a fim de englobar não só a escrita, mas qualquer tipo de documento ou dados que devam ser tratados secretamente. Um Sistema de Criptografia define um sistema em que um texto (ou documento, ou qualquer tipo de dado) é transformado através da criptografia em um texto cifrado (ciphertext) ou o texto cifrado é transformado de volta à informação original, através de algoritmos. A primeira ação é denominada cifragem ou criptografar, e a segunda é chamada de decifração ou decriptação. \cite{Portnoi:2005}
+
+%
+% CRIPTOGRAFIA DE CHAVES PÚBLICAS
+%
+\subsection{Criptografia de chaves públicas}
+
+%
+% CRIPTOGRAFIA DE CURVAS ELÍPTICAS
+%
+\subsection{Criptografia de curvas elípticas}
