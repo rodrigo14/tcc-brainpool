@@ -3,5 +3,8 @@
 3) Aritmética de curvas elípticas
 4) Criptografia de chaves públicas
 5) Criptografia de curvas elípticas
-6) Nist e Brainpool
-7) Ataques potenciais para quebrar a ecc
+6) Ataques potenciais para quebrar a ECC
+7) Pollard Rho
+7.1) Pollard Rho rodando em um processador
+7.2) Pollard Rho rodando em n processadores
+7.3) Pollard Rho usando automorfismo
