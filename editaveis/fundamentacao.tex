@@ -117,11 +117,6 @@ A dimensão de uma variedade algébrica \(V\)  é o conjunto de funções racion
 \par Formalmente,  denomina-se \textit{curva algébrica} uma variedade algébrica de dimensão um. Esse conjunto de curvas descreve as figuras geométricas resultantes de uma seção cônica, a saber: círculos, hipérboles e eclipses \cite{Thomas:2004}.
 
 %
-% CURVAS ELÍPTICAS
-%
-\section{Curvas Elípticas}
-
-%
 % CRIPTOGRAFIA
 %
 \section{Criptografia} \label{sec:criptografia}
@@ -136,6 +131,58 @@ Criptografia é a ciência que trata de cifrar a escrita, de modo a torná-la in
 % CRIPTOGRAFIA ASSIMÉTRICA
 %
 \subsection{Criptografia assimétrica}
+
+%
+% CURVAS ELÍPTICAS
+%
+\section{Curvas Elípticas}
+Curvas elípticas não são elipses. Elas têm esse porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circuferência de uma elipse. Em geral, as equações cúbicas para curvas elípticas têm a forma
+\begin{equation}
+y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:11}
+\end{equation}
+onde \(a, b, c, d\) e \(e\) são números reais e \(x\) e \(y\) assumem valores nos números reais. Equações deste tipo são chamadas de \textit{equações de Weiestrass}. Para a nossa finalidade, é suficiente limitarmos na forma normal da equação de Weiestrass
+\begin{equation}
+y^2 = x^3 + ax + b \label{eq:12}
+\end{equation}
+
+Essas equações são consideradas cúbicas, ou de grau 3, pois o expoente mais alto que elas contém é um 3. Também incluído na definição de uma curva elíptica está um único elemento indicado por \(O\) e chamado de \textit{ponto no infinito} ou \textit{ponto zero}.
+
+A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.
+
+\begin{figure}[h!]
+\begin{center}
+% \includegraphics[scale=0.5, bb=0 0 529 101]{figuras/curvas.png}
+\end{center}
+\caption{Exemplos de curvas elípticas.}
+\label{fig:curvas}
+\end{figure}
+
+Podemos mostrar que um grupo pode ser definido com base no conjunto E(\(a, b\)) para valores espefíficos de \(a\) e \(b\) na Equação \ref{eq:12}, desde que a condição a seguir seja atendida:
+\begin{equation}
+4a^3 + 27b^2 \neq 0 \label{eq:13}
+\end{equation}
+
+Uma importante característica da curvas elípticas é que existe uma forma natural de "somar" dois pontos produzindo um terceiro ponto. Para tanto, deve-se satisfazer a Equação \ref{eq:13}. No entanto, esta "soma" se refere à operação que combina dois pontos de maneira análoga da soma algébrica em alguns aspectos (é comutativa, associativa e existe um elemento identidade), mas bem diferente em outras formas.
+
+Em termos geométricos, as regras para a adição podem ser indicadas da seguinte maneira: se três pontos em uma curva elíptica se encontram em uma linha reta, sua soma é $O$. Por essa definição, podemos definir as regras da adição sobre uma curva elíptica:
+
+\begin{figure}[h!]
+\begin{center}
+% \includegraphics[scale=0.5, bb=0 0 484 636]{figuras/pontos_curvas.png}
+\end{center}
+\caption{Exemplos de soma de pontos em curvas elípticas.}
+\label{fig:pontos}
+\end{figure}
+
+\begin{enumerate}
+	\item $O$ funciona como a identidade aditiva. Assim, $O = -O$; para qualquer ponto $P$ na curva elíptica, $P + O = P$. A seguir, consideramos $P \neq O$ e $Q \neq O$.
+	\item O negativo de um ponto \(P\) é o ponto com a mesma coordenada \(x\), sem o negativo da coordenada \(y\); ou seja, se $P=(x,y)$, então $-P=(x,-y)$. Observe que esses dois pontos podem ser juntados por uma linha vertical. Observe que $P+(-P)=P-P=O$.
+	\item Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe uma linha rea entre eles e encontre o terceiro ponto de interseção \(R\). Pode-se ver facilmente que existe um único ponto \(R\) que é o ponto de interseção (a menos que a linha seja tangente à cruva em \(P\) ou \(Q\), quanto consideramos $R=P$ ou $R=Q$, respectivamente). Para formar uma estrutura de grupo, precisamos definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. Ou seja, definimos $P+Q$ como sendo a imagem-espelho (com relação ao eixo \(x\)) do terceiro ponto da interseção. A figura \ref{fig:pontos}
+	\item A interpretação geométrica do item anterior também se aplica a dois pontos, \(P\) e \(-P\), com a mesma coordenada \(x\). Os pontos são reunidos por uma linha vertical, que també pode ser vista como a interseção da curva no ponto infinito. Portanto, temos $P+(-P)=O$, coerente com o item (2).
+	\item Para dobrar um ponto \(Q\), desenhe uma linha tangente e encontre o outro ponto da interseção \(S\). Então, $Q+Q=2Q=-S$.
+\end{enumerate}
+
+Com a lista de regras apresentada, pode-se se mostrar que o conjunto E(\(a, b\)) é um grupo abeliano. \cite{Stallings:2011}
 
 %
 % CRIPTOGRAFIA DE CURVAS ELÍPTICAS
