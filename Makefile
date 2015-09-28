@@ -1,4 +1,4 @@
-TARGET = TCC_FGA.pdf
+TARGET = tcc.pdf
 
 BIBTEX = bibtex
 LATEX = latex
@@ -46,7 +46,6 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(DVIPS) $(DVI_FILE)
 	$(PS2PDF) $(PS_FILE)
 	@make clean
-	@evince $(PDF_FILE)
 
 aspell:
 	aspell -c -d pt_BR -t $(MAIN_FILE)
