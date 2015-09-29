@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in $@ #contém argumentos passados por linha de comando
+for file in editaveis/text_*.tex
 do
 	aspell -d pt_BR -c $file
 done
