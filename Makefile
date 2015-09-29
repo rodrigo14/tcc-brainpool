@@ -47,12 +47,10 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(PS2PDF) $(PS_FILE)
 	@make clean
 
-aspell:
-	aspell -c -d pt_BR -t $(MAIN_FILE)
-
 clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
+	rm -rf editaveis/*.bak
 
 dist: clean
 	tar vczf tcc-fga-latex-$(VERSION).tar.gz *
