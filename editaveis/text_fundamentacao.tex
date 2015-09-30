@@ -20,14 +20,14 @@ Uma congruência é  uma relação entre dois números inteiros que, quando divi
   a \equiv b \pmod n \label{eq:1}
 \end{equation}
 
-Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades:
+Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
   \item $a \equiv b \pmod n$ se $n|(a-b)$.
   \item $a \equiv b \pmod n$ implica $b \equiv a \pmod n$.
   \item $a \equiv b \pmod n$ e $b \equiv c \pmod n$ implica $a \equiv c \pmod n$.
 \end{enumerate}
 
-Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto de inteiros $\{0, 1, ..., (n-1)\}$. Daí pode-se realizar operações aritméticas dentro dos limites desse conjunto, técnica conhecida como aritmética modular. A aritmética modular exibe as seguintes propriedades:
+Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto de inteiros $\{0, 1, ..., (n-1)\}$. Daí pode-se realizar operações aritméticas dentro dos limites desse conjunto, técnica conhecida como aritmética modular. A aritmética modular exibe as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
   \item $[a \pmod n + b \pmod n] \pmod n = (a + b) \pmod n$
   \item $[a \pmod n - b \pmod n] \pmod n = (a - b) \pmod n$
@@ -37,7 +37,7 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
 Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde \((n, d)\) é o maior divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
-  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}%\pmod {\frac{n}{(n, d)}}
+  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}
 \end{equation}
 
 O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, $a$ e $n$ são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
@@ -56,80 +56,21 @@ O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(
 % OPERAÇÕES BINÁRIAS
 %
 \subsection{Operações Binárias}
-Seja \(L\) um conjunto não vazio. Uma operação  sobre \(L\) é dita binária se ela possui dois elementos do conjunto \(L\) e os associa a um terceiro elemento em \(L\), sendo que opera em \(L\) para cada par \((a,b) \in L\). Uma operação binária sobre \(L\) é grafada conforme mostrado na Equação \ref{eq:7}.
-\begin{equation}
-  \varphi: L \times L \to L \label{eq:7}
-\end{equation}
-
-Uma operação binária é:
-\begin{enumerate}
-  \item \textit{Fechada}, se e somente se \( \forall a,b,c  \in L, (a \varphi b) \in L \);
-  \item \textit{Comutativa}, se \( \forall a,b \in L , (a \varphi b) = (b \varphi a)\);
-  \item \textit{Associativa}, se \( \forall a,b,c \in L, (a \varphi b) \varphi c = a \varphi (b \varphi c)\).
-\end{enumerate}
-
-Uma operação binária possui um elemento neutro \(e \in L\) se \( \forall a \in L, e \varphi a = a \varphi e = a\).
-
-\par Dado um elemento \(a \in L\), \(a\) é invertível em relação à operação \( \varphi \) se existe  um elemento \(a' \in L\) que satisfaz \(a \varphi a' = a' \varphi a = e\). 
-
-Um exemplo de operação binária é a soma no conjunto dos números naturais, como mostrado na Equação \ref{eq:8}.
-\begin{equation}
-  +: \mathbb{N} \times \mathbb{N} \to \mathbb{N} \label{eq:8}
-\end{equation}
-
-A imagem de um par \((a,b) \in \mathbb{N} \times \mathbb{N}\) pela operação \(+\) é denotada por \(a + b\) e é chamada de soma de \(a\) e \(b\).
 
 %
 % MONÓIDES E GRUPOS
 %
 \subsection{Monoides e Grupos}
-Seja \(L\) um conjunto não vazio. Uma estrutura algébrica \((L, \varphi )\) (composta por um conjunto não vazio e uma operação binária) é um monoide se satisfaz as seguintes propriedades:
-
-\begin{enumerate}
-  \item a operação \( \varphi \) tem um elemento neutro em \(L\);
-  \item a operação \( \varphi \) é associativa.
-\end{enumerate}
-
-Um grupo é um \textit{monoide} \((G,  \varphi)\) que atende também a propriedade:
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item todo elemento \(g \in G\) é invertível em relação a operação \(\varphi\), isto é, todo elemento \(g\) de \(G\) possui um elemento simétrico \(g'\) tal que \((g \varphi g') = (g' \varphi g) = e \), onde \(e\) é o elemento neutro da operação \(\varphi\).
-\end{enumerate}
-Um grupo é dito \textit{abeliano} se a operação for comutativa.
 
 %
 % ANÉIS E CORPOS
 %
 \subsection{Anéis e Corpos}
- Seja \(L\) um conjunto não vazio, e \(\sigma, \pi:L \times L \to L\) duas operações binárias em \(L\) denominadas, respectivamente, operações de adição e produto. A título de notação, será utilizada a expressão \(a+b\) como equivalente a \(\sigma(a,b)\) e \(a \times b\) como equivalente a \(\pi(a,b)\). O terno ordenado \((L, +,\times )\) é um anel se:
-\begin{enumerate}
-  \item \((L, +)\) é um grupo abeliano;
-  \item \((L, +)\) possui um elemento neutro $0$, \textit{i.e}, \(\forall a \in A, a + 0 = 0 + a = a\);
-  \item \((L, +)\) possui elementos simétricos para todos elementos de $L$, \textit{i.e}, \(\forall a \in A, \exists k \in A: a + k = 0\);
-  \item \((L, \times)\) é um monoide;
-  \item \((L, \times)\) é associativo, \textit{i.e}, \(\forall a,b,c \in L, (a \times b) \times c = a \times (b \times c)\);
-  \item \((L, +, \times)\) são distributivos, \textit{i.e}, \(\forall a,b,c \in A, a \times (b + c) = a \times b + a \times c\) e \((b + c) \times a = b \times a + c \times a\);
-\end{enumerate}
-
-Um corpo é um anel cuja operação produto é comutativa e onde todos os elementos diferentes de zero (elemento neutro da adição) possuem um elemento inverso para a operação produto. Formalmente, um anel comutativo \(P\) é chamado de \textit{corpo} se atende à Equação \ref{eq:inv}.
-\begin{equation}
-  \forall a \in P \neq {0}, \exists a' \Rightarrow a \times a' = 1
-    \label{eq:inv}
-\end{equation}
-
-A \textit{característica} de um corpo \(F\) é definido como o menor número de vezes em que é necessário usar o elemento identidade da multiplicação em uma soma para obter o elemento identidade da soma. Um corpo tem característica zero se a soma nunca alcançar a identidade da soma.
 
 %
 % VARIEDADES E CURVAS ALGÉBRICAS
 % 
 \subsection{Variedades e Curvas Algébricas}
-Uma \textit{variedade algébrica} é o conjunto de soluções de um sistema de equações polinomiais. Seja \(K\) um corpo fechado, o anel de polinômios \(K[T_1 , T_2, ..., T_n ]\) nas \(n\) variáveis \(T_1 , T_2 , ..., T_n \) com coeficientes em \(K\) e \(\{f_{i}\}\) uma família de polinômios do anel. É denominada variedade algébrica \(V\) o subconjunto \(K_n\) formado pelos pontos que anulam (zeros) todos os polinômios da família \(\{f_{i}\}\), como apresentado na Equação \ref{eq:10}.
-\begin{equation}
-V = \{(x_1 , ..., x_n ) | f_{i}(1, ..., n) = 0; i = 1, ..., n\} \subseteq K \label{eq:10}
-\end{equation}
-
-A dimensão de uma variedade algébrica \(V\)  é o conjunto de funções racionais independentes que existem em \(V\).
-\par Formalmente,  denomina-se \textit{curva algébrica} uma variedade algébrica de dimensão um. Esse conjunto de curvas descreve as figuras geométricas resultantes de uma seção cônica, a saber: círculos, hipérboles e eclipses \cite{Thomas:2004}.
 
 %
 % CRIPTOGRAFIA
@@ -179,7 +120,7 @@ Podemos mostrar que um grupo pode ser definido com base no conjunto E(\(a, b\)) 
 
 Uma importante característica da curvas elípticas é que existe uma forma natural de ``somar'' dois pontos produzindo um terceiro ponto. Para tanto, deve-se satisfazer a Equação \ref{eq:13}. No entanto, esta ``soma'' se refere à operação que combina dois pontos de maneira análoga da soma algébrica em alguns aspectos (é comutativa, associativa e existe um elemento identidade), mas bem diferente em outras formas.
 
-Em termos geométricos, as regras para a adição podem ser indicadas da seguinte maneira: se três pontos em uma curva elíptica se encontram em uma linha reta, sua soma é $O$. Por essa definição, podemos definir as regras da adição sobre uma curva elíptica:
+Em termos geométricos, as regras para a adição podem ser indicadas da seguinte maneira: se três pontos em uma curva elíptica se encontram em uma linha reta, sua soma é \(O\). Por essa definição, podemos definir as regras da adição sobre uma curva elíptica:
 
 \begin{figure}[h]
 \centering
