@@ -52,25 +52,45 @@ O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(
 %
 \section{Estruturas Algébricas}
 
-%
-% OPERAÇÕES BINÁRIAS
-%
-\subsection{Operações Binárias}
+Antes de iniciar os estudos em aritmética de curvas elípticas, é importante
+fixar alguns conceitos de algebra. De acordo com \cite{Hefez:2008}(p. 12), 
+
+\begin{citacao}
+estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas em que em determinados conjuntos são definidas operações com propriedades semelhantes.
+\end{citacao}
+
+Nesse trabalho serão abordadas as estruturas algébricas grupo
+e corpos finitos.
 
 %
-% MONÓIDES E GRUPOS
+% GRUPOS
 %
-\subsection{Monoides e Grupos}
+
+\subsection{Grupos}
+
+Um \textbf{grupo \((G,*)\)} é composto por um conjunto \(G\) e uma operação binária \(*\) sobre os elementos desse conjunto tal que os axiomas abaixo sejam satisfeitos\cite{Gilbert:2004}
+
+\begin{enumerate}
+\item O conjunto \(G\) é \textbf{fechado} para a operação \(*\)
+
+$a * b \in G$ para todo $a,b \in G$.
+
+\item A operação $*$ é \textbf{associativa}
+
+$(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
+
+\item Existe um \textbf{elemento identidade} $e \in G$ tal que para todo elemento $a \in G, a * e = a$.
+\item Existe um \textbf{elemento inverso} $a'$ para todo elemento $a \in G$ tal que $a' * a = e$ (elemento identidade).
+\end{enumerate}
+
+Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano}(ou \textbf{comutativo}) em homenagem ao matemático Niels Abel.\cite{Gilbert:2004}
+
+Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos.
 
 %
-% ANÉIS E CORPOS
+% CORPOS FINITOS
 %
-\subsection{Anéis e Corpos}
-
-%
-% VARIEDADES E CURVAS ALGÉBRICAS
-% 
-\subsection{Variedades e Curvas Algébricas}
+\subsection{Corpos Finitos}
 
 %
 % CRIPTOGRAFIA
