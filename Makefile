@@ -20,7 +20,8 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 					abreviaturas.tex simbolos.tex text_introducao.tex \
 					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
 					elementosdotexto.tex elementosdopostexto.tex \
-					apendices.tex anexos.tex text_fundamentacao.tex text_cronograma.tex
+					apendices.tex anexos.tex text_fundamentacao.tex text_cronograma.tex \
+					text_ecc.tex
 
 EDITAVEIS_FILES = $(addprefix $(EDITAVEIS_DIR)/, $(EDITAVEIS_SOURCES))
 
