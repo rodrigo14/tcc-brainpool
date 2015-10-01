@@ -85,7 +85,23 @@ $(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
 
 Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano}(ou \textbf{comutativo}) em homenagem ao matemático Niels Abel.\cite{Gilbert:2004}
 
-Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos.
+Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. "O numero de elementos de um grupo é a sua \textbf{ordem}"\cite{Coutinho:2014}(pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
+
+\subsection{Subgrupos}
+Seja $(G,*)$ um grupo, e $H$ um subconjunto não vazio de $G$. Se $(H,*)$ satisfaz todos os axiomas de grupo, então diz-se que $(H, *)$ é um subgrupo de $(G, *)$\cite{Coutinho:2014}, ou seja
+
+\begin{enumerate}
+\item Para todo $a, b \in H$, $a * b \in H$.
+\item O elemento neutro de $G$ está em $H$ e também é seu elemento neutro(a demonstração não será feita nesse trabalho).
+\item Existe um inverso $a'$ para todo $a \in H$.
+\end{enumerate}
+
+Todo grupo possui pelo menos dois subgrupos, como pode ser visto na citação abaixo.\cite{Domingues:2003}(pg. 154)
+
+
+\begin{citacao}
+''Se $e$ indica o elemento neutro de $G$, então obviamente ${e}$ é um subgrupo de $G$. É imediato, também, que o próprio $G$ é um subgrupo de si mesmo. Esses dois subgrupos, ou seja, ${e}$ e $G$, são chamados de \textbf{subgrupos triviais} de $G$''.
+\end{citacao}
 
 %
 % CORPOS FINITOS
