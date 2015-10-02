@@ -5,7 +5,7 @@ Neste capítulo serão mostrados os conceitos matemáticos necessários para a g
 % ARITMÉTICA MODULAR
 %
 \section{Aritmética Modular}
-Na Teoria dos Números \cite{Niven:2014} (ramo da matemática pura que estuda os números inteiros), uma importante ferramenta é a aritmética modular,  a qual estuda as propriedades de conjuntos formados a partir dos restos da divisão de números inteiros por um inteiro $n$, denominado módulo.
+Na Teoria dos Números \cite{Niven:2014} (ramo da matemática pura que estuda os números inteiros), uma importante ferramenta é a aritmética modular,  a qual estuda as propriedades de conjuntos formados a partir dos restos da divisão de números inteiros por um inteiro \(n\), denominado módulo.
 
 Dado qualquer inteiro positivo \(n\) e qualquer inteiro não negativo \(a\), se dividirmos \(a\) por \(n\), obteremos um quociente inteiro \(q\) e um resto inteiro \(r\), que obedecem ao seguinte relacionamento:
 \begin{equation}
@@ -22,7 +22,7 @@ Uma congruência é  uma relação entre dois números inteiros que, quando divi
 
 Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
-  \item $a \equiv b \pmod n$ se $n|(a-b)$.
+  \item $a \equiv b \pmod n$ se $n|(a - b)$.
   \item $a \equiv b \pmod n$ implica $b \equiv a \pmod n$.
   \item $a \equiv b \pmod n$ e $b \equiv c \pmod n$ implica $a \equiv c \pmod n$.
 \end{enumerate}
@@ -40,11 +40,11 @@ Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é 
   \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}
 \end{equation}
 
-O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, $a$ e $n$ são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
+O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
 \par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado à um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
 
 \begin{equation}
-  c \equiv b^{k}\pmod m \label{eq:6}
+  c \equiv b^k\pmod m \label{eq:6}
 \end{equation}
 
 %
@@ -53,19 +53,15 @@ O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(
 \section{Estruturas Algébricas}
 
 Antes de iniciar os estudos em aritmética de curvas elípticas, é importante
-fixar alguns conceitos de álgebra. De acordo com \cite{Hefez:2008}(p. 12),
+fixar alguns conceitos de álgebra. De acordo com Hefez,
 
 \begin{citacao}
-Estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas em que em determinados conjuntos são definidas operações com propriedades semelhantes.
+``Estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas em que em determinados conjuntos são definidas operações com propriedades semelhantes.'' \cite{Hefez:2008} (p. 12)
 \end{citacao}
-
-Nesse trabalho serão abordadas as estruturas algébricas grupo
-e corpos finitos.
 
 %
 % GRUPOS
 %
-
 \subsection{Grupos}
 
 Um \textbf{grupo \((G,*)\)} é composto por um conjunto \(G\) e uma operação binária \(*\) sobre os elementos desse conjunto tal que os axiomas abaixo sejam satisfeitos \cite{Gilbert:2004}
@@ -80,27 +76,27 @@ $a * b \in G$ para todo $a,b \in G$.
 $(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
 
 \item Existe um \textbf{elemento identidade} $e \in G$ tal que para todo elemento $a \in G, a * e = a$.
-\item Existe um \textbf{elemento inverso} $a'$ para todo elemento $a \in G$ tal que $a' * a = e$ (elemento identidade).
+\item Existe um \textbf{elemento inverso} \(a'\) para todo elemento $a \in G$ tal que $a' * a = e$ (elemento identidade).
 \end{enumerate}
 
-Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano}(ou \textbf{comutativo}) em homenagem ao matemático Niels Abel. \cite{Gilbert:2004}
+Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano} (ou \textbf{comutativo}) em homenagem ao matemático Niels Abel. \cite{Gilbert:2004}
 
-Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. "O numero de elementos de um grupo é a sua \textbf{ordem}"\cite{Coutinho:2014}(pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
+Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. ``O numero de elementos de um grupo é a sua \textbf{ordem}'' \cite{Coutinho:2014} (pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
 
 \subsection{Subgrupos}
-Seja $(G,*)$ um grupo, e $H$ um subconjunto não vazio de $G$. Se $(H,*)$ satisfaz todos os axiomas de grupo, então diz-se que $(H, *)$ é um subgrupo de $(G, *)$\cite{Coutinho:2014}, ou seja
+Seja $(G, *)$ um grupo, e \(H\) um subconjunto não vazio de \(G\). Se $(H, *)$ satisfaz todos os axiomas de grupo, então diz-se que $(H, *)$ é um subgrupo de $(G, *)$\cite{Coutinho:2014}, ou seja
 
 \begin{enumerate}
 \item Para todo $a, b \in H$, $a * b \in H$.
-\item O elemento neutro de $G$ está em $H$ e também é seu elemento neutro(a demonstração não será feita nesse trabalho).
-\item Existe um inverso $a'$ para todo $a \in H$.
+\item O elemento neutro de \(G\) está em \(H\) e também é seu elemento neutro(a demonstração não será feita nesse trabalho).
+\item Existe um inverso \(a'\) para todo $a \in H$.
 \end{enumerate}
 
-Todo grupo possui pelo menos dois subgrupos, como pode ser visto na citação abaixo.\cite{Domingues:2003}(pg. 154)
+Todo grupo possui pelo menos dois subgrupos, como pode ser visto na citação abaixo.
 
 
 \begin{citacao}
-''Se $e$ indica o elemento neutro de $G$, então obviamente ${e}$ é um subgrupo de $G$. É imediato, também, que o próprio $G$ é um subgrupo de si mesmo. Esses dois subgrupos, ou seja, ${e}$ e $G$, são chamados de \textbf{subgrupos triviais} de $G$''.
+``Se \(e\) indica o elemento neutro de \(G\), então obviamente \(e\) é um subgrupo de \(G\). É imediato, também, que o próprio \(G\) é um subgrupo de si mesmo. Esses dois subgrupos, ou seja, \(e\) e \(G\), são chamados de \textbf{subgrupos triviais} de \(G\)''. \cite{Domingues:2003} (pg. 154)
 \end{citacao}
 
 %
