@@ -98,12 +98,21 @@ A Equação \ref{eq:13} tem a mesma forma da Equação \ref{eq:7}. As regras par
 \subsection{O problema do logaritmo discreto sobre curvas elípticas} \label{ecdpl}
 Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E_p(a, b)$. O problema do logaritmo discreto sobre curvas elípticas ECDLP (\textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(n\) tal que $Q = nP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p^*$, denotamos esse inteiro \(n\) por
 
-\begin{eqnarray*}
-nP &=& Q \\
-n &=& \log_P(Q)
-\end{eqnarray*}
+\begin{eqnarray}
+nP &=& Q \label{eq:ecdpl1} \\
+n &=& \log_P(Q) \label{eq:ecdpl2}
+\end{eqnarray}
 
 e chamamos \(n\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\). \cite{Hoffstein:2008}
+
+\subsection{Algoritmos conhecidos para resolver ECDPL}
+Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas supersingular e anômalo. A solução para a Equação \ref{eq:ecdpl2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
+
+\begin{itemize}
+\item Força-bruta: Este método adiciona sequencialmente o ponto $P \in E(\mathbb{F}_p)$ a ele mesmo. A cadeia de adição $P, 2P, 3P, 4P, ...$ acabará por chegar em \(Q\) descobrindo assim o valor de \(n\), de acordo com a Equação \ref{eq:ecdpl1}. No pior caso, este cálculo pode levar a $n - 1$ passos onde \(n\) é da ordem de \(P\). Desta forma, o ataque pode se tornar inviável para prática quando \(n\) é muito grande.
+\item \textit{Baby Step Giant Step} (BSGS): O algoritmo BSGS é uma melhoria à busca por força-bruta. Para \(n\) na ordem de \(P\), memória temporária por cerca de $\sqrt{n}$ e aproximadamente um adicional de $\sqrt{n}$ passos são necessários. No entanto, devido à sua complexidade de memória alta, BSGS acaba não sendo muito interessante.
+\item Pollard's Rho: O ataque Pollard Rho foi proposto por J. Pollard em 1978 e é um algoritmo baseado em colisão com base em um percurso aleatório num grupo cíclico, assim, pode ser aplicado ao grupo de pontos gerados por \(P\) numa curva elíptica. O percurso aleatório calcula uma trilha de pontos numa curva elíptica e eventualmente termina em um ciclo, revelando a solução para ECDLP. Embora tendo um tempo de complexidade similar de $\sqrt{\pi n/2}$ comparado ao BSGS, Pollard's Rho é superior devido aos seus desprezíveis requisitos de memória. Em combinação com a paralelização adequada, o método Pollard's Rho é o mais rápido ataque conhecido contra ECC. Neste trabalho serão apresentados os métodos Pollard's Rho original, Pollard's Rho com único processador (SPPR), e sua variante paralelizada Pollard's Rho com multi-processadores (MPPR).
+\end{itemize}
 
 %
 % CRIPTOGRAFIA DE CURVAS ELÍPTICAS
