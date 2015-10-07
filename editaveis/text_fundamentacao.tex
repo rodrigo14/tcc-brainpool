@@ -99,10 +99,22 @@ Todo grupo possui pelo menos dois subgrupos, como pode ser visto na citação ab
 ``Se \(e\) indica o elemento neutro de \(G\), então obviamente \(e\) é um subgrupo de \(G\). É imediato, também, que o próprio \(G\) é um subgrupo de si mesmo. Esses dois subgrupos, ou seja, \(e\) e \(G\), são chamados de \textbf{subgrupos triviais} de \(G\)''. \cite{Domingues:2003} (pg. 154)
 \end{citacao}
 
+\subsection{Teorema de Lagrange}
+
+Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, este estabelece que, se $G$ é um grupo finito, e $H$ é um subgrupo de $G$, então a ordem de $H$ sempre divide a ordem de $G$ \cite{Shoup:2005}.A demostração deste teorema não será abordada nesse trabalho, mas seu resultado será de grande utilidade mais à frente, no estudo da criptografia de curvas elípticas.
+
+\subsection{Homomorfismos de grupos}
+
+Sejam os grupos $(G, \cdot)$ e $(H, \cdot)$, uma função $f: G \rightarrow H$ é chamada de \textit{homomorfismo} se $f(a \cdot b) = f(a) \cdot f(b)$ onde $a, b \in G$. Se a operação dos grupos for diferente, por exemplo, $(G, \cdot)$ e $(H, \star)$, então a condição é dada por $f(a \cdot b) = f(a) \star f(b)$ \cite{Gilbert:2004}.
+
+
+
 %
 % CORPOS FINITOS
 %
 \subsection{Corpos Finitos}
+
+
 
 %
 % CRIPTOGRAFIA
