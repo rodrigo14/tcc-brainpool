@@ -4,8 +4,7 @@
 using namespace std;
 using namespace NTL;
 
-int A = 9, B = 17;
-int p = 23;
+int A, B, p;
 
 int lambda(int yq, int yp, int xq, int xp)
 {
@@ -51,9 +50,14 @@ int lambda(int xp, int yp)
     return a / b;
 }
 
-struct Point
+class Point
 {
+public:
     int x; int y;
+
+    Point() : x(0), y(0) {}
+    Point(int _x, int _y) : x(_x), y(_y) {}
+
     Point operator+(Point Q)
     {
         Point R;
@@ -76,9 +80,10 @@ struct Point
 
 int main()
 {
-    Point P, Q;
-    P.x = 16; P.y = 5;
-    Q.x = 12; Q.y = 17;
+    A = 3; B = 8;
+    p = 13;
+    Point P = Point(1, 8);
+    Point Q = Point(9, 7);
     // Q = P;
 
     Point R = P + Q;
