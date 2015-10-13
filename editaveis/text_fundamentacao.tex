@@ -107,15 +107,22 @@ Um teorema de grande importância para o estudo da criptografia é o teorema de 
 
 Sejam os grupos $(G, \cdot)$ e $(H, \cdot)$, uma função $f: G \rightarrow H$ é chamada de \textit{homomorfismo} se $f(a \cdot b) = f(a) \cdot f(b)$ onde $a, b \in G$. Se a operação dos grupos for diferente, por exemplo, $(G, \cdot)$ e $(H, \star)$, então a condição é dada por $f(a \cdot b) = f(a) \star f(b)$ \cite{Gilbert:2004}.
 
-
+Sendo $f: G \rightarrow H$ uma função de homomorfismo entre os grupos $G$ e $H$, se a função for bijetora, então ela é denominada \textit{isomorfismo}, e ainda, se os grupos $G$ e $H$ são iguais e a função é um isomorfismo, então ela é denominada \textit{automorfismo}\cite{Shokranian:2010}.
 
 %
 % CORPOS FINITOS
 %
 \subsection{Corpos Finitos}
 
+Corpos finitos são estruturas algébricas compostas por um conjunto numérico $F$ junto com duas operações, sendo uma delas a operação de soma (denotada por $+$) e a outra a operação de multiplicação (denotada por $\cdot$) onde são satisfeitas as seguintes propriedades:\cite{Hankerson:2004}
 
+\begin{enumerate}
+\item $(F, +)$ é um grupo abeliano com elemento identidade sendo $0$.
+\item $(F\backslash\{0\}, \cdot)$ é um grupo abeliano com elemento identidade sendo $1$.
+\item Para todo $a, b, c \in F$, é válida a propriedade distributiva: $(a + b) \cdot c = a \cdot c + b \cdot c$.
+\end{enumerate}
 
+Se o conjunto $F$ é finito, então o corpo é denominado \textit{corpo finito}. A \textit{ordem} de um corpo finito indica a quantidade de elementos que constituem o corpo finito. Existe um corpo finito de ordem $q$ se e somente se $q$ é igual a uma potência prima, ou seja, $q = p^{m}$, onde $p$ é um número primo \cite{Hankerson:2004}.
 %
 % CRIPTOGRAFIA
 %
