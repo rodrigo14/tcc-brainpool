@@ -76,18 +76,27 @@ public:
 
         return R;
     }
+
+    Point operator*(int n)
+    {
+        Point P = Point(x, y);
+        for (int i=0; i<n-1; i++)
+            P = P + Point(x, y);
+
+        return P;
+    }
 };
 
 int main()
 {
-    A = 3; B = 8;
-    p = 13;
-    Point P = Point(1, 8);
+    A = 1; B = 44;
+    p = 229;
+    Point P = Point(5, 116);
     Point Q = Point(9, 7);
     // Q = P;
 
-    Point R = P + Q;
-    cout << "(" << R.x << ", " << R.y << ")" << endl;
+    Point R = P * 176;
+    cout << "(" << R.x << ", " << R.y << ")\n";
 
     return 0;
 }
