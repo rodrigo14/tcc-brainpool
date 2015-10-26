@@ -21,7 +21,7 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
 					elementosdotexto.tex elementosdopostexto.tex \
 					apendices.tex anexos.tex text_fundamentacao.tex text_cronograma.tex \
-					text_ecc.tex
+					text_ecc.tex text_criptoanalise.tex text_pollardrho.tex
 
 EDITAVEIS_FILES = $(addprefix $(EDITAVEIS_DIR)/, $(EDITAVEIS_SOURCES))
 
@@ -37,6 +37,7 @@ SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES)
 
 all: 
 	@make $(TARGET)
+	@make clean
      
 $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
@@ -46,7 +47,6 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 
 	$(DVIPS) $(DVI_FILE)
 	$(PS2PDF) $(PS_FILE)
-	@make clean
 
 aspell:
 	sh aspell.sh

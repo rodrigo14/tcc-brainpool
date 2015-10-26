@@ -1,0 +1,55 @@
+\chapter{Criptoanálise}
+Enquanto o campo da Criptografia procura desenvolver um sistema ou um protocolo que permita a privacidade na troca de mensagens, o campo da Criptoanálise é o estudo de métodos para quebrar sistemas de criptografia.
+
+Existem dois lados da Criptoanálise: a que procura criar uma criptografia segura e a que se propõe a quebrar a segurança de um criptossistema. Embora possam ser vistos como antagonistas, o conhecimento de que um criptossistema é suscetível à ataques pode ser uma vantagem. O princípio de Kerchoff's diz que a segurança de um criptossistema deve depender apenas do sigilo do espaço da chave \(K\); e não do sigilo do algoritmo de criptografia. \cite{Mandy:2007}
+
+\section{Criptoanálise no contexto de curvas elípticas}
+No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo dos inteiros \(n_A\) e \(n_B\), que são as chaves privadas de \textbf{A} e \textbf{B} mencionados na seção \ref{sec:ecc}. Se estes inteiros são facilmente derivados, então o criptossistema não é mais seguro. Esse tipo de descoberta é classificado como ruptura total, no qual o atacante deduz as chaves secretas. \cite{Knudsen:1998}
+
+%
+% ECDPL
+%
+\subsection{O problema do logaritmo discreto sobre curvas elípticas} \label{ecdpl}
+Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E_p(a, b)$. O problema do logaritmo discreto sobre curvas elípticas ECDLP (\textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(n\) tal que $Q = nP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p^*$, denotamos esse inteiro \(n\) por
+
+\begin{eqnarray}
+nP &=& Q \label{eq:ecdpl1} \\
+n &=& \log_P(Q) \label{eq:ecdpl2}
+\end{eqnarray}
+
+e chamamos \(n\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\). \cite{Hoffstein:2008}
+
+%
+% Algoritmos ECDPL
+%
+\subsection{Algoritmos conhecidos para resolver ECDPL}
+Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas supersingular e anômalo. A solução para a Equação \ref{eq:ecdpl2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
+
+\begin{itemize}
+\item Força-bruta: Este método adiciona sequencialmente o ponto $P \in E(\mathbb{F}_p)$ a ele mesmo. A cadeia de adição $P, 2P, 3P, 4P, ...$ acabará por chegar em \(Q\) descobrindo assim o valor de \(n\), de acordo com a Equação \ref{eq:ecdpl1}. No pior caso, este cálculo pode levar a $n - 1$ passos onde \(n\) é da ordem de \(P\). Desta forma, o ataque pode se tornar inviável para prática quando \(n\) é muito grande.
+\item \textit{Baby Step Giant Step} (BSGS): O algoritmo BSGS é uma melhoria à busca por força-bruta. Para \(n\) na ordem de \(P\), memória temporária por cerca de $\sqrt{n}$ e aproximadamente um adicional de $\sqrt{n}$ passos são necessários. No entanto, devido à sua complexidade de memória alta, BSGS acaba não sendo muito interessante.
+\item Pollard's Rho: O ataque Pollard's Rho ou Pollard-Rho foi proposto por J. Pollard em 1978 e é um algoritmo baseado em colisão com base em um percurso aleatório num grupo cíclico, assim, pode ser aplicado ao grupo de pontos gerados por \(P\) numa curva elíptica. O percurso aleatório calcula uma trilha de pontos numa curva elíptica e eventualmente termina em um ciclo, revelando a solução para ECDLP. Embora tendo um tempo de complexidade similar de $\sqrt{\pi n/2}$ comparado ao BSGS, Pollard's Rho é superior devido aos seus desprezíveis requisitos de memória. Em combinação com a paralelização adequada, o método Pollard's Rho é o mais rápido ataque conhecido contra ECC. Neste trabalho serão apresentados os métodos Pollard-Rho original, Pollard-Rho com único processador (SPPR), e sua variante paralelizada Pollard-Rho com multi-processadores (MPPR).
+\end{itemize}
+
+%
+% Quebrar ECC em um ano (No final)
+%
+\subsection{Quebrando ECC em um ano}
+De acordo com uma pesquisa \cite{Pelzl:2006}, definindo um limite de tempo específico, pode-se calcular o número de processadores necessários. Seguindo a tentativa de quebrar ECC com uma chave de tamanho \(k\) de bits em um tempo máximo de um ano (365 dias), é possível encontrar a quantidade de processadores necessários representadas pela Tabela 1.
+
+\begin{table}[]
+\centering
+\label{table:required_chips}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{\(k\)} & \textbf{Pentium M}   & \textbf{XC3S1000}   & \textbf{ASIC}     \\ \hline
+80                      & 1                    & 1                   & -                 \\ \hline
+96                      & 56                   & 21                  & -                 \\ \hline
+128                     & $4.86 \cdot 10^6$    & $2.55 \cdot 10^6$   & $2.05 \cdot 10^4$ \\ \hline
+160                     & $3.78 \cdot 10^{11}$ & $3.1 \cdot 10^{11}$ & $2.48 \cdot 10^9$ \\ \hline
+\end{tabular}
+\caption{Número de processadores necessários para ataque de um ano}
+\end{table}
+
+Leavaria cerca de 378 bilhões de processadores de propósito geral para completar um ataque de sucesso em um ano em um ECC com chave de $k = 160$ bits. Com hardwares mais preparados utilizando diferentes arquiteturas, levaria menos tempo. No caso do XC3S1000 não se nota grandes diferenças, no entanto, utilizando ASIC é preciso cerca de 100 vezes menos processadores para completar a tarefa. Obviamente, a construção de um cenário tão grande é inviável atualmente.
+
