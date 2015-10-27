@@ -5,20 +5,22 @@ Neste capítulo serão mostrados os conceitos matemáticos necessários para o e
 % ARITMÉTICA MODULAR
 %
 \section{Aritmética Modular}
-Na Teoria dos Números \cite{Niven:2014} (ramo da matemática pura que estuda os números inteiros), uma importante ferramenta é a aritmética modular,  a qual estuda as propriedades de conjuntos formados a partir dos restos da divisão de números inteiros por um inteiro \(n\), denominado módulo.
 
-Dado qualquer inteiro positivo \(n\) e qualquer inteiro não negativo \(a\), se dividirmos \(a\) por \(n\), obteremos um quociente inteiro \(q\) e um resto inteiro \(r\), que obedecem ao seguinte relacionamento:
+O \textbf{teorema da divisão} diz que: dados dois inteiros $a, b$, com $b > 0$, ao dividir \(a\) por \(b\), obtem-se um único par de inteiros $q, r$ que obedecem ao seguinte relacionamento:
 \begin{equation}
-  a=qn+r \qquad 0 \leq r<n;\ q=\lfloor a/n \rfloor
+  a=qb+r \qquad 0 \leq r<b;\ q=\lfloor a/b \rfloor
 \end{equation}
 
-onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\).
+onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de $a$ por $b$ \cite{Santos:2014}. A demonstração desse teorema não será abordada nesse trabalho.
 
-Uma congruência é  uma relação entre dois números inteiros que, quando divididos por um mesmo número (chamado de módulo da congruência), deixam o mesmo resto.  Em termos formais, dois números inteiros \(a\) e \(b\) são congruentes módulo \(n\) se n divide a diferença \(a - b\).  Esta relação pode ser expressa por:
+A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como $3q$, $3q + 1$ ou $3q + 2$. Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for $k$, então haverá $k$ \textbf{classes de congruência mod k}. A aritmética modular estuda essa relação entre cada inteiro da sequência $S$ e sua classe de congruência \textit{mod k} \cite{Lewinter:2015}.
 
+Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros $a$ e $b$, diz-se que $a$ é \textit{congruente} a $b$ módulo $m$ se $m$ divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre $a$ e $b$ é representada pela notação abaixo.
 \begin{equation}
-  a \equiv b \pmod n \label{eq:1}
+  a \equiv b \pmod m \label{eq:1}
 \end{equation}
+
+Consequentemente, se $m$ não divide a diferença $(a - b)$, então $a$ é \textit{incongruente} a $b$ \textit{mod m}, e representa-se por $a \not\equiv b \pmod m$ \cite{Santos:2014}.
 
 Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
