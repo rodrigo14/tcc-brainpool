@@ -21,7 +21,7 @@ $$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{O\} $$
 onde o ponto ${O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
 Será visto mais adiante que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infintio sendo o elemento identidade \cite{Hankerson:2004}.
 
-A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.
+A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.(OBS: CITAR A FONTE DA IMAGEM)
 
 \begin{figure}[h]
 \centering
@@ -30,10 +30,11 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 \label{fig:curvas}
 \end{figure}
 
-\subsection{Propriedades}
-Uma importante característica da curvas elípticas é que existe uma forma natural de ``somar'' dois pontos produzindo um terceiro ponto. Para tanto, deve-se satisfazer a Equação \ref{eq:7}. No entanto, esta ``soma'' se refere à operação que combina dois pontos de maneira análoga da soma algébrica em alguns aspectos (é comutativa, associativa e existe um elemento identidade), mas bem diferente em outras formas.
+\subsection{Leis de grupo para Curvas Elípticas}
 
-Em termos geométricos, as regras para a adição podem ser indicadas da seguinte maneira: se três pontos em uma curva elíptica se encontram em uma linha reta, sua soma é \(O\). Por essa definição, podemos definir as regras da adição sobre uma curva elíptica:
+Seja o conjunto de pontos $E(K)$ da curva elíptica $E$ definida sobre um corpo $K$, é possível definir uma operação sobre esse conjunto de pontos, que será chamada de adição e indicada por $+$. Essa operação de adição e o conjunto de pontos $E(K)$ da curva elíptica formam um grupo abeliano \cite{Stallings:2011}.
+
+A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente. Sejam os pontos distintos $P$ e $Q$ em uma curva elíptica. Para realizar a soma entre esses pontos deve-se traçar uma linha reta entre eles e encontrar o terceiro ponto de interseção da linha com a curva, esse ponto será chamado de $R'$. O resultado da soma entre $P$ e $Q$ será o ponto $R$, que é a reflexão do ponto $R'$ sobre o eixo $x$. Para somar um ponto com ele mesmo, usa-se a reta tangente que passa sobre esse ponto, e prossegue-se da mesma forma descrita para a soma de pontos distintos (VER FIGURA: FAZER FIGURA) \cite{Hankerson:2004}.
 
 \begin{figure}[h]
 \centering
@@ -42,8 +43,9 @@ Em termos geométricos, as regras para a adição podem ser indicadas da seguint
 \label{fig:pontos}
 \end{figure}
 
+Os axiomas de grupo são satisfeitos da seguinte forma:
 \begin{enumerate}
-  \item $O$ funciona como a identidade aditiva. Assim, $O = -O$; para qualquer ponto $P$ na curva elíptica, $P + O = P$. A seguir, consideramos $P \neq O$ e $Q \neq O$.
+  \item $O$ é o elemento identidade. Logo, $O = -O$; para qualquer ponto $P$ na curva elíptica, $P + O = P$. A seguir, consideramos $P \neq O$ e $Q \neq O$.
   \item O negativo de um ponto \(P\) é o ponto com a mesma coordenada \(x\), sem o negativo da coordenada \(y\); ou seja, se $P = (x, y)$, então $-P = (x, -y)$. Observe que esses dois pontos podem ser juntados por uma linha vertical. Observe que $P + (-P) = P - P = O$.
   \item Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe uma linha reta entre eles e encontre o terceiro ponto de interseção \(R\). Pode-se ver facilmente que existe um único ponto \(R\) que é o ponto de interseção (a menos que a linha seja tangente à curva em \(P\) ou \(Q\), quanto consideramos $R=P$ ou $R=Q$, respectivamente). Para formar uma estrutura de grupo, precisamos definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. Ou seja, definimos $P+Q$ como sendo a imagem-espelho (com relação ao eixo \(x\)) do terceiro ponto da interseção. A figura \ref{fig:pontos}
   \item A interpretação geométrica do item anterior também se aplica a dois pontos, \(P\) e \(-P\), com a mesma coordenada \(x\). Os pontos são reunidos por uma linha vertical, que também pode ser vista como a interseção da curva no ponto infinito. Portanto, temos $P+(-P)=O$, coerente com o item (2).
