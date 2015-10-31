@@ -4,16 +4,22 @@
 \section{Curvas Elípticas}
 
 \subsection{Definição}
-Curvas elípticas não são elipses. Elas têm esse porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse. Em geral, as equações cúbicas para curvas elípticas têm a forma
+''Curvas elípticas não são elipses. Elas têm esse porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse'' \cite{Stallings:2011}. Uma curva elíptica $E$ definida sobre um corpo $K$ é descrita pela equação:
 \begin{equation}
 y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:5}
 \end{equation}
-onde \(a, b, c, d\) e \(e\) são números reais e \(x\) e \(y\) assumem valores nos números reais. Equações deste tipo são chamadas de \textit{equações de Weiestrass}. Para a nossa finalidade, é suficiente limitarmos na forma normal da equação de Weiestrass
+onde \(a, b, c, d\) e \(e\) são elementos do corpo $K$ e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de $K$. A notação utilizada para indicar que uma curva elíptica $E$ está definida sobre um corpo $K$ é $E/K$ e o corpo $K$ é chamado de corpo subjacente da curva \cite{Hankerson:2004}. Equações deste tipo são conhecidas como \textit{equações de Weiestrass}. Com frequência, no estudo de criptografia de curvas elípticas, é costume utilizar-se a forma reduzida de Weiestrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
 \begin{equation}
 y^2 = x^3 + ax + b \label{eq:6}
 \end{equation}
 
-Essas equações são consideradas cúbicas, ou de grau 3, pois o expoente mais alto que elas contém é um 3. Também incluído na definição de uma curva elíptica está um único elemento indicado por \(O\) e chamado de \textit{ponto no infinito} ou \textit{ponto zero}.
+É imprescindível que os valores de $a$ e $b$ sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente \cite{Hankerson:2004}.
+
+O conjunto dos pontos que pertencem à curva elíptica $E$ definida sobre um corpo $K$ é descrito por:
+
+$$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{O\} $$
+onde o ponto ${O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
+Será visto mais adiante que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infintio sendo o elemento identidade \cite{Hankerson:2004}.
 
 A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.
 
@@ -23,11 +29,6 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 \caption{Exemplos de curvas elípticas}
 \label{fig:curvas}
 \end{figure}
-
-Podemos mostrar que um grupo pode ser definido com base no conjunto E(\(a, b\)) para valores específicos de \(a\) e \(b\) na Equação \ref{eq:6}, desde que a condição a seguir seja atendida:
-\begin{equation}
-4a^3 + 27b^2 \neq 0 \label{eq:7}
-\end{equation}
 
 \subsection{Propriedades}
 Uma importante característica da curvas elípticas é que existe uma forma natural de ``somar'' dois pontos produzindo um terceiro ponto. Para tanto, deve-se satisfazer a Equação \ref{eq:7}. No entanto, esta ``soma'' se refere à operação que combina dois pontos de maneira análoga da soma algébrica em alguns aspectos (é comutativa, associativa e existe um elemento identidade), mas bem diferente em outras formas.
