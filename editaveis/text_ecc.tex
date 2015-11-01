@@ -19,7 +19,7 @@ O conjunto dos pontos que pertencem à curva elíptica $E$ definida sobre um cor
 
 $$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{O\} $$
 onde o ponto ${O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
-Será visto mais adiante que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infintio sendo o elemento identidade \cite{Hankerson:2004}.
+Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infintio sendo o elemento identidade \cite{Hankerson:2004}.
 
 A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.(OBS: CITAR A FONTE DA IMAGEM)
 
@@ -34,25 +34,29 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 
 Seja o conjunto de pontos $E(K)$ da curva elíptica $E$ definida sobre um corpo $K$, é possível definir uma operação sobre esse conjunto de pontos, que será chamada de adição e indicada por $+$. Essa operação de adição e o conjunto de pontos $E(K)$ da curva elíptica formam um grupo abeliano \cite{Stallings:2011}.
 
-A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente. Sejam os pontos distintos $P$ e $Q$ em uma curva elíptica. Para realizar a soma entre esses pontos deve-se traçar uma linha reta entre eles e encontrar o terceiro ponto de interseção da linha com a curva, esse ponto será chamado de $R'$. O resultado da soma entre $P$ e $Q$ será o ponto $R$, que é a reflexão do ponto $R'$ sobre o eixo $x$. Para somar um ponto com ele mesmo, usa-se a reta tangente que passa sobre esse ponto, e prossegue-se da mesma forma descrita para a soma de pontos distintos (VER FIGURA: FAZER FIGURA) \cite{Hankerson:2004}.
+A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver figura \ref{fig:pontos}). A citação abaixo descreve como somar dois pontos da curva elíptica.
+\begin{citacao}
+Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe uma linha reta entre eles e encontre o terceiro ponto de interseção \(R\). Pode-se ver facilmente que existe um único ponto \(R\) que é o ponto de interseção (a menos que a linha seja tangente à curva em \(P\) ou \(Q\), quanto consideramos $R=P$ ou $R=Q$, respectivamente). Para formar uma estrutura de grupo, precisamos definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. Ou seja, definimos $P+Q$ como sendo a imagem-espelho (com relação ao eixo \(x\)) do terceiro ponto da interseção. \cite{Stallings:2011} (Pg ???)
+\end{citacao}
+
+Se as coordenadas $x$ dos pontos $P$ e $Q$ são iguais, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $O$. \cite{Stallings:2011}
+
+É possível calcular o dobro de um ponto $P$, ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto $P$. Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto $R$, que é o resultado da soma. \cite{Hankerson:2004}
 
 \begin{figure}[h]
-\centering
-\includegraphics[scale=0.5, bb=0 0 484 636]{figuras/pontos_curva.eps}
-\caption{Exemplos de soma de pontos em curvas elípticas}
+\includegraphics[scale=0.5, bb=0 0 484 636]{figuras/SomaECC.eps}
+\caption{Soma de pontos em curvas elípticas \cite{Hankerson:2004}}
 \label{fig:pontos}
 \end{figure}
 
 Os axiomas de grupo são satisfeitos da seguinte forma:
 \begin{enumerate}
-  \item $O$ é o elemento identidade. Logo, $O = -O$; para qualquer ponto $P$ na curva elíptica, $P + O = P$. A seguir, consideramos $P \neq O$ e $Q \neq O$.
-  \item O negativo de um ponto \(P\) é o ponto com a mesma coordenada \(x\), sem o negativo da coordenada \(y\); ou seja, se $P = (x, y)$, então $-P = (x, -y)$. Observe que esses dois pontos podem ser juntados por uma linha vertical. Observe que $P + (-P) = P - P = O$.
-  \item Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe uma linha reta entre eles e encontre o terceiro ponto de interseção \(R\). Pode-se ver facilmente que existe um único ponto \(R\) que é o ponto de interseção (a menos que a linha seja tangente à curva em \(P\) ou \(Q\), quanto consideramos $R=P$ ou $R=Q$, respectivamente). Para formar uma estrutura de grupo, precisamos definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. Ou seja, definimos $P+Q$ como sendo a imagem-espelho (com relação ao eixo \(x\)) do terceiro ponto da interseção. A figura \ref{fig:pontos}
-  \item A interpretação geométrica do item anterior também se aplica a dois pontos, \(P\) e \(-P\), com a mesma coordenada \(x\). Os pontos são reunidos por uma linha vertical, que também pode ser vista como a interseção da curva no ponto infinito. Portanto, temos $P+(-P)=O$, coerente com o item (2).
-  \item Para dobrar um ponto \(Q\), desenhe uma linha tangente e encontre o outro ponto da interseção \(S\). Então, $Q+Q=2Q=-S$.
+  \item Para quaisquer pontos $P, Q \in E(K)$, o ponto $P + Q \in E(K)$.
+  \item $O$ é o elemento identidade. Logo, $P + O = P$ para todo $P \in E(K)$.
+  \item Para qualquer ponto $P$, existe um ponto $P'$ tal que $P + P' = O$. O ponto $P'$ é denominado \textit{inverso aditivo} de $P$.
+  \item A adição é associativa. Logo, $P, Q, R \in E(K)$, observa-se que $(P + Q) + R = P + (Q + R)$
+  \item A adição é comutativa. Logo, $P, Q \in E(K)$, observa-se que $P + Q = Q + P$.
 \end{enumerate}
-
-Com a lista de regras apresentada, pode-se se mostrar que o conjunto E(\(a, b\)) é um grupo abeliano. \cite{Stallings:2011}
 
 \subsection{Curvas elípticas sobre corpo finito}
 A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são todos restritos a elementos de um corpo finito, ou seja, assumem valores no conjunto de inteiros de 0 até $p - 1$ em que os cálculos são realizados módulo \(p\). Desta forma, é dito que a curva está sobre $\mathbb{F}_p$. \cite{Stallings:2011}
