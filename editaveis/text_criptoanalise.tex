@@ -28,10 +28,10 @@ Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmaçã
 \begin{itemize}
 \item Força-bruta: Este método adiciona sequencialmente o ponto $P \in E(\mathbb{F}_p)$ a ele mesmo. A cadeia de adição $P, 2P, 3P, 4P, ...$ acabará por chegar em \(Q\) descobrindo assim o valor de \(n\), de acordo com a Equação \ref{eq:ecdpl1}. No pior caso, este cálculo pode levar a $n - 1$ passos onde \(n\) é da ordem de \(P\). Desta forma, o ataque pode se tornar inviável para prática quando \(n\) é muito grande.
 \item \textit{Baby Step Giant Step} (BSGS): O algoritmo BSGS é uma melhoria à busca por força-bruta. Para \(n\) na ordem de \(P\), memória temporária por cerca de $\sqrt{n}$ e aproximadamente um adicional de $\sqrt{n}$ passos são necessários. No entanto, devido à sua complexidade de memória alta, BSGS acaba não sendo muito interessante.
-\item Pohlig-Hellman: trabalha com a fatorização do valor \(n\) da ordem da curva e utiliza o Teorema do Resto Chinês para o cálculo da a série de equações lineares gerados com os fatores de \(n\). Esta abordagem pode ser implementada em conjunto com Pollard's Rho. No entanto, caso a curva escolhida tiver ordem com valor primo, inibe esse tipo de ataque, pois não é possível fatorar números primos.
+\item Pohlig-Hellman: trabalha com a fatoração do valor \(n\) da ordem da curva e utiliza o Teorema do Resto Chinês para o cálculo da a série de equações lineares gerados com os fatores de \(n\). Esta abordagem pode ser implementada em conjunto com Pollard's Rho. No entanto, caso a curva escolhida tiver ordem com valor primo, inibe esse tipo de ataque, pois não é possível fatorar números primos.
 \item Pollard's Rho: O ataque Pollard's Rho ou Pollard-Rho foi proposto por J. Pollard em 1978 e é um algoritmo baseado em colisão com base em um percurso aleatório num grupo cíclico, assim, pode ser aplicado ao grupo de pontos gerados por \(P\) numa curva elíptica. O percurso aleatório calcula uma trilha de pontos numa curva elíptica e eventualmente termina em um ciclo, revelando a solução para ECDLP. \cite{Pollard:1978} Embora tendo um tempo de complexidade similar de $\sqrt{\pi n/2}$ comparado ao BSGS, Pollard's Rho é superior devido aos seus desprezíveis requisitos de memória. Em combinação com a paralelização adequada, o método Pollard's Rho é o mais rápido ataque conhecido contra ECC. \cite{Pelzl:2006}
 
-Neste trabalho serão apresentados os métodos Pollard-Rho original, Pollard-Rho com único processador (SPPR), e sua variante paralelizada Pollard-Rho com multi-processadores (MPPR).
+Neste trabalho serão apresentados os métodos Pollard-Rho original, Pollard-Rho com único processador (SPPR), e sua variante paralelizada Pollard-Rho com multiprocessadores (MPPR).
 \end{itemize}
 
 %
@@ -54,5 +54,5 @@ De acordo com uma pesquisa \cite{Pelzl:2006}, definindo um limite de tempo espec
 \caption{Número de processadores necessários para ataque de um ano}
 \end{table}
 
-Leavaria cerca de 378 bilhões de processadores de propósito geral para completar um ataque de sucesso em um ano em um ECC com chave de $k = 160$ bits. Com hardwares mais preparados utilizando diferentes arquiteturas, levaria menos tempo. No caso do XC3S1000 não se nota grandes diferenças, no entanto, utilizando ASIC é preciso cerca de 100 vezes menos processadores para completar a tarefa. Obviamente, a construção de um cenário tão grande é inviável atualmente.
+Levaria cerca de 378 bilhões de processadores de propósito geral para completar um ataque de sucesso em um ano em um ECC com chave de $k = 160$ bits. Com hardwares mais preparados utilizando diferentes arquiteturas, levaria menos tempo. No caso do XC3S1000 não se nota grandes diferenças, no entanto, utilizando ASIC é preciso cerca de 100 vezes menos processadores para completar a tarefa. Obviamente, a construção de um cenário tão grande é inviável atualmente.
 
