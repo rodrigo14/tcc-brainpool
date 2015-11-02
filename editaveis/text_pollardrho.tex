@@ -67,6 +67,6 @@ x = (a_{2m} - a_m)(b_m - b_{2m})^{-1} \pmod n
 
 \end{enumerate}
 
-Assumindo que o percuso aleatório \ref{eq:walk} definido no algoritmo produz termos aleatórios, o algoritmo resolve o ECDLP com operação de ordem $O(\sqrt{n})$. \cite{Pollard:1978}
+Assumindo que o percuso aleatório \ref{eq:walk} definido no algoritmo produz termos aleatórios, então a primeira colisão na sequência é esperada para após $\sqrt{\pi n/2}$ termos. Além disso, o tamanho da calda prevista é de $\mu \approx \sqrt{\pi n/8}$ e o tamanho do ciclo $\lambda \approx \sqrt{\pi n/8}$. \cite{Pollard:1978}
 
-O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando o MDC$(b_m - b_{2m}, n) = 1$. Caso contrário, o algoritmo não poderá continuar.
+O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando o GCD$(b_m - b_{2m}, n) = 1$, ou seja, quando são coprimos entre si. Caso contrário, o algoritmo não poderá continuar.

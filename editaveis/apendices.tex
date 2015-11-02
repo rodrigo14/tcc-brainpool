@@ -2,11 +2,33 @@
 
 \partapendices
 
-\chapter{Primeiro Apêndice}
+\chapter{Otimizando a multiplicação de um ponto}
 
-Texto do primeiro apêndice.
+A multiplicação de um ponto da curva elíptica é de extrema importância para a criptografia de curvas elípticas, pois, como foi visto, sua segurança depende da dificuldade em resolver o Problema do Logaritmo Discreto para Curvas Elípticas. Como a multiplicação de um ponto é definida em termos de sucessivas somas desse ponto com ele mesmo, então a multiplicação de um ponto se torna onerosa ao multiplicá-lo por um número muito grande. Para exemplificar, considere uma curva $E/K$ e o ponto $P \in E(K)$, para calcular a multiplicação desse ponto por um número $n$ seria necessário fazer uma soma recursiva para calcular os pontos
+$$
+P,\quad [2]P = P + P,\quad [3]P = [2]P + P,\quad \dots,\quad [n]P = [n-1]P + P
+$$
+dessa forma, seria necessário realizar $n-1$ somas para encontrar o valor de $[n]P$. \cite{Silverman:2009}
 
-\chapter{Segundo Apêndice}
+Um algoritmo mais eficiente para multiplicar um ponto $P \in E(K)$ por um número $n$ é descrito abaixo (retirado de \cite{Silverman:2009})
+
+\begin{enumerate}
+  \item Escreva $n$ como uma expansão binária $$n = \epsilon_0 + \epsilon_1 \cdot 2 + \epsilon_2 \cdot 2^2 + \dots + \epsilon_t \cdot 2^t$$
+com $\epsilon_0, \dots, \epsilon_t \in \{0, 1\}$ e $\epsilon_t = 1$.
+  \item Atribua $Q = P$ e
+	$
+	R = \begin{cases}
+	O, &\mbox{se} \quad\epsilon_0 = 0\\
+	P, &\mbox{se} \quad\epsilon_0 = 1\\
+	\end{cases}
+	$
+  \item Repita para $i = 1, 2, \dots, t$
+    \subitem Atribua $Q = [2]Q$
+    \subitem Se $\epsilon_i = 1$ então $R = R + Q$
+  \item Retornar $R$
+\end{enumerate}
+
+\chapter{Algoritmo de Schoof}
 
 Texto do segundo apêndice.
 
