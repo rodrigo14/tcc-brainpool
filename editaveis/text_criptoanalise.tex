@@ -10,14 +10,14 @@ No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo 
 % ECDPL
 %
 \subsection{O problema do logaritmo discreto sobre curvas elípticas} \label{ecdpl}
-Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E_p(a, b)$. O problema do logaritmo discreto sobre curvas elípticas ECDLP (\textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(n\) tal que $Q = nP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p^*$, denotamos esse inteiro \(n\) por
+Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E_p(a, b)$. O problema do logaritmo discreto sobre curvas elípticas ECDLP (\textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(x\) tal que $Q = xP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p^*$, denotamos esse inteiro \(x\) por
 
 \begin{eqnarray}
-nP &=& Q \label{eq:ecdpl1} \\
-n &=& \log_P(Q) \label{eq:ecdpl2}
+xP &=& Q \label{eq:ecdpl1} \\
+x &=& \log_P(Q) \label{eq:ecdpl2}
 \end{eqnarray}
 
-e chamamos \(n\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\). \cite{Hoffstein:2008}
+e chamamos \(x\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\). \cite{Hoffstein:2008}
 
 %
 % Algoritmos ECDPL
