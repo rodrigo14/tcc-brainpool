@@ -17,8 +17,8 @@ y^2 = x^3 + ax + b \label{eq:6}
 
 O conjunto dos pontos que pertencem à curva elíptica $E$ definida sobre um corpo $K$ é descrito por:
 
-$$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{O\} $$
-onde o ponto ${O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
+$$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\} $$
+onde o ponto $\mathcal{O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
 Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infinito sendo o elemento identidade \cite{Hankerson:2004}.
 
 A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.(OBS: CITAR A FONTE DA IMAGEM)
@@ -39,7 +39,7 @@ A forma mais clara de entender a operação de adição sobre curvas elípticas 
 Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe uma linha reta entre eles e encontre o terceiro ponto de interseção \(R\). Pode-se ver facilmente que existe um único ponto \(R\) que é o ponto de interseção (a menos que a linha seja tangente à curva em \(P\) ou \(Q\), quanto consideramos $R=P$ ou $R=Q$, respectivamente). Para formar uma estrutura de grupo, precisamos definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. Ou seja, definimos $P+Q$ como sendo a imagem-espelho (com relação ao eixo \(x\)) do terceiro ponto da interseção. \cite{Stallings:2011} (Pg ???)
 \end{citacao}
 
-Se as coordenadas $x$ dos pontos $P$ e $Q$ são iguais, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $O$. \cite{Stallings:2011}
+Se as coordenadas $x$ dos pontos $P$ e $Q$ são iguais, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
 
 É possível calcular o dobro de um ponto $P$, ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto $P$. Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto $R$, que é o resultado da soma. \cite{Hankerson:2004}
 
@@ -52,8 +52,8 @@ Se as coordenadas $x$ dos pontos $P$ e $Q$ são iguais, então a reta que passa 
 Os axiomas de grupo são satisfeitos da seguinte forma:
 \begin{enumerate}
   \item Para quaisquer pontos $P, Q \in E(K)$, o ponto $P + Q \in E(K)$.
-  \item $O$ é o elemento identidade. Logo, $P + O = P$ para todo $P \in E(K)$.
-  \item Para qualquer ponto $P$, existe um ponto $P'$ tal que $P + P' = O$. O ponto $P'$ é denominado \textit{inverso aditivo} de $P$.
+  \item $\mathcal{O}$ é o elemento identidade. Logo, $P + \mathcal{O} = P$ para todo $P \in E(K)$.
+  \item Para qualquer ponto $P$, existe um ponto $P'$ tal que $P + P' = \mathcal{O}$. O ponto $P'$ é denominado \textit{inverso aditivo} de $P$.
   \item A adição é associativa. Logo, $P, Q, R \in E(K)$, observa-se que $(P + Q) + R = P + (Q + R)$
   \item A adição é comutativa. Logo, $P, Q \in E(K)$, observa-se que $P + Q = Q + P$.
 \end{enumerate}
@@ -81,8 +81,8 @@ A Equação \ref{eq:13} tem a mesma forma da Equação \ref{eq:7}. As regras par
 \end{figure}
 
 \begin{enumerate}
-  \item $P + O = P$.
-  \item Se $P = (x_P, y_P)$, então $P + (x_P, -y_P) = O$. O ponto $(x_P, -y_P)$ é o negativo de \(P\), indicado como \(-P\).
+  \item $P + \mathcal{O} = P$.
+  \item Se $P = (x_P, y_P)$, então $P + (x_P, -y_P) = \mathcal{O}$. O ponto $(x_P, -y_P)$ é o negativo de \(P\), indicado como \(-P\).
   \item Se $P = (x_P, y_P)$ e $Q = (x_Q, y_Q)$ com $P \neq -Q$, então $R = P + Q = (x_R, y_R)$ é determinado pelas seguintes regras:
     \begin{eqnarray*}
     x_R &=& (\lambda^2 - x_P - x_Q) \mod p \\
