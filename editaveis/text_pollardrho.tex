@@ -71,64 +71,80 @@ x = (a_{2m} - a_m)(b_m - b_{2m})^{-1} \pmod n
 
 O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando o GCD$(b_m - b_{2m}, n) = 1$, ou seja, quando \(b_m\) e \(b_{2m}\) são coprimos entre si. Caso contrário, o algoritmo não poderá continuar.
 
+%
+% Pollar-rho com um processador
+%
 \section{Pollard-Rho com único processador}
-Este algoritmo segue a idéia do Pollard-Rho original, no entanto, a abordagem se diferencia na escolha aleatória de parâmetros e menor utilização de armazenamento de memória \cite{Guide}.
+O método original seleciona inteiros aleatórios $a, b \in [0, n-1]$ e armazena as triplas $(a, b, aP + bQ)$ em uma tabela ordenada pelo terceiro componente até que um ponto $aP + bQ$ seja obtida pela segunda vez - tal ocorrência é chamada de \textit{colisão}. Pelo paradoxo do aniversário
+\footnote{Suponha que uma urna tenha \(n\) bolas numeradas de 1 a \(n\). As bolas são aleatoriamente retiradas uma de cada vez e colocadas de volta na urna. Portanto, o número esperado para que as bolas se repitam é de aproximadamente de $\sqrt{\pi n/2}$. Se \(n\) = 365 e as bolas representam diferentes dias do ano, então pode-se dizer que o número esperado de pessoas que tem de ser reunidas em uma sala para que pelo menos duas delas tenham nascido no mesmo dia é de aproximadamente $\sqrt{\pi 365/2} \approx 24$. Esse número é surpreendentemente pequeno e, consequentemente, daí vem a nomenclatura ``paradoxo do aniversário''. \cite{Guide}},
+o número de iterações esperado até que se obtenha uma colisão é de aproximadamente $\sqrt{\pi n/2} \approx 1.2533 \sqrt{n}$. A desvantagem desse algoritmo é que a capacidade de armazenamento necessária para o cálculo é de $\sqrt{\pi n/2}$ triplas.
 
-% #INPUT: Curva elipitica E e Pontos P e Q $\in$ E
-% #OUTUPT: x = $\log_P$ Q
+O algoritmo a seguir encontra os pares ($a_n, b_n$) e ($a_m, d_m)$ aproximadamente no mesmo tempo que o método original, mas tem desprezíveis requisitos de armazenamento. A ideia é definir uma função de iteração $f : \langle P \rangle \to \langle P \rangle$ de modo que $X \in \langle P \rangle$ e $a, b \in [0, n-1]$ com $X = aP + bQ$. Além disso, \(f\) deve ter características de uma função aleatória.
 
+Seja $\{S_1, S_2, ..., S_L\}$ uma partição aleatória de $\langle P \rangle$ em uma quantidade \(L\) de conjuntos de aproximadamente do mesmo tamanho. Então um ponto $X \in \langle P \rangle$ pode ser designado a \(S_j\) se os cinco \textit{bits} menos significantes da coordenada \(x\) de \(X\) representam o inteiro \(j-1\). Desta forma, define-se $j = H(X)$ se $X \in S_j$, no qual \(H\) é uma função de partição. Finalmente, seja $c_j, b_j \in [0, n-1]$ para $1 \leq j \leq L$. Então $f : \langle P \rangle \to  \langle P \rangle$ é definido por
+
+\begin{equation*}
+f(X) = X + c_jP + d_jQ \textrm{, onde } j = H(X)
+\end{equation*}
+
+\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
+
+% 
+% INPUT: EllipticCurve E, Point P, Point Q
+% OUTUPT: x = log_P(Q)
 \begin{lstlisting}[caption={Algoritmo Pollard-Rho com único processador.},label=single]
 pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
-	seja L, n, inteiro
-	seja cn, dn, inteiro
-	seja cm, dm, inteiro
+	seja L, k, inteiro
+	seja an, bn, inteiro
+	seja am, bm, inteiro
 	seja Xn, Xm, Ponto
-	seja a, b, R, array
+	seja c, d, array
+	seja R, array Ponto
 
-	n := E.ordem()
+	k := E.ordem()
 	para j := 1, enquanto j <= L, faca
-		a[j] := random() % n
-		b[j] := random() % n
-		R[j] := a[j]*P + b[j]*Q
+		c[j] := random() % k
+		d[j] := random() % k
+		R[j] := c[j]*P + d[j]*Q
 
-	cn := random() % n
-	dn := random() % n
-	Xn := cn*P + dn*Q
-	cm := cn
-	dm := dn
+	an := random() % k
+	bn := random() % k
+	Xn := an*P + bn*Q
+	am := an
+	bm := bn
 	Xm := Xn
 
 	enquanto Xn != Xm faca
-		j := H(Xn)
+		j := H(Xn, L)
 		Xn := Xn + R[j]
-		cn := cn + a[j]
-		dn := dn + b[j]
+		an := an + c[j]
+		bn := bn + b[j]
 
-	se dn = dm entao
+	se bn = bm entao
 		retorne "falha"
 
 	seja x, inteiro
-	x := (cn - cm)/(dm - dn) % n
+	x := (an - am)/(bm - bn) % k
 	retorne x
 
-H(P: Ponto): inteiro
-	retorne P.x % 4 + 1
+H(P: Ponto, L: inteiro): inteiro
+	retorne P.x % L + 1
 
 \end{lstlisting}
 
 Assumindo que o percurso aleatório \ref{eq:walk} definido no algoritmo produz termos aleatórios, então a primeira colisão na sequência é esperada para após $\sqrt{\pi n/2}$ termos. Além disso, o tamanho da calda prevista é de $\mu \approx \sqrt{\pi n/8}$ e o tamanho do ciclo $\lambda \approx \sqrt{\pi n/8}$ \cite{Pollard:1978}. Isso implica que o número de termos gerados até encontrar uma correspondência é proporcional à raiz quadrada da ordem da curva.
 
 %
-% Pollard rho multiprocessadores
+% Pollard-rho com multiprocessadores
 %
-\section{Pollard Rho multiprocessadores}
+\section{Pollard-Rho multiprocessadores}
 
 %
-% Pollard rho com automorfismo
+% Pollard-rho com automorfismo
 %
-\section{Pollard Rho com automorfismo}
+\section{Pollard-Rho com automorfismo}
 
-Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard Rho é fazendo uso de automorfismo.\cite{Guide}
+Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard-Rho é fazendo uso de automorfismo.\cite{Guide}
 
 Seja o grupo de pontos da curva elíptica $E(F_q)$. Considere o ponto \textit{P} de ordem \textit{n} e o subgrupo gerado por esse ponto, ou seja, <\textit{P}>. Seja o automorfismo $\psi: \mbox{<\textit{P}>}\longrightarrow \mbox{<\textit{P}>}$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \mbox{\textit{<P>}}$.
 
