@@ -5,6 +5,8 @@ A estratégia do algoritmo é produzir uma sequência de termos gerados randomic
 
 Seja \(\mu\) o tamanho da calda e \(\lambda\) o tamanho do ciclo. Após um número finito de iterações, obtêm-se os termos $R_k = R_{k+\lambda}$, onde $k > \mu$ e $\lambda > 1$. Neste ponto, já deverá ter sido encontrado uma correspondência entre os termos e poderá aplicar matemáticas discretas para resolver os problemas de logaritmo discreto gerado pelos elementos do conjunto finito.
 
+A seguir serão apresentados o algoritmo de Pollard-Rho e suas variações.
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4, bb=0 0 888 376]{figuras/rho.eps}
@@ -12,7 +14,7 @@ Seja \(\mu\) o tamanho da calda e \(\lambda\) o tamanho do ciclo. Após um núme
 \label{fig:rho}
 \end{figure}
 
-\section{Algoritmo de Pollard-Rho}
+\section{Pollard-Rho original}
 Seja $G = E(\mathbb{F}_p)$, tal que a ordem de $G = n$, e \(P\) e \(Q\) tal que $Q = xP$ em \(G\). O objetivo é calcular \(x\). Segue os passos:
 
 \begin{enumerate}
@@ -67,6 +69,52 @@ x = (a_{2m} - a_m)(b_m - b_{2m})^{-1} \pmod n
 
 \end{enumerate}
 
-Assumindo que o percurso aleatório \ref{eq:walk} definido no algoritmo produz termos aleatórios, então a primeira colisão na sequência é esperada para após $\sqrt{\pi n/2}$ termos. Além disso, o tamanho da calda prevista é de $\mu \approx \sqrt{\pi n/8}$ e o tamanho do ciclo $\lambda \approx \sqrt{\pi n/8}$. \cite{Pollard:1978}
-
 O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando o GCD$(b_m - b_{2m}, n) = 1$, ou seja, quando \(b_m\) e \(b_{2m}\) são coprimos entre si. Caso contrário, o algoritmo não poderá continuar.
+
+\section{Pollard-Rho com único processador}
+Este algoritmo segue a idéia do Pollard-Rho original, no entanto, a abordagem se diferencia na escolha aleatória de parâmetros e menor utilização de armazenamento de memória \cite{Guide}.
+
+% #INPUT: Curva elipitica E e Pontos P e Q $\in$ E
+% #OUTUPT: x = $\log_P$ Q
+
+\begin{lstlisting}[caption={Algoritmo Pollard-Rho com único processador.},label=single]
+pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
+	seja L, n, inteiro
+	seja cn, dn, inteiro
+	seja cm, dm, inteiro
+	seja Xn, Xm, Ponto
+	seja a, b, R, array
+
+	n := E.ordem()
+	para j := 1, enquanto j <= L, faca
+		a[j] := random() % n
+		b[j] := random() % n
+		R[j] := a[j]*P + b[j]*Q
+
+	cn := random() % n
+	dn := random() % n
+	Xn := cn*P + dn*Q
+	cm := cn
+	dm := dn
+	Xm := Xn
+
+	enquanto Xn != Xm faca
+		j := H(Xn)
+		Xn := Xn + R[j]
+		cn := cn + a[j]
+		dn := dn + b[j]
+
+	se dn = dm entao
+		retorne "falha"
+
+	seja x, inteiro
+	x := (cn - cm)/(dm - dn) % n
+	retorne x
+
+H(P: Ponto): inteiro
+	retorne P.x % 4 + 1
+
+\end{lstlisting}
+
+Assumindo que o percurso aleatório \ref{eq:walk} definido no algoritmo produz termos aleatórios, então a primeira colisão na sequência é esperada para após $\sqrt{\pi n/2}$ termos. Além disso, o tamanho da calda prevista é de $\mu \approx \sqrt{\pi n/8}$ e o tamanho do ciclo $\lambda \approx \sqrt{\pi n/8}$ \cite{Pollard:1978}. Isso implica que o número de termos gerados até encontrar uma correspondência é proporcional à raiz quadrada da ordem da curva.
+

@@ -8,18 +8,18 @@
 \begin{equation}
 y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:5}
 \end{equation}
-onde \(a, b, c, d\) e \(e\) são elementos do corpo $K$ e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de $K$. A notação utilizada para indicar que uma curva elíptica $E$ está definida sobre um corpo $K$ é $E/K$ e o corpo $K$ é chamado de corpo subjacente da curva \cite{Hankerson:2004}. Equações deste tipo são conhecidas como \textit{equações de Weiestrass}. Com frequência, no estudo de criptografia de curvas elípticas, é costume utilizar-se a forma reduzida de Weiestrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
+onde \(a, b, c, d\) e \(e\) são elementos do corpo $K$ e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de $K$. A notação utilizada para indicar que uma curva elíptica $E$ está definida sobre um corpo $K$ é $E/K$ e o corpo $K$ é chamado de corpo subjacente da curva \cite{Guide}. Equações deste tipo são conhecidas como \textit{equações de Weiestrass}. Com frequência, no estudo de criptografia de curvas elípticas, é costume utilizar-se a forma reduzida de Weiestrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
 \begin{equation}
 y^2 = x^3 + ax + b \label{eq:6}
 \end{equation}
 
-É imprescindível que os valores de $a$ e $b$ sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente \cite{Hankerson:2004}.
+É imprescindível que os valores de $a$ e $b$ sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente \cite{Guide}.
 
 O conjunto dos pontos que pertencem à curva elíptica $E$ definida sobre um corpo $K$ é descrito por:
 
 $$ E(F) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\} $$
 onde o ponto $\mathcal{O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}.
-Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infinito sendo o elemento identidade \cite{Hankerson:2004}.
+Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(F)$ forma um grupo abeliano com o ponto no infinito sendo o elemento identidade \cite{Guide}.
 
 A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.(OBS: CITAR A FONTE DA IMAGEM)
 
@@ -41,11 +41,11 @@ Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, desenhe u
 
 Se as coordenadas $x$ dos pontos $P$ e $Q$ são iguais, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
 
-É possível calcular o dobro de um ponto $P$, ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto $P$. Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto $R$, que é o resultado da soma. \cite{Hankerson:2004}
+É possível calcular o dobro de um ponto $P$, ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto $P$. Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto $R$, que é o resultado da soma. \cite{Guide}
 
 \begin{figure}[h]
 \includegraphics[scale=0.5, bb=0 0 484 636]{figuras/SomaECC.eps}
-\caption{Soma de pontos em curvas elípticas \cite{Hankerson:2004}}
+\caption{Soma de pontos em curvas elípticas \cite{Guide}}
 \label{fig:pontos}
 \end{figure}
 

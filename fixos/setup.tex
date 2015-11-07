@@ -1,20 +1,64 @@
+\renewcommand{\theequation}{\arabic{equation}}
 \definecolor{blue}{RGB}{41,5,195}
 \makeatletter
 \hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
+      %pagebackref=true,
+    pdftitle={\@title}, 
+    pdfauthor={\@author},
+      pdfsubject={\imprimirpreambulo},
+      pdfcreator={LaTeX with abnTeX2},
+    pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+    colorlinks=true,          % false: boxed links; true: colored links
+      linkcolor=blue,           % color of internal links
+      citecolor=blue,           % color of links to bibliography
+      filecolor=magenta,          % color of file links
+    urlcolor=blue,
+    bookmarksdepth=4
 }
 \makeatother
 \setlength{\parindent}{1.3cm}
 \setlength{\parskip}{0.2cm}  
 \makeindex
+\lstset{tabsize=8,numbers=left,literate={:=}{{$\gets$}}1 {<=}{{$\leq$}}1 {>=}{{$\geq$}}1 {<>}{{$\neq$}}1,frame=single,captionpos=b,breaklines=true,mathescape=true,extendedchars=true}
+
+\lstdefinelanguage{pseudo}{
+  morekeywords={seja,para,faca,se,retorne,enquanto},
+  morekeywords=[2]{inteiro,string,Curva,Ponto},
+  sensitive=true,
+  morecomment=[l]{\#},
+}
+\lstset{
+ backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize\ttfamily,
+ commentstyle=\color{gray},    % comment style
+ numbersep=5pt,                   % how far the line-numbers are from the code
+ numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+ rulecolor=\color{Gray},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+ showstringspaces=false,          % underline spaces within strings only
+ stringstyle=\color{green},     % string literal style
+ tabsize=4,
+ numbers=left,
+ literate={:=}{{$\gets$}}1 {<=}{{$\leq$}}1 {>=}{{$\geq$}}1 {<>}{{$\neq$}}1,
+ frame=single,
+ captionpos=t,
+ breaklines=true,
+ mathescape=true,
+ extendedchars=true,
+}
+%\renewcommand{\thelstlisting}{\arabic{lstlisting}}
+% Setup
+\lstset{numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+extendedchars=true,
+breaklines=true,
+frame=tb,
+tabsize=4,
+basicstyle=\footnotesize\ttfamily,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+
+\renewcommand*{\lstlistlistingname}{Lista de Códigos}
+\renewcommand{\lstlistingname}{Código}
