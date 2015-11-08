@@ -141,7 +141,13 @@ Suponha agora que \(M\) processadores estão disponíveis para resolver uma inst
 
 Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolher randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante.
 
-O algoritmo \textit{Floyd's cycle-finding} encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma propriedade distintiva facilmente testável de pontos é selecionada.
+O algoritmo \textit{Floyd's cycle-finding} encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma propriedade distintiva facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser distinto se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Whenever um processador encontra um ponto distinto, ele transmite o ponto a um servidor que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações melhorados de curva elíptica para cada processador antes de uma colisão de pontos distintos é de
+
+\begin{equation}
+\dfrac{1}{M} \sqrt{\dfrac{\pi n}{2}} + \dfrac{1}{\theta}
+\end{equation}
+
+A sua versão paralelizada do algoritmo Pollard-rho obtém uma aceleração que é linear em relação à quantidade de processadores empregados. Uma observação que deve ser feita é que os processadores não tem de comunicar-se entre si, e além disso tem uma comunicação limitada com o servidor. Portanto, o espaço total necessário no servidor pode ser contolado com uma seleção cautelosa da propriedade distintiva.
 
 \begin{figure}[h]
 \centering
@@ -150,6 +156,61 @@ O algoritmo \textit{Floyd's cycle-finding} encontra uma colisão na sequência g
 \label{fig:paralellized}
 \end{figure}
 
+\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
+
+%
+% INPUT: EllipticCurve E, Point P, Point Q
+% OUTUPT: x = log_P(Q)
+%
+\begin{lstlisting}[caption={Algoritmo Pollard-Rho paralelizado.},label=parallelized]
+pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
+	seja L, k, inteiro
+	seja an, bn, inteiro
+	seja am, bm, inteiro
+	seja Xn, Xm, Ponto
+	seja c, d, array inteiro
+	seja R, array Ponto
+
+	seja a, b, inteiro
+	seja X, ponto
+	seja Y, Point
+
+	k := E.ordem()
+	para j := 1, enquanto j <= L, faca
+		c[j] := random() % k
+		d[j] := random() % k
+		R[j] := c[j]*P + d[j]*Q
+
+	# para cada processador M faca
+	a := random() % k
+	b := random() % k
+	X := an*P + bn*Q
+
+	# repita ate que o servidor receba um ponto Y distinto pela 2a vez
+	enquanto duplicatedDistinguishedPointNotReceived() faca
+		se Xn = distinguishedPoint(Xn)
+			sendToServer(a, b, X)
+			j := H(X)
+			X := X + R[j]
+			a := a + c[j] % k
+			b := b + d[j] % k
+
+	an := firstTripleCollided_a()
+	bn := firstTripleCollided_b()
+	am := secondTripleCollided_a()
+	bm := secondTripleCollided_b()
+
+	se bn = bm entao
+		retorne "falha"
+
+	seja x, inteiro
+	x := (an - am)/(bm - bn) % k
+	retorne x
+
+H(P: Ponto, L: inteiro): inteiro
+	retorne P.x % L + 1
+
+\end{lstlisting}
 
 %
 % Pollard-rho com automorfismo
