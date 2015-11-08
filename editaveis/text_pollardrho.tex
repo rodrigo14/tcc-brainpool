@@ -1,20 +1,20 @@
-\chapter{Pollard-Rho para resolver ECDLP}
-Em 1978, Pollard veio com o método Monte-Carlo\footnote{Monte-Carlo é um método estatístico que se baseiam em amostragens aleatórias massivas para obter resultados numéricos, isto é, repetindo sucessivas simulações um elevado número de vezes, para calcular probabilidades de forma heurística.} para resolver o problema do logaritmo discreto. Desde então, o método foi modificado para resolver o ECDLP. Como o algoritmo Pollard-Rho é atualmente o algoritmo mais rápido para resolver o ECDLP, então a segurança do ECC depende da eficiência desse algoritmo. Teoricamente, se o algoritmo Pollard-Rho é capaz de resolver o ECDLP eficientemente e em um tempo relativamente curto, então o criptossistema estará inseguro. \cite{Mandy:2007}
+\chapter{Pollard-rho para resolver ECDLP}
+Em 1978, Pollard veio com o método Monte-Carlo\footnote{Monte-Carlo é um método estatístico que se baseiam em amostragens aleatórias massivas para obter resultados numéricos, isto é, repetindo sucessivas simulações um elevado número de vezes, para calcular probabilidades de forma heurística.} para resolver o problema do logaritmo discreto. Desde então, o método foi modificado para resolver o ECDLP. Como o algoritmo Pollard-rho é atualmente o algoritmo mais rápido para resolver o ECDLP, então a segurança do ECC depende da eficiência desse algoritmo. Teoricamente, se o algoritmo Pollard-rho é capaz de resolver o ECDLP eficientemente e em um tempo relativamente curto, então o criptossistema estará inseguro. \cite{Mandy:2007}
 
-A estratégia do algoritmo é produzir uma sequência de termos gerados randomicamente $(a_k, b_k, R_k)$, onde \(R_k\) é um ponto na curva \(E\) e \(a_k\)  e \(b_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá torna-se periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Usa-se essa periodicidade para resolver ECDLP. Como nem sempre a sequência volta para o primeiro termo, um diagrama da sequência parecerá com a letra Grega \(\rho\) (Ver figura \ref{fig:rho}). Por este motivo esse método é chamado de Pollard-Rho. Essa sequência de termos gerados é chamada de ``percurso''.
+A estratégia do algoritmo é produzir uma sequência de termos gerados randomicamente $(a_k, b_k, R_k)$, onde \(R_k\) é um ponto na curva \(E\) e \(a_k\)  e \(b_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá torna-se periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Usa-se essa periodicidade para resolver ECDLP. Como nem sempre a sequência volta para o primeiro termo, um diagrama da sequência parecerá com a letra Grega \(\rho\) (Ver figura \ref{fig:rho}). Por este motivo esse método é chamado de Pollard-rho. Essa sequência de termos gerados é chamada de ``percurso''.
 
 Seja \(\mu\) o tamanho da calda e \(\lambda\) o tamanho do ciclo. Após um número finito de iterações, obtêm-se os termos $R_k = R_{k+\lambda}$, onde $k > \mu$ e $\lambda > 1$. Neste ponto, já deverá ter sido encontrado uma correspondência entre os termos e poderá aplicar matemáticas discretas para resolver os problemas de logaritmo discreto gerado pelos elementos do conjunto finito.
 
-A seguir serão apresentados o algoritmo de Pollard-Rho e suas variações.
+A seguir serão apresentados o algoritmo de Pollard-rho e suas variações.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4, bb=0 0 888 376]{figuras/rho.eps}
-\caption{Diagrama da sequência produzida pelo algoritmo Pollard-Rho}
+\caption{Diagrama da sequência produzida pelo algoritmo Pollard-rho}
 \label{fig:rho}
 \end{figure}
 
-\section{Pollard-Rho original}
+\section{Pollard-rho original}
 Seja $G = E(\mathbb{F}_p)$, tal que a ordem de $G = n$, e \(P\) e \(Q\) tal que $Q = xP$ em \(G\). O objetivo é calcular \(x\). Segue os passos:
 
 \begin{enumerate}
@@ -74,12 +74,12 @@ O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando
 %
 % Pollar-rho com um processador
 %
-\section{Pollard-Rho com único processador}
+\section{Pollard-rho com único processador}
 O método original seleciona inteiros aleatórios $a, b \in [0, n-1]$ e armazena as triplas $(a, b, aP + bQ)$ em uma tabela ordenada pelo terceiro componente até que um ponto $aP + bQ$ seja obtida pela segunda vez. Pelo paradoxo do aniversário
 \footnote{Suponha que uma urna tenha \(n\) bolas numeradas de 1 a \(n\). As bolas são aleatoriamente retiradas uma de cada vez e colocadas de volta na urna. Portanto, o número esperado para que as bolas se repitam é de aproximadamente de $\sqrt{\pi n/2}$. Se \(n\) = 365 e as bolas representam diferentes dias do ano, então pode-se dizer que o número esperado de pessoas que tem de ser reunidas em uma sala para que pelo menos duas delas tenham nascido no mesmo dia é de aproximadamente $\sqrt{\pi 365/2} \approx 24$. Esse número é surpreendentemente pequeno e, consequentemente, daí vem a nomenclatura ``paradoxo do aniversário''. \cite{Guide}},
 o número de iterações esperado até que se obtenha uma colisão é de aproximadamente $\sqrt{\pi n/2} \approx 1.2533 \sqrt{n}$. A desvantagem desse algoritmo é que a capacidade de armazenamento necessária para o cálculo é de $\sqrt{\pi n/2}$ triplas.
 
-A proposta de modificação desse algoritmo encontra os pares ($a_m, b_m$) e ($a_{2m}, b_{2m})$ aproximadamente no mesmo tempo que o método original, mas tem desprezíveis requisitos de armazenamento. A ideia é definir uma função de iteração $f : \langle P \rangle \to \langle P \rangle$ de modo que $X \in \langle P \rangle$ e $a, b \in [0, n-1]$ com $X = aP + bQ$. Além disso, \(f\) deve ter características de uma função aleatória.
+A modificação desse algoritmo encontra os pares ($a_m, b_m$) e ($a_{2m}, b_{2m})$ aproximadamente no mesmo tempo que o método original, mas tem desprezíveis requisitos de armazenamento. A ideia é definir uma função de iteração $f : \langle P \rangle \to \langle P \rangle$ de modo que $X \in \langle P \rangle$ e $a, b \in [0, n-1]$ com $X = aP + bQ$. Além disso, \(f\) deve ter características de uma função aleatória.
 
 Seja $\{S_1, S_2, ..., S_L\}$ uma partição aleatória de $\langle P \rangle$ em uma quantidade \(L\) de conjuntos de aproximadamente do mesmo tamanho. Então um ponto $X \in \langle P \rangle$ pode ser designado a \(S_j\) se os cinco \textit{bits} menos significantes da coordenada \(x\) de \(X\) representam o inteiro \(j-1\). Desta forma, define-se $j = H(X)$ se $X \in S_j$, no qual \(H\) é uma função de partição. Finalmente, seja $c_j, d_j \in [0, n-1]$ para $1 \leq j \leq L$. Então $f : \langle P \rangle \to  \langle P \rangle$ é definido por
 
@@ -93,7 +93,7 @@ f(X) = X + c_jP + d_jQ \textrm{, onde } j = H(X)
 % INPUT: EllipticCurve E, Point P, Point Q
 % OUTUPT: x = log_P(Q)
 %
-\begin{lstlisting}[caption={Algoritmo Pollard-Rho com único processador.},label=single_processor]
+\begin{lstlisting}[caption={Algoritmo Pollard-rho com único processador.},label=single_processor]
 pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
 	seja L, k, inteiro
 	seja an, bn, inteiro
@@ -102,7 +102,7 @@ pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
 	seja c, d, array inteiro
 	seja R, array Ponto
 
-	k := E.ordem()
+	k := E.order()
 	para j := 1, enquanto j <= L, faca
 		c[j] := random() % k
 		d[j] := random() % k
@@ -136,7 +136,7 @@ H(P: Ponto, L: inteiro): inteiro
 %
 % Pollard-rho com multiprocessadores
 %
-\section{Pollard-Rho multiprocessadores}
+\section{Pollard-rho multiprocessadores}
 Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador antes que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo faotr $\sqrt{M}$.
 
 Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolher randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante.
@@ -162,8 +162,8 @@ A sua versão paralelizada do algoritmo Pollard-rho obtém uma aceleração que 
 % INPUT: EllipticCurve E, Point P, Point Q
 % OUTUPT: x = log_P(Q)
 %
-\begin{lstlisting}[caption={Algoritmo Pollard-Rho paralelizado.},label=parallelized]
-pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
+\begin{lstlisting}[caption={Algoritmo Pollard-rho paralelizado.},label=parallelized]
+pollardRho_parallelized(E: Curva, P: Ponto, Q: Ponto): inteiro
 	seja L, k, inteiro
 	seja an, bn, inteiro
 	seja am, bm, inteiro
@@ -175,7 +175,7 @@ pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
 	seja X, ponto
 	seja Y, Point
 
-	k := E.ordem()
+	k := E.order()
 	para j := 1, enquanto j <= L, faca
 		c[j] := random() % k
 		d[j] := random() % k
@@ -215,9 +215,9 @@ H(P: Ponto, L: inteiro): inteiro
 %
 % Pollard-rho com automorfismo
 %
-\section{Pollard-Rho com automorfismo}
+\section{Pollard-rho com automorfismo}
 
-Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard-Rho é fazendo uso de automorfismo.\cite{Guide}
+Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard-rho é fazendo uso de automorfismo.\cite{Guide}
 
 Seja o grupo de pontos da curva elíptica $E(F_q)$. Considere o ponto \textit{P} de ordem \textit{n} e o subgrupo gerado por esse ponto, ou seja, <\textit{P}>. Seja o automorfismo $\psi: \mbox{<\textit{P}>}\longrightarrow \mbox{<\textit{P}>}$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \mbox{\textit{<P>}}$.
 
