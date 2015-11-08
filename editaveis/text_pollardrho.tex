@@ -133,11 +133,23 @@ H(P: Ponto, L: inteiro): inteiro
 
 \end{lstlisting}
 
-
 %
 % Pollard-rho com multiprocessadores
 %
 \section{Pollard-Rho multiprocessadores}
+Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador antes que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo faotr $\sqrt{M}$.
+
+Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolher randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante.
+
+O algoritmo \textit{Floyd's cycle-finding} encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma propriedade distintiva facilmente testável de pontos é selecionada.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5, bb=0 0 737 604]{figuras/paralellized.eps}
+\caption{A sequência gerada pelo algoritmo Pollard-rho paralelizado. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a coisão em Y, o primeiro ponto distinto subsequente.}
+\label{fig:paralellized}
+\end{figure}
+
 
 %
 % Pollard-rho com automorfismo
