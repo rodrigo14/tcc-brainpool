@@ -226,3 +226,10 @@ $$
 [R] = \{R, \psi(R), \psi^2(R), \dots, \psi^{l-1}(R)\}
 $$
 onde $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\psi^l(R) = R$.
+
+O método de Pollard Rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para a classe de equivalência $[R]$ e uma função $g$ tal que
+$$
+g(R) = \overline{f(R)}
+$$
+
+Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{mod \textit{n}}$.
