@@ -137,24 +137,24 @@ H(P: Ponto, L: inteiro): inteiro
 % Pollard-rho com multiprocessadores
 %
 \section{Pollard-rho multiprocessadores}
-Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador antes que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo faotr $\sqrt{M}$.
+Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador até que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo fator $\sqrt{M}$. \cite{Guide}
 
-Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolher randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante.
+Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolhe randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. \cite{Van:1996}
 
-O algoritmo \textit{Floyd's cycle-finding} encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma propriedade distintiva facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser distinto se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Whenever um processador encontra um ponto distinto, ele transmite o ponto a um servidor que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações melhorados de curva elíptica para cada processador antes de uma colisão de pontos distintos é de
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4, bb=0 0 737 604]{figuras/paralellized.eps}
+\caption{A sequência gerada pelo algoritmo Pollard-rho paralelizado. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a coisão em Y, o primeiro ponto distinto subsequente.}
+\label{fig:paralellized}
+\end{figure}
+
+O algoritmo apresentado na seção anterior encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma \textit{propriedade distintiva} facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser \textit{distinto} se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Sempre que um processador encontra um ponto distinto, ele transmite o ponto a um servidor central que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações de curva elíptica desempenhadas por cada processador antes de uma colisão de pontos distintos é de
 
 \begin{equation}
 \dfrac{1}{M} \sqrt{\dfrac{\pi n}{2}} + \dfrac{1}{\theta}
 \end{equation}
 
-A sua versão paralelizada do algoritmo Pollard-rho obtém uma aceleração que é linear em relação à quantidade de processadores empregados. Uma observação que deve ser feita é que os processadores não tem de comunicar-se entre si, e além disso tem uma comunicação limitada com o servidor. Portanto, o espaço total necessário no servidor pode ser contolado com uma seleção cautelosa da propriedade distintiva.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5, bb=0 0 737 604]{figuras/paralellized.eps}
-\caption{A sequência gerada pelo algoritmo Pollard-rho paralelizado. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a coisão em Y, o primeiro ponto distinto subsequente.}
-\label{fig:paralellized}
-\end{figure}
+A sua versão paralelizada do algoritmo Pollard-rho obtém um aumento de velocidade que é linear em relação à quantidade de processadores empregados. Uma observação que deve ser feita é que os processadores não tem de comunicar-se entre si, e além disso tem uma comunicação limitada com o servidor central. Portanto, o espaço total necessário no servidor pode ser contolado com uma seleção cautelosa da propriedade distintiva.
 
 \textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
 
@@ -188,7 +188,7 @@ pollardRho_parallelized(E: Curva, P: Ponto, Q: Ponto): inteiro
 
 	# repita ate que o servidor receba um ponto Y distinto pela 2a vez
 	enquanto duplicatedDistinguishedPointNotReceived() faca
-		se Xn = distinguishedPoint(Xn)
+		se X = distinguishedPoint(X)
 			sendToServer(a, b, X)
 			j := H(X)
 			X := X + R[j]
