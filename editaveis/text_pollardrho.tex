@@ -219,7 +219,7 @@ H(P: Ponto, L: inteiro): inteiro
 
 Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard-rho é fazendo uso de automorfismo.\cite{Guide}
 
-Seja o grupo de pontos da curva elíptica $E(F_q)$. Considere o ponto \textit{P} de ordem \textit{n} e o subgrupo gerado por esse ponto, ou seja, <\textit{P}>. Seja o automorfismo $\psi: \mbox{<\textit{P}>}\longrightarrow \mbox{<\textit{P}>}$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \mbox{\textit{<P>}}$.
+Seja o grupo de pontos da curva elíptica $E(\mathbb{F}_q)$. Considere o ponto P de ordem \(n\) e o subgrupo gerado por esse ponto, ou seja, $\langle P \rangle$. Seja o automorfismo $\psi: \langle P \rangle \to \langle P \rangle$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \langle P \rangle$.
 
 É possível definir uma relação de equivalência $R_1 \sim R_2$ se e somente se $R_1 = \psi^j(R_2)$ para algum $j \in [0, t - 1]$. Daí cria-se a classe de equivalência $[R]$, que é descrita por
 $$
