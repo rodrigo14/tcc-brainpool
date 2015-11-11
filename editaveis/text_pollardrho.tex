@@ -219,7 +219,7 @@ H(P: Ponto, L: inteiro): inteiro
 
 Uma maneira descrita por Hankerson, Menezes e Vanstone para acelerar o algoritmo Pollard-rho é fazendo uso de automorfismo.\cite{Guide}
 
-Seja o grupo de pontos da curva elíptica $E(\mathbb{F}_q)$. Considere o ponto P de ordem \(n\) e o subgrupo gerado por esse ponto, ou seja, $\langle P \rangle$. Seja o automorfismo $\psi: \langle P \rangle \to \langle P \rangle$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \langle P \rangle$.
+Seja o grupo de pontos da curva elíptica $E(\mathbb{F}_q)$. Considere o ponto P de ordem \(n\) e o subgrupo gerado por esse ponto, ou seja, $\langle P \rangle$. Seja o automorfismo $\psi: \langle P \rangle \to \langle P \rangle$. A ordem da função $\psi$ é o menor inteiro positivo $t$ tal que $\psi^t(R) = R$ para todo ponto $R \in \langle P \rangle$. Por exemplo, a função $f(x) = -x$ tem ordem $t = 2$, pois $f(f(x)) = x$.
 
 É possível definir uma relação de equivalência $R_1 \sim R_2$ se e somente se $R_1 = \psi^j(R_2)$ para algum $j \in [0, t - 1]$. Daí cria-se a classe de equivalência $[R]$, que é descrita por
 $$
@@ -227,9 +227,14 @@ $$
 $$
 onde $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\psi^l(R) = R$.
 
-O método de Pollard Rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para a classe de equivalência $[R]$ e uma função $g$ tal que
+O método de Pollard Rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para cada classe de equivalência $[R]$ e uma função $g$ tal que
 $$
 g(R) = \overline{f(R)}
 $$
 
-Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{mod \textit{n}}$.
+Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{ mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{ mod \textit{n}}$.
+
+A função $g(R)$ é utilizada como função de iteração para o algoritmo Pollard rho paralelizado. Essa modificação garante ao algoritmo uma melhoria no tempo de execução, que passa a ser
+$$
+\frac{1}{M} \sqrt{ \frac{\pi n}{2t} } + \frac{1}{\theta}
+$$
