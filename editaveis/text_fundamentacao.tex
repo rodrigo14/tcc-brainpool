@@ -11,16 +11,16 @@ O \textbf{teorema da divisão} diz que: dados dois inteiros $a, b$, com $b > 0$,
   a=qb+r \qquad 0 \leq r<b;\ q=\lfloor a/b \rfloor
 \end{equation}
 
-onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de $a$ por $b$ \cite{Santos:2014}. A demonstração desse teorema não será abordada nesse trabalho.
+onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração desse teorema não será abordada nesse trabalho.
 
-A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como $3q$, $3q + 1$ ou $3q + 2$. Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for $k$, então haverá $k$ \textbf{classes de congruência mod k}. A aritmética modular estuda essa relação entre cada inteiro da sequência $S$ e sua classe de congruência \textit{mod k} \cite{Lewinter:2015}.
+A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como $3q$, $3q + 1$ ou $3q + 2$. Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for $k$, então haverá $k$ \textbf{classes de congruência mod k}. A aritmética modular estuda essa relação entre cada inteiro da sequência $S$ e sua classe de congruência mod \(k\) \cite{Lewinter:2015}.
 
-Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros $a$ e $b$, diz-se que $a$ é \textit{congruente} a $b$ módulo $m$ se $m$ divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre $a$ e $b$ é representada pela notação abaixo.
+Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros \(a\) e \(b\), diz-se que \(a\) é \textit{congruente} a \(b\) módulo \(m\) se \(m\) divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre \(a\) e \(b\) é representada pela notação abaixo.
 \begin{equation}
   a \equiv b \pmod m \label{eq:1}
 \end{equation}
 
-Consequentemente, se $m$ não divide a diferença $(a - b)$, então $a$ é \textit{incongruente} a $b$ \textit{mod m}, e representa-se por $a \not\equiv b \pmod m$ \cite{Santos:2014}.
+Consequentemente, se \(m\) não divide a diferença $(a - b)$, então \(a\) é \textit{incongruente} a \(b\) \textit{mod m}, e representa-se por $a \not\equiv b \pmod m$ \cite{Santos:2014}.
 
 Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
@@ -36,14 +36,14 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
   \item $[a \pmod n \times b \pmod n] \pmod n = (a \times b) \pmod n$
 \end{enumerate}
 
-Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde \((n, d)\) é o maior divisor comum entre \(n\) e \(d\).
+Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde gcd\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
-  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{(n,d)}\right) \label{eq:5}
+  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{gcd}(n,d)}\right) \label{eq:5}
 \end{equation}
 
 O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
-\par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado à um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
+\par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
 
 \begin{equation}
   c \equiv b^k\pmod m \label{eq:6}
@@ -83,14 +83,17 @@ $(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
 
 Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano} (ou \textbf{comutativo}) em homenagem ao matemático Niels Abel. \cite{Gilbert:2004}
 
-Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. ``O numero de elementos de um grupo é a sua \textbf{ordem}'' \cite{Coutinho:2014} (pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
+Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. ``O número de elementos de um grupo é a sua \textbf{ordem}'' \cite{Coutinho:2014} (pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
 
+%
+% SUBGRUPOS
+%
 \subsection{Subgrupos}
 Seja $(G, *)$ um grupo, e \(H\) um subconjunto não vazio de \(G\). Se $(H, *)$ satisfaz todos os axiomas de grupo, então diz-se que $(H, *)$ é um subgrupo de $(G, *)$\cite{Coutinho:2014}, ou seja
 
 \begin{enumerate}
 \item Para todo $a, b \in H$, $a * b \in H$.
-\item O elemento neutro de \(G\) está em \(H\) e também é seu elemento neutro(a demonstração não será feita nesse trabalho).
+\item O elemento neutro de \(G\) está em \(H\) e também é seu elemento neutro.
 \item Existe um inverso \(a'\) para todo $a \in H$.
 \end{enumerate}
 
@@ -101,36 +104,39 @@ Todo grupo possui pelo menos dois subgrupos, como pode ser visto na citação ab
 ``Se \(e\) indica o elemento neutro de \(G\), então obviamente \(e\) é um subgrupo de \(G\). É imediato, também, que o próprio \(G\) é um subgrupo de si mesmo. Esses dois subgrupos, ou seja, \(e\) e \(G\), são chamados de \textbf{subgrupos triviais} de \(G\)''. \cite{Domingues:2003} (pg. 154)
 \end{citacao}
 
+%
+% TEOREMA DE LAGRANGE
+%
 \subsection{Teorema de Lagrange}
+Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, no qual estabelece que, se \(G\) é um grupo finito e \(H\) é um subgrupo de \(G\), então a ordem de \(H\) sempre divide a ordem de \(G\) \cite{Shoup:2005}. A demostração deste teorema não será abordada nesse trabalho, mas seu resultado será de grande utilidade mais à frente, no estudo da criptografia de curvas elípticas.
 
-Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, este estabelece que, se $G$ é um grupo finito, e $H$ é um subgrupo de $G$, então a ordem de $H$ sempre divide a ordem de $G$ \cite{Shoup:2005}.A demostração deste teorema não será abordada nesse trabalho, mas seu resultado será de grande utilidade mais à frente, no estudo da criptografia de curvas elípticas.
-
+%
+% HOMOMORFISMOS DE GRUPO
+%
 \subsection{Homomorfismos de grupos}
-
 Sejam os grupos $(G, \cdot)$ e $(H, \cdot)$, uma função $f: G \rightarrow H$ é chamada de \textit{homomorfismo} se $f(a \cdot b) = f(a) \cdot f(b)$ onde $a, b \in G$. Se a operação dos grupos for diferente, por exemplo, $(G, \cdot)$ e $(H, \star)$, então a condição é dada por $f(a \cdot b) = f(a) \star f(b)$ \cite{Gilbert:2004}.
 
-Sendo $f: G \rightarrow H$ uma função de homomorfismo entre os grupos $G$ e $H$, se a função for bijetora, então ela é denominada \textit{isomorfismo}, e ainda, se os grupos $G$ e $H$ são iguais e a função é um isomorfismo, então ela é denominada \textit{automorfismo}\cite{Shokranian:2010}.
+Sendo $f: G \rightarrow H$ uma função de homomorfismo entre os grupos \(G\) e \(H\), se a função for bijetora, então ela é denominada \textit{isomorfismo}, e ainda, se os grupos \(G\) e \(H\) são iguais e a função é um isomorfismo, então ela é denominada \textit{automorfismo} \cite{Shokranian:2010}.
 
 %
 % CORPOS FINITOS
 %
 \subsection{Corpos Finitos}
-
-Corpos finitos são estruturas algébricas compostas por um conjunto numérico $F$ junto com duas operações, sendo uma delas a operação de soma (denotada por $+$) e a outra a operação de multiplicação (denotada por $\cdot$) onde são satisfeitas as seguintes propriedades:\cite{Guide}
+Corpos finitos são estruturas algébricas compostas por um conjunto numérico \(\mathbb{F}\) juntamente com duas operações, sendo uma delas a operação de soma (denotada por $+$) e a outra a operação de multiplicação (denotada por $\cdot$) onde são satisfeitas as seguintes propriedades: \cite{Guide}
 
 \begin{enumerate}
-\item $(F, +)$ é um grupo abeliano com elemento identidade sendo $0$.
-\item $(F\backslash\{0\}, \cdot)$ é um grupo abeliano com elemento identidade sendo $1$.
-\item Para todo $a, b, c \in F$, é válida a propriedade distributiva: $(a + b) \cdot c = a \cdot c + b \cdot c$.
+\item $(\mathbb{F}, +)$ é um grupo abeliano com elemento identidade sendo \(0\).
+\item $(\mathbb{F} \backslash \{0\}, \cdot)$ é um grupo abeliano com elemento identidade sendo $1$.
+\item Para todo $a, b, c \in \mathbb{F}$, é válida a propriedade distributiva $(a + b) \cdot c = a \cdot c + b \cdot c$.
 \end{enumerate}
 
-Se o conjunto \(F\) é finito, então o corpo é denominado \textit{corpo finito}. A \textit{ordem} de um corpo finito indica a quantidade de elementos que constituem o corpo finito. Existe um corpo finito de ordem \(q\) se e somente se \(q\) é igual a uma potência prima, ou seja, $q = p^{m}$, onde \(p\) é um número primo. O número \(p\) é chamado de característica do corpo finito. Se $m = 1$ então o corpo é denominado \textit{corpo primo}, caso $m \geq 2$, o corpo é chamado de \textit{corpo extenso}. \cite{Guide}.
+Se o conjunto \(\mathbb{F}\) é finito, então o corpo é denominado \textit{corpo finito}. A \textit{ordem} de um corpo finito indica a quantidade de elementos que constituem o corpo finito. Existe um corpo finito de ordem \(q\) se e somente se \(q\) é igual a uma potência prima, ou seja, $q = p^{m}$, onde \(p\) é um número primo. O número \(p\) é chamado de característica do corpo finito. Se $m = 1$ então o corpo é denominado \textit{corpo primo}, caso $m \geq 2$, o corpo é chamado de \textit{corpo extenso}. \cite{Guide}.
 
 %
 % CRIPTOGRAFIA
 %
 \section{Criptografia} \label{sec:criptografia}
-Criptografia é a ciência que trata de cifrar a escrita, de modo a torná-la ininteligível para os que não tenham os métodos convencionados para ter acesso a ela. Em Tecnologia da Informação, esta definição é ampliada a fim de englobar não só a escrita, mas qualquer tipo de documento ou dados que devam ser tratados secretamente. Um Sistema de Criptografia define um sistema em que um texto (ou documento, ou qualquer tipo de dado) é transformado através da criptografia em um texto cifrado (\textit{ciphertext}) ou o texto cifrado é transformado de volta à informação original, através de algoritmos. A primeira ação é denominada cifragem ou criptografar, e a segunda é chamada de decifração ou decriptação. \cite{Portnoi:2005}
+Criptografia é a ciência que trata de cifrar a escrita, de modo a torná-la ininteligível para os que não tenham os métodos convencionados para ter acesso a ela. Em Tecnologia da Informação, esta definição é ampliada a fim de englobar não só a escrita, mas qualquer tipo de documento ou dados que devam ser tratados secretamente. Um Sistema de Criptografia define um sistema em que um texto (ou documento, ou qualquer tipo de dado) é transformado através da criptografia em um texto cifrado (\textit{ciphertext}) ou o texto cifrado é transformado de volta à informação original (\textit{plaintext}), através de algoritmos. A primeira ação é denominada cifragem ou criptografar, e a segunda é chamada de decifração ou decriptação. \cite{Portnoi:2005}
 
 Com a criptografia pretende-se garantir que uma mensagem só será lida e compreendida pelo destinatário autorizado, e para isso, é necessário que se cumpram quatro requisitos:
 
@@ -145,7 +151,7 @@ Com a criptografia pretende-se garantir que uma mensagem só será lida e compre
 % CRIPTOGRAFIA SIMÉTRICA
 %
 \subsection{Criptografia simétrica}
-A criptografia simétrica foi o primeiro tipo de criptografia criado. Funciona transformando um texto em uma mensagem cifrada, por meio da definição de uma chave secreta, que será utilizada posteriormente para decriptar a mensagem, tornando novamente um texto simples. \cite{Cavalcante:2015}
+A criptografia simétrica foi o primeiro tipo de criptografia criado. Funciona transformando um texto em uma mensagem cifrada por meio da definição de uma chave secreta, que será utilizada posteriormente para decriptar a mensagem, tornando novamente um texto simples. \cite{Cavalcante:2015}
 
 A criptografia simétrica utiliza apenas uma chave para codificar e decodificar uma mensagem. É usada em transmissões de dados em que não é necessário um grande nível de segurança como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas, no armazenamento da informação em um disco rígido.
 
@@ -155,4 +161,4 @@ A criptografia simétrica é relativamente rápida, contudo como desvantagem, n�
 % CRIPTOGRAFIA ASSIMÉTRICA
 %
 \subsection{Criptografia assimétrica}
-Utiliza duas chaves, uma para criptografar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Esta técnica é muito utilizada para o envio de mensagens onde se deseja que somente o destinatário, portador da chave privada, consiga ler a mensagem. O emissor da mensagem utiliza a chave pública para criptografar a mensagem e a envia, quando o receptor receber a mensagem utilizará a chave privada para decifrar a mensagem. Este esquema provê a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Nestes algoritmos um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
+Utiliza duas chaves, uma para criptografar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Esta técnica é muito utilizada para o envio de mensagens onde se deseja que somente o destinatário, portador da chave privada, consiga ler a mensagem. O emissor da mensagem utiliza a chave pública para criptografar a mensagem e a envia. Quando o receptor receber a mensagem, ele então utilizará a chave privada para decifrar a mensagem. Este esquema provê a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
