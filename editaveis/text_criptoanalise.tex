@@ -4,8 +4,11 @@
 \chapter{Criptoanálise}
 Enquanto o campo da Criptografia procura desenvolver um sistema ou um protocolo que permita a privacidade na troca de mensagens, o campo da Criptoanálise é o estudo de métodos para quebrar sistemas de criptografia.
 
-Existem dois lados da Criptoanálise: a que procura criar uma criptografia segura e a que se propõe a quebrar a segurança de um criptossistema. Embora possam ser vistos como antagonistas, o conhecimento de que um criptossistema é suscetível à ataques pode ser uma vantagem. O princípio de Kerchoff's diz que a segurança de um criptossistema deve depender apenas do sigilo do espaço da chave \(K\); e não do sigilo do algoritmo de criptografia. \cite{Mandy:2007}
+Existem dois lados da Criptoanálise: a que procura criar uma criptografia segura e a que se propõe a quebrar a segurança de um criptossistema. Embora possam ser vistos como antagonistas, o conhecimento de que um criptossistema é suscetível à ataques pode ser uma vantagem. O princípio de Kerchoff's diz que a segurança de um criptossistema deve depender apenas do sigilo do espaço da chave \(K\) \footnote{Uma chave de tamanho \(K\) oferece um espaço de \(2^K\).}, e não do sigilo do algoritmo de criptografia. \cite{Mandy:2007}
 
+%
+% CRIPTOANÁLISE NO CONTEXTO DE CURVAS ELÍPTICAS
+%
 \section{Criptoanálise no contexto de curvas elípticas}
 No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo dos inteiros \(n_A\) e \(n_B\), que são as chaves privadas de \textbf{A} e \textbf{B} mencionados na seção \ref{sec:ecc}. Se estes inteiros são facilmente derivados, então o criptossistema não é mais seguro. Esse tipo de descoberta é classificado como ruptura total, no qual o atacante deduz as chaves secretas. \cite{Knudsen:1998}
 
@@ -13,7 +16,7 @@ No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo 
 % ECDPL
 %
 \subsection{O problema do logaritmo discreto sobre curvas elípticas} \label{ecdpl}
-Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E_p(a, b)$. O problema do logaritmo discreto sobre curvas elípticas ECDLP (\textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(x\) tal que $Q = xP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p^*$, denotamos esse inteiro \(x\) por
+Seja \(E\) uma curva elíptica sobre o corpo finito $\mathbb{F}_p$ e seja \(P\) e \(Q\) pontos em $E(\mathbb{F}_p)$. O problema do logaritmo discreto sobre curvas elípticas (ECDLP - \textit{Elliptic Curve Discrete Logarithm Problem}) é o problema de encontrar um inteiro \(x\) tal que $Q = xP$. Pela analogia com o problema do logaritmo para $\mathbb{F}_p$, denotamos esse inteiro \(x\) por
 
 \begin{eqnarray}
 xP &=& Q \label{eq:ecdpl1} \\
@@ -26,15 +29,15 @@ e chamamos \(x\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\)
 % Algoritmos ECDPL
 %
 \subsection{Algoritmos conhecidos para resolver ECDPL}
-Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas supersingular e anômalo. A solução para a Equação \ref{eq:ecdpl2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
+Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas super-singular e anômalo. A solução para a Equação \ref{eq:ecdpl2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
 
 \begin{itemize}
 \item Força-bruta: Este método adiciona sequencialmente o ponto $P \in E(\mathbb{F}_p)$ a ele mesmo. A cadeia de adição $P, 2P, 3P, 4P, ...$ acabará por chegar em \(Q\) descobrindo assim o valor de \(n\), de acordo com a Equação \ref{eq:ecdpl1}. No pior caso, este cálculo pode levar a $n - 1$ passos onde \(n\) é da ordem de \(P\). Desta forma, o ataque pode se tornar inviável para prática quando \(n\) é muito grande.
-\item \textit{Baby Step Giant Step} (BSGS): O algoritmo BSGS é uma melhoria à busca por força-bruta. Para \(n\) na ordem de \(P\), memória temporária por cerca de $\sqrt{n}$ e aproximadamente um adicional de $\sqrt{n}$ passos são necessários. No entanto, devido à sua complexidade de memória alta, BSGS acaba não sendo muito interessante.
-\item Pohlig-Hellman: trabalha com a fatoração do valor \(n\) da ordem da curva e utiliza o Teorema do Resto Chinês para o cálculo da a série de equações lineares gerados com os fatores de \(n\). Esta abordagem pode ser implementada em conjunto com Pollard's Rho. No entanto, caso a curva escolhida tiver ordem com valor primo, inibe esse tipo de ataque, pois não é possível fatorar números primos.
-\item Pollard's Rho: O ataque Pollard's Rho ou Pollard-Rho foi proposto por J. Pollard em 1978 e é um algoritmo baseado em colisão com base em um percurso aleatório num grupo cíclico, assim, pode ser aplicado ao grupo de pontos gerados por \(P\) numa curva elíptica. O percurso aleatório calcula uma trilha de pontos numa curva elíptica e eventualmente termina em um ciclo, revelando a solução para ECDLP. \cite{Pollard:1978} Embora tendo um tempo de complexidade similar de $\sqrt{\pi n/2}$ comparado ao BSGS, Pollard's Rho é superior devido aos seus desprezíveis requisitos de memória. Em combinação com a paralelização adequada, o método Pollard's Rho é o mais rápido ataque conhecido contra ECC. \cite{Pelzl:2006}
+\item \textit{Baby Step Giant Step} (BSGS): O algoritmo BSGS é uma melhoria à busca por força-bruta. Para \(n\) na ordem de \(P\), é necessário que o algoritmo utilize um quantidade de memória temporária por cerca de $\sqrt{n}$ e aproximadamente um adicional de $\sqrt{n}$ passos. No entanto, devido à sua complexidade de memória alta, BSGS acaba não sendo muito interessante.
+\item Pohlig-Hellman: trabalha com a fatoração do valor \(n\) da ordem da curva e utiliza o Teorema do Resto Chinês para o cálculo da série de equações lineares gerados com os fatores de \(n\). Esta abordagem pode ser implementada em conjunto com Pollard's rho. No entanto, a escolha de uma curva cuja ordem é um número primo, pode inibir esse tipo de ataque, pois não é possível fatorar números primos.
+\item Pollard's rho: O ataque Pollard's rho ou Pollard-rho foi proposto por J. Pollard em 1978. Este ataque consiste em um algoritmo baseado em colisão com base em um percurso aleatório num grupo cíclico, assim, pode ser aplicado ao grupo de pontos gerados por \(P\) numa curva elíptica. O percurso aleatório calcula uma trilha de pontos numa curva elíptica e eventualmente termina em um ciclo, revelando a solução para ECDLP. \cite{Pollard:1978} Embora tendo um tempo de complexidade similar de $\sqrt{\pi n/2}$ comparado ao BSGS, Pollard-rho é superior devido aos seus desprezíveis requisitos de memória. Em combinação com a paralelização adequada, o método Pollard-rho é o mais rápido ataque conhecido contra ECC. \cite{Pelzl:2006}
 
-Neste trabalho serão apresentados os métodos Pollard-Rho original, Pollard-Rho com único processador (SPPR), e sua variante paralelizada Pollard-Rho com multiprocessadores (MPPR).
+Neste trabalho serão apresentados os métodos Pollard-rho original e suas variantes Pollard-rho com único processador (SPPR), Pollard-rho com multiprocessadores (MPPR) e Pollard-rho com automorfismo.
 \end{itemize}
 
 %
