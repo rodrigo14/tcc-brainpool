@@ -22,7 +22,7 @@ Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes
 
 Consequentemente, se \(m\) não divide a diferença $(a - b)$, então \(a\) é \textit{incongruente} a \(b\) \textit{mod m}, e representa-se por $a \not\equiv b \pmod m$ \cite{Santos:2014}.
 
-Para um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
+Seja um inteiro positivo \(n\) e \(a\), \(b\), \(c\) inteiros quaisquer, a congruência tem as seguintes propriedades \cite{Stallings:2011}:
 \begin{enumerate}
   \item $a \equiv b \pmod n$ se $n|(a - b)$.
   \item $a \equiv b \pmod n$ implica $b \equiv a \pmod n$.
@@ -36,17 +36,18 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
   \item $[a \pmod n \times b \pmod n] \pmod n = (a \times b) \pmod n$
 \end{enumerate}
 
-Em relação a divisão, ela não está definida em todos os casos. Se \(d\) é um inteiro que divide \(a\) e \(b\), então vale a relação apresentada na Equação \ref{eq:5}, onde gcd\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
+A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) é um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, onde gcd\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
-  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{gcd}(n,d)}\right) \label{eq:5}
+  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{gcd}(n,d)}\right) \label{eq:3}
 \end{equation}
 
-O inverso multiplicativo de a modulo \(n\), isto é, um inteiro \(b\) tal que \(a \times b = 1 \pmod  n\), existe apenas quando \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor de \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
-\par A exponenciação modular calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Escolhidos a base \(b\), o expoente \(k\) e o módulo \(m\), uma exponenciação modular \(c\) é dada pela Equação \ref{eq:6}.
+O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que satisfaz a operação \(a \times b = 1 \pmod  n\), e somente pode ser obtido quando existe \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor do inverso multiplicativo \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
+
+\par Outra operação que pode ser definida sobre corpos é a exponenciação modular, que calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Assim, $b$ é a base, $k$ o expoente e $m$ o módulo da exponeciação modular, que pode ser expressa como na equação \ref{eq:4}.
 
 \begin{equation}
-  c \equiv b^k\pmod m \label{eq:6}
+  c \equiv b^k\pmod m \label{eq:4}
 \end{equation}
 
 %
