@@ -7,26 +7,26 @@
 % DEFINIÇÃO
 %
 \subsection{Definição}
-\textit{``Curvas elípticas não são elipses. Elas têm esse nome porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse''} \cite{Stallings:2011}. Uma curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrita pela equação:
+\textit{``Curvas elípticas não são elipses. Elas têm esse nome porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse''} \cite{Stallings:2011}. Uma curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrita pela equação \ref{eq:5}
 \begin{equation}
 y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:5}
 \end{equation}
-onde \(a, b, c, d\) e \(e\) são elementos do corpo \(\mathbb{F}\) e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de \(\mathbb{F}\). A notação utilizada para indicar que uma curva elíptica \(E\) está definida sobre um corpo \(\mathbb{F}\) é $E(\mathbb{F})$, e o corpo \(\mathbb{F}\) é chamado de corpo subjacente da curva \cite{Guide}. Equações deste tipo são conhecidas como \textit{equações de Weiestrass}. Com frequência, no estudo de criptografia de curvas elípticas, é costuma-se utilizar a forma reduzida de Weiestrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
+onde \(a, b, c, d\) e \(e\) são elementos do corpo \(\mathbb{F}\) e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de \(\mathbb{F}\). A notação utilizada para indicar que uma curva elíptica \(E\) está definida sobre um corpo \(\mathbb{F}\) é $E(\mathbb{F})$, e o corpo \(\mathbb{F}\) é chamado de corpo subjacente da curva \cite{Guide}. Equações deste tipo são conhecidas como \textit{equações de Weierstrass}. Com frequência, no estudo de criptografia de curvas elípticas, é costuma-se utilizar a forma reduzida de Weierstrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
 \begin{equation}
 y^2 = x^3 + ax + b \label{eq:6}
 \end{equation}
 
 É imprescindível que os valores de \(a\) e \(b\) sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente \cite{Guide}.
 
-O conjunto dos pontos que pertencem à curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrito por:
+O \textbf{conjunto dos pontos} que pertencem à curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrito por:
 
 $$
-E(\mathbb{F}) = \{(x,y) \in F \times F \mid y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}
+E(\mathbb{F}) = \{(x,y) \in \mathbb{F} \times \mathbb{F} \mid y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}
 $$
 
 onde o ponto $\mathcal{O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}. Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(\mathbb{F})$ forma um grupo abeliano com o ponto no infinito sendo $\mathcal{O}$ o elemento identidade \cite{Guide}.
 
-A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierestrass.
+A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierstrass.
 
 \begin{figure}[h]
 \centering
@@ -41,11 +41,11 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 \subsection{Leis de grupo para Curvas Elípticas}
 Seja o conjunto de pontos $E(\mathbb{F})$ da curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\), é possível definir uma operação sobre esse conjunto de pontos, que será chamada de adição e indicada por $+$. Essa operação de adição e o conjunto de pontos $E(\mathbb{F})$ da curva elíptica formam um grupo abeliano \cite{Stallings:2011}.
 
-A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver figura \ref{fig:pontos}). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que \(P=Q\)). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
+A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver figura \ref{fig:pontos}). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que os pontos \(P, Q\) possuam a mesma coordenada $x$ e coordenadas $y$ diferentes). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
 
-Se as coordenadas \(x\) dos pontos \(P\) e \(Q\) são iguais, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
+Se as coordenadas \(x\) dos pontos \(P\) e \(Q\) são iguais e as coordenadas $y$ são diferentes, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
 
-É possível calcular o dobro de um ponto \(P\), ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto \(P\). Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto \(R\), que é o resultado da soma. \cite{Guide}
+É possível calcular o dobro de um ponto \(P\), ou seja, calcular a soma do ponto com ele mesmo. Para isso desenha-se a reta tangente à curva no ponto \(P\). Essa linha intersecta a curva elíptica num segundo ponto, que será refletido para obter-se o ponto \(R\), que é o resultado da soma. \cite{Guide} Observe que esse caso se aplica quando se deseja somar os pontos $P$ e $Q$ onde $P=Q$.
 
 \begin{figure}[h]
 \includegraphics[scale=0.5, bb=0 0 484 636]{figuras/SomaECC.eps}
@@ -66,7 +66,7 @@ Os axiomas de grupo são satisfeitos da seguinte forma:
 % CURVAS ELÍPTICAS SOBRE CORPO FINITO
 %
 \subsection{Curvas elípticas sobre corpo finito}
-A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são todos restritos a elementos de um corpo finito, ou seja, assumem valores no conjunto de inteiros de 0 até $p - 1$ em que os cálculos são realizados módulo \(p\). Desta forma, é dito que a curva está sobre $\mathbb{F}_p$. \cite{Stallings:2011}
+\textit{``A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são todos restritos a elementos de um corpo finito''}\cite{Stallings:2011}, ou seja, sendo a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_p$, seus coeficientes assumem valores inteiros entre 0 e $p - 1$, pois os cálculos são realizados módulo \(p\). Quando definida sobre um corpo finito, a equação da curva deve indicar qual é esse corpo através da notação $mod$, como ocorre na equação \ref{eq:7}, onde a curva está definida sobre um corpo finito $\mathbb{F}_p$.
 
 \begin{equation}
 y^2 \mod p = (x^3 + ax + b) \mod p \label{eq:7}
