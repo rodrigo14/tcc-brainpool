@@ -74,7 +74,7 @@ O termo $(b_m - b_{2m})^{-1}$ em \ref{eq:x} somente é possível calcular quando
 %
 % Pollar-rho com um processador
 %
-\section{Pollard-rho com único processador}
+\section{Pollard-rho com único processador} \label{sec:single}
 O método original seleciona inteiros aleatórios $a, b \in [0, n-1]$ e armazena as triplas $(a, b, aP + bQ)$ em uma tabela ordenada pelo terceiro componente até que um ponto $aP + bQ$ seja obtida pela segunda vez. Pelo paradoxo do aniversário
 \footnote{Suponha que uma urna tenha \(n\) bolas numeradas de 1 a \(n\). As bolas são aleatoriamente retiradas uma de cada vez e colocadas de volta na urna. Portanto, o número esperado para que as bolas se repitam é de aproximadamente de $\sqrt{\pi n/2}$. Se \(n\) = 365 e as bolas representam diferentes dias do ano, então pode-se dizer que o número esperado de pessoas que tem de ser reunidas em uma sala para que pelo menos duas delas tenham nascido no mesmo dia é de aproximadamente $\sqrt{\pi 365/2} \approx 24$. Esse número é surpreendentemente pequeno e, consequentemente, daí vem a nomenclatura ``paradoxo do aniversário''. \cite{Guide}},
 o número de iterações esperado até que se obtenha uma colisão é de aproximadamente $\sqrt{\pi n/2} \approx 1.2533 \sqrt{n}$. A desvantagem desse algoritmo é que a capacidade de armazenamento necessária para o cálculo é de $\sqrt{\pi n/2}$ triplas.
@@ -87,56 +87,12 @@ Seja $\{S_1, S_2, ..., S_L\}$ uma partição aleatória de $\langle P \rangle$ e
 f(X) = X + c_jP + d_jQ \textrm{, onde } j = H(X)
 \end{equation*}
 
-\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
-
-% 
-% INPUT: EllipticCurve E, Point P, Point Q
-% OUTUPT: x = log_P(Q)
-%
-\begin{lstlisting}[caption={Algoritmo Pollard-rho com único processador.},label=single_processor]
-pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
-	seja L, k, inteiro
-	seja an, bn, inteiro
-	seja am, bm, inteiro
-	seja Xn, Xm, Ponto
-	seja c, d, array inteiro
-	seja R, array Ponto
-
-	k := E.order()
-	para j := 1, enquanto j <= L, faca
-		c[j] := random() % k
-		d[j] := random() % k
-		R[j] := c[j]*P + d[j]*Q
-
-	an := random() % k
-	bn := random() % k
-	Xn := an*P + bn*Q
-	am := an
-	bm := bn
-	Xm := Xn
-
-	enquanto Xn != Xm faca
-		j := H(Xn, L)
-		Xn := Xn + R[j]
-		an := an + c[j]
-		bn := bn + b[j]
-
-	se bn = bm entao
-		retorne "falha"
-
-	seja x, inteiro
-	x := (an - am)/(bm - bn) % k
-	retorne x
-
-H(P: Ponto, L: inteiro): inteiro
-	retorne P.x % L + 1
-
-\end{lstlisting}
+O pseudo-algoritmo está descrito em anexo (\ref{alg:single}).
 
 %
 % Pollard-rho com multiprocessadores
 %
-\section{Pollard-rho multiprocessadores}
+\section{Pollard-rho multiprocessadores} \label{sec:parallelized}
 Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador até que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo fator $\sqrt{M}$. \cite{Guide}
 
 Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolhe randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. \cite{Van:1996}
@@ -156,61 +112,7 @@ O algoritmo apresentado na seção anterior encontra uma colisão na sequência 
 
 A sua versão paralelizada do algoritmo Pollard-rho obtém um aumento de velocidade que é linear em relação à quantidade de processadores empregados. Uma observação que deve ser feita é que os processadores não tem de comunicar-se entre si, e além disso tem uma comunicação limitada com o servidor central. Portanto, o espaço total necessário no servidor pode ser contolado com uma seleção cautelosa da propriedade distintiva.
 
-\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
-
-%
-% INPUT: EllipticCurve E, Point P, Point Q
-% OUTUPT: x = log_P(Q)
-%
-\begin{lstlisting}[caption={Algoritmo Pollard-rho paralelizado.},label=parallelized]
-pollardRho_parallelized(E: Curva, P: Ponto, Q: Ponto): inteiro
-	seja L, k, inteiro
-	seja an, bn, inteiro
-	seja am, bm, inteiro
-	seja Xn, Xm, Ponto
-	seja c, d, array inteiro
-	seja R, array Ponto
-
-	seja a, b, inteiro
-	seja X, ponto
-	seja Y, Point
-
-	k := E.order()
-	para j := 1, enquanto j <= L, faca
-		c[j] := random() % k
-		d[j] := random() % k
-		R[j] := c[j]*P + d[j]*Q
-
-	# para cada processador M faca
-	a := random() % k
-	b := random() % k
-	X := an*P + bn*Q
-
-	# repita ate que o servidor receba um ponto Y distinto pela 2a vez
-	enquanto duplicatedDistinguishedPointNotReceived() faca
-		se X = distinguishedPoint(X)
-			sendToServer(a, b, X)
-			j := H(X)
-			X := X + R[j]
-			a := a + c[j] % k
-			b := b + d[j] % k
-
-	an := firstTripleCollided_a()
-	bn := firstTripleCollided_b()
-	am := secondTripleCollided_a()
-	bm := secondTripleCollided_b()
-
-	se bn = bm entao
-		retorne "falha"
-
-	seja x, inteiro
-	x := (an - am)/(bm - bn) % k
-	retorne x
-
-H(P: Ponto, L: inteiro): inteiro
-	retorne P.x % L + 1
-
-\end{lstlisting}
+O pseudo-algoritmo está descrito em anexo (\ref{alg:parallelized}).
 
 %
 % Pollard-rho com automorfismo

@@ -2,13 +2,112 @@
 
 \partanexos
 
-\chapter{Primeiro Anexo}
+\chapter{Primeiro Anexo} \label{alg:single}
+Este anexo se refere à Seção \ref{sec:single}.
 
-Texto do primeiro anexo.
+\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
 
-\chapter{Segundo Anexo}
+%
+% INPUT: EllipticCurve E, Point P, Point Q
+% OUTUPT: x = log_P(Q)
+%
+\begin{lstlisting}[caption={Algoritmo Pollard-rho com único processador.},label=single_processor]
+pollardRho_singleProcessor(E: Curva, P: Ponto, Q: Ponto): inteiro
+	seja L, k, inteiro
+	seja an, bn, inteiro
+	seja am, bm, inteiro
+	seja Xn, Xm, Ponto
+	seja c, d, array inteiro
+	seja R, array Ponto
 
-Texto do segundo anexo.
+	k := E.order()
+	para j := 1, enquanto j <= L, faca
+		c[j] := random() % k
+		d[j] := random() % k
+		R[j] := c[j]*P + d[j]*Q
+
+	an := random() % k
+	bn := random() % k
+	Xn := an*P + bn*Q
+	am := an
+	bm := bn
+	Xm := Xn
+
+	enquanto Xn != Xm faca
+		j := H(Xn, L)
+		Xn := Xn + R[j]
+		an := an + c[j]
+		bn := bn + b[j]
+
+	se bn = bm entao
+		retorne "falha"
+
+	seja x, inteiro
+	x := (an - am)/(bm - bn) % k
+	retorne x
+
+H(P: Ponto, L: inteiro): inteiro
+	retorne P.x % L + 1
+
+\end{lstlisting}
+
+\chapter{Segundo Anexo} \label{alg:parallelized}
+Este anexo se refere à Seção \ref{sec:parallelized}.
+
+\textit{O algoritmo recebe como parâmetro uma curva elíptica \(E\) e dois pontos \(P\) e \(Q\) pertencentes a \(E\) e calcula o valor de \(x\) tal que $x = \log_P Q$.}
+
+%
+% INPUT: EllipticCurve E, Point P, Point Q
+% OUTUPT: x = log_P(Q)
+%
+\begin{lstlisting}[caption={Algoritmo Pollard-rho paralelizado.},label=parallelized]
+pollardRho_parallelized(E: Curva, P: Ponto, Q: Ponto): inteiro
+	seja L, k, inteiro
+	seja an, bn, inteiro
+	seja am, bm, inteiro
+	seja Xn, Xm, Ponto
+	seja c, d, array inteiro
+	seja R, array Ponto
+
+	seja a, b, inteiro
+	seja X, ponto
+	seja Y, Point
+
+	k := E.order()
+	para j := 1, enquanto j <= L, faca
+		c[j] := random() % k
+		d[j] := random() % k
+		R[j] := c[j]*P + d[j]*Q
+
+	# para cada processador M faca
+	a := random() % k
+	b := random() % k
+	X := an*P + bn*Q
+
+	# repita ate que o servidor receba um ponto Y distinto pela 2a vez
+	enquanto duplicatedDistinguishedPointNotReceived() faca
+		se X = distinguishedPoint(X)
+			sendToServer(a, b, X)
+			j := H(X)
+			X := X + R[j]
+			a := a + c[j] % k
+			b := b + d[j] % k
+
+	an := firstTripleCollided_a()
+	bn := firstTripleCollided_b()
+	am := secondTripleCollided_a()
+	bm := secondTripleCollided_b()
+
+	se bn = bm entao
+		retorne "falha"
+
+	seja x, inteiro
+	x := (an - am)/(bm - bn) % k
+	retorne x
+
+H(P: Ponto, L: inteiro): inteiro
+	retorne P.x % L + 1
+
+\end{lstlisting}
 
 \end{anexosenv}
-
