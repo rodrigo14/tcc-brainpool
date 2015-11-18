@@ -127,6 +127,12 @@ A sua versão paralelizada do algoritmo Pollard-rho obtém um aumento de velocid
 O pseudo-algoritmo está descrito em anexo (\ref{alg:parallelized}).
 
 %
+% Propriedade distintiva
+%
+\subsection{Propriedade distintiva}
+Atualmente, o método do ponto distinto é o algoritmo mais eficiente para detectar um ciclo pseudo-aleatório quando \(n\) é grande. Para quebrar ECC2K-130, \cite{Bailey:2009} define a propriedade distintiva como o \textit{Hamming weight}\footnote{\textit{Hamming weight} de uma \textit{string} é o número de símbolos que são diferentes do símbolo-zero do alfabeto utilizado. No caso de uma \textit{string} binária, é a quantidade de \textit{bits} que são iguais a 1.} de uma representação-base normal da coordenada x do ponto que seja menor ou igual a 34. Note que este tipo de definição permite uma rápida verificação para a propriedade distintiva.
+
+%
 % Pollard-rho com automorfismo
 %
 \section{Pollard-rho com automorfismo}
