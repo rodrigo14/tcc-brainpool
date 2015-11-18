@@ -90,21 +90,33 @@ f(X) = X + c_jP + d_jQ \textrm{, onde } j = H(X)
 O pseudo-algoritmo está descrito em anexo (\ref{alg:single}).
 
 %
+% Floyd's cycle-finding
+%
+\subsection{Floyd's cycle-finding} \label{floyd}
+Pollard-rho é uma variante do algoritmo \textit{Floyd's cycle-finding} (ou busca-ciclos de Floyd), que é importante para detectar a ocorrência de um ciclo em sequências arbitrárias, seja em estruturas de dados ou geradas por sequências pseudo-aleatórias e grafos. Este algoritmo, também é chamado de algoritmo-``lebre e tartaruga'', no qual utiliza apenas dois ponteiros que se movem através da sequência com diferentes velocidades.
+
+Para encontrar \(R_i = R_j\), o algoritmo calcula as triplas $(a_i, b_i, R_i)$ e $(a_{2i}, b_{2i}, R_{2i})$ até que \(R_i = R_{2i}\). Para cada iteração, calcula-se \(R_{i+1} = f(R_i)\) e \(R_{2(i+1)} = f(f(R_{2i}))\), o que significa que este algoritmo utiliza uma quantidade mínima de armazenamento. O algoritmo \textit{Floyd's cycle-finding} é baseado na seguinte ideia. \cite{Ping:2011} \cite{Brent:2008}
+
+\textbf{Teorema 1} (\cite{Knuth:1997}). Para uma sequência periódica \(\{R_0, R_1, R_2, ...\}\), existe um \(i > 0\) tal que \(R_i = R_{2i}\) e o menor valor de \(i\) que pertença ao intervalo \(\mu \leq i \leq \mu + \lambda\). \(\mu\) e \(\lambda\) são o pré-período (calda) e o período (ciclo) da sequência \(R_i\), respectivamente.
+
+O melhor caso desse algoritmo são necessários \(\mu\) iterações e o pior caso \(\mu + \lambda\) iterações. Sob a suposição de que \(f : G \to G\) se comporta como uma função verdadeiramente aleatória, o número esperado de iterações antes que se encontre uma colisão é de $\sqrt{\pi^5 |G|/288} \approx 1.03 \sqrt{|G|}$ \cite{Brent:2008}. O ponto chave para esse algoritmo é que precisa-se de três operações de grupo e uma comparação para cada iteração, o que o torna ineficiente.
+
+%
 % Pollard-rho com multiprocessadores
 %
 \section{Pollard-rho multiprocessadores} \label{sec:parallelized}
 Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador até que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo fator $\sqrt{M}$. \cite{Guide}
 
-Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolhe randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. \cite{Van:1996}
+Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir as sequências $\{X_i\}_{i \geq 0}$ geradas por um processador para colidir com outro. Ou seja, cada processador escolhe randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se a sequência de dois diferentes processadores sempre se colidem, então, como ilustrados na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a colisão em Y, o primeiro ponto distinto subsequente \cite{Van:1996}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4, bb=0 0 737 604]{figuras/paralellized.eps}
-\caption{A sequência gerada pelo algoritmo Pollard-rho paralelizado. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a colisão em Y, o primeiro ponto distinto subsequente.}
+\caption{A sequência gerada pelo algoritmo Pollard-rho paralelizado. }
 \label{fig:paralellized}
 \end{figure}
 
-O algoritmo apresentado na seção anterior encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma \textit{propriedade distintiva} facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser \textit{distinto} se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Sempre que um processador encontra um ponto distinto, ele transmite o ponto a um servidor central que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações de curva elíptica desempenhadas por cada processador antes de uma colisão de pontos distintos é de
+O algoritmo \textit{Floyd's cycle-finding} \--- descrita na seção \ref{floyd} \--- encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma \textit{propriedade distintiva} facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser \textit{distinto} se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Sempre que um processador encontra um ponto distinto, ele transmite o ponto a um servidor central que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações de curva elíptica desempenhadas por cada processador antes de uma colisão de pontos distintos é de
 
 \begin{equation}
 \dfrac{1}{M} \sqrt{\dfrac{\pi n}{2}} + \dfrac{1}{\theta}
