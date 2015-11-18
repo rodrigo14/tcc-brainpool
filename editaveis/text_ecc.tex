@@ -20,9 +20,10 @@ y^2 = x^3 + ax + b \label{eq:6}
 
 O \textbf{conjunto dos pontos} que pertencem à curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrito por:
 
-$$
+\begin{equation}
 E(\mathbb{F}) = \{(x,y) \in \mathbb{F} \times \mathbb{F} \mid y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}
-$$
+\label{eq:pontosCurva}
+\end{equation}
 
 onde o ponto $\mathcal{O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}. Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(\mathbb{F})$ forma um grupo abeliano com o ponto no infinito sendo $\mathcal{O}$ o elemento identidade \cite{Guide}.
 
@@ -105,6 +106,23 @@ A Equação \ref{eq:6} tem a mesma forma da Equação \ref{eq:7}. As regras para
     \end{eqnarray*}
   \item A multiplicação é definida como adição repetida; por exemplo, $4P = P + P + P + P$.
 \end{enumerate}
+
+%
+% ORDEM DE UMA CURVA ELIPTICA
+%
+\subsection{Quantidade de pontos em uma curva elíptica}
+Seja a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_q$. O conjunto de todos os pontos que pertencem à curva elíptica é representado por $E(\mathbb{F}_p)$ (ver \ref{eq:pontosCurva}). A quantidade de pontos que compõe esse conjunto é a \textbf{ordem de $E$ sobre $\mathbb{F}_q$} e será representada pela notação $\#E(\mathbb{F}_q)$. \cite{Guide}
+
+A ordem da curva elíptica é importante para o sistema criptográfico baseado em curvas elípticas, pois sua segurança depende dos fatores primos da ordem \cite{Alvarado:2005}. Se a ordem da curva elíptica pode ser fatorada em números primos pequenos, a sua segurança pode ser facilmente quebrada utilizando o algoritmo de Pohlig-Hellman, que não será abordado em profundidade nesse trabalho.
+
+O teorema de Hasse fornece limites para a ordem de uma curva elíptica. Esse teorema determina que, sendo a curva elíptica $E$ definida sobre $\mathbb{F}_q$, então
+
+\begin{equation}
+q + 1 - 2\sqrt{q} \leq \#E(\mathbb{F}_q) \leq q + 1 + 2\sqrt{q}
+\label{eq:HasseBounds}
+\end{equation}
+
+O \textbf{traço} de $E$ sobre $\mathbb{F}_q$ é $t = 2\sqrt{q}$. Sabendo-se o traço da curva definida sobre $\mathbb{F}_q$, é possível calcular a sua ordem. O algoritmo de Schoof(ver \ref{SchoofAlg}) calcula o traço de uma curva, permitindo saber a sua ordem.
 
 %
 % CRIPTOGRAFIA DE CURVAS ELÍPTICAS
