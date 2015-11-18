@@ -32,13 +32,16 @@ com $\epsilon_0, \dots, \epsilon_t \in \{0, 1\}$ e $\epsilon_t = 1$.
 
 O algoritmo de Schoof é um algoritmo para calcular a ordem de uma curva elíptica em um tempo polinômial, que é dado por $O(\mbox{(log \textit{n})}^8)$ \cite{Silverman:2009}.
 
-Considere uma curva elíptica definida sobre um corpo finito $E/F_q$ e expressa pela equação $y^2 = x^3 + Ax + B$. Pelo teorema de Hasse é dado que
+Considere uma curva elíptica definida sobre um corpo finito $E/F_q$ e expressa pela equação $y^2 = x^3 + Ax + B$. Considere ainda que $q = p^n$ e que $p \neq 2,3$. Pelo teorema de Hasse é dado que
 $$
-\#E(F_q) = q + 1 - a, \qquad \mbox{com |a|} \leq 2 \sqrt{q}
+\#E(F_q) = q + 1 - t, \qquad \mbox{com |a|} \leq 2 \sqrt{q}
 $$
 e considere um conjunto de números primos $S = \{2,3,5,7,\dots,L\}$ tal que 
 $$
 \prod_{l \in S} l \geq 4 \sqrt{q}
 $$
-O algoritmo consiste em encontrar $a$ mod $l$ para cada primo $l \in S$, e enfim descobrir o valor de $a$ utilizando o teorema do resto chinês.
+e a característica $p$ do corpo finito não pertença a $S$.
+O algoritmo consiste em encontrar $t$ mod $l$ para cada primo $l \in S$, e enfim descobrir o valor de $t$ utilizando o teorema do resto chinês.\cite{Alvarado:2005}
+
+
 \end{apendicesenv}
