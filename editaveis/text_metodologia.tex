@@ -49,9 +49,83 @@ Considerando os objetivos de estudo deste trabalho, foi incorporada uma abordage
 %
 % ATIVIDADE DE PESQUISA
 %
-\section{Atividade de pesquisa}
+\section{Atividades de projeto}
+Os seguintes pacotes de trabalho, não necessariamente nessa ordem, são fundamentais para compor este projeto de monografia:
+\begin{itemize}
+\item \textbf{Pesquisa:} Levantamento e pesquisa acerca das propriedades matemáticas da curva elíptica e potenciais algoritmos que desafiam sua segurança.
+\item \textbf{Levantamento Bibliográfico:} Levantamento bibliográfico sobre os aspectos teóricos e práticos que envolvem a segurança das curvas elípticas.
+\item \textbf{Implementação:} Implementação do algoritmo Pollard-rho e suas variações.
+\item \textbf{Execução:} Execução e ajustes dos algoritmos, assim como os testes de suas execuções.
+\item \textbf{Parte escrita:} Escrita da parte textual do trabalho.
+\end{itemize}
 
+\section{Ferramentas}
+A seguir serão apresentadas as ferramentas utilizadas e o ambiente de desenvolvimento, desde as configurações físicas do computador ao software utilizado.
 
-O cronograma de execução deste trabalho é apresentado na Tabela \ref{cronograma tcc1}. As atividades realizadas foram:
+As especificações técnicas do computador utilizado no desenvolvimento são descritas na Tabela \ref{table:config}, a listagem dos software empregados no ambiente de desenvolvimento são descritas na Tabela \ref{table:tools} e, por fim, as bibliotecas e ferramentas de apoio são descritas na Tabela \ref{table:libs}.
+
+Ainda com a definição dessas especificações, elas podem sofrer alterações. Por se tratar de uma pesquisa dependente das configurações de hardware, as mudanças que ocorrerem serão para que o desempenho seja melhorado. Todas as alterações que houverem serão devidamente documentadas na parte escrita do próximo trabalho.
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Item}        & \textbf{Especificação}                        \\ \midrule
+Placa Mãe            & Dell Inc. 0K5C1C                              \\ 
+\rowcolor[gray]{0.9}
+Processador          & Intel Core i7-4510U 2.0 GHz                   \\ 
+Memória              & 16 GiB SODIMM DDR3 Síncrono 1600 MHz (0,6 ns) \\ 
+\rowcolor[gray]{0.9}
+Armazenamento        & ATA Disk 1 TB                                  \\ 
+Adaptador de Vídeo   & AMD Radeon 2 GB                        \\ \bottomrule
+\end{tabular}
+\caption{Configuração de hardware do computador de desenvolvimento.}
+\label{table:config}
+\end{table}
+
+%
+% ------
+%
+\begin{table}[!ht]
+\centering
+    \begin{tabularx}{0.95\textwidth}{llcX}
+    \toprule
+        \textbf{Ferramenta} & {\textbf{Nome}} & \textbf{Versão} & \textbf{Comentário}  \\
+    \midrule
+        Sistema Operacional  & Ubuntu Linux      & 14.04     & -                                                                                                         \\ 
+        \rowcolor[gray]{0.9}
+        Linguagem            & C++               & 11        & O padrão C++11 foi escolhido por possuir mecanismos na própria linguagem que facilitam o desenvolvimento. \\
+        Compilador           & GCC               & 3.6.1     & A saída de compilação é melhor estruturada e é compatível com os argumentos das ferramentas GNU.          \\
+        \rowcolor[gray]{0.9}
+        Builder              & GNU Make          & 4.1       & -                                                                                                         \\
+        Editores de Texto    & VIM, Sublime Text & 7.4, 3083 & -                                                                                                         \\
+    \bottomrule
+    
+    \end{tabularx}
+\caption{Ferramentas de desenvolvimento empregadas no processo de experimentação.}
+\label{table:tools}
+
+\end{table}
+
+%
+%
+%
+\begin{table}[!ht]
+\centering
+    \begin{tabularx}{0.95\textwidth}{lcX}
+    
+    \toprule
+        \textbf{Nome}  &  \textbf{Versão}  &  \textbf{Comentário}  \\
+    \midrule
+        GNU Multiple  Precision v Arithmetic Library & 6.0.0    & Biblioteca para tratar números com tamanho arbitrário e realização de operações algébricas diversas.  \\
+        \rowcolor[gray]{0.9}
+        Python                                       & 3.4      & Usada principalmente para prototipações rápidas.                                                      \\
+    \bottomrule
+    
+    \end{tabularx}
+\caption{Bibliotecas e ferramentas utilizadas no desenvolvimento.}
+\label{table:libs}
+
+\end{table}
 
 \input{editaveis/text_cronograma}
