@@ -43,5 +43,10 @@ $$
 e a característica $p$ do corpo finito não pertença a $S$.
 O algoritmo consiste em encontrar $t$ mod $l$ para cada primo $l \in S$, e enfim descobrir o valor de $t$ utilizando o teorema do resto chinês.\cite{Alvarado:2005}
 
+\subsubsection{Caso com $l=2$}
+Para o caso em que $l = 2$, suponha que a equação $x^3 + Ax + B$ tenha uma raiz $\alpha \in \mathbb{F}_q$, então existe um ponto $(\alpha, 0) \in E(\mathbb{F}_q)$. A soma desse ponto com ele mesmo é o ponto no infinito $\mathcal{O}$, logo esse ponto possui ordem dois e dizemos que ele pertence ao grupo de pontos da curva elíptica com ordem dois, que é representado por $(\alpha,0) \in E[2]$. O teorema de Lagrange diz que a ordem do subgrupo deve dividir a ordem do grupo, logo, se existe um subgrupo de ordem dois então a ordem do grupo será par, ou seja, $\#E(\mathbb{F}_q) = q + 1 - t \equiv 0\mbox{ (mod 2)}$, e por $q$ ser ímpar, conclui-se que $t \equiv 0 \mbox{ (mod 2)}$. \cite{Alvarado:2005}
+
+Dessa forma, se for provado que a equação $x^3 + Ax + B$ possui uma raíz em $\mathbb{F}_q$, então $t \equiv 0 \mbox{ (mod 2)}$, caso contrário, se a raíz não existe, então $t \equiv 1 \mbox{ (mod 2)}$.\cite{McGee:2006}
+
 
 \end{apendicesenv}
