@@ -130,7 +130,7 @@ O pseudo-algoritmo está descrito em anexo (\ref{alg:parallelized}).
 % Propriedade distintiva
 %
 \subsection{Propriedade distintiva}
-Atualmente, o método do ponto distinto é o algoritmo mais eficiente para detectar um ciclo pseudo-aleatório quando \(n\) é grande. Para quebrar ECC2K-130, \cite{Bailey:2009} define a propriedade distintiva como o \textit{Hamming weight}\footnote{\textit{Hamming weight} de uma \textit{string} é o número de símbolos que são diferentes do símbolo-zero do alfabeto utilizado. No caso de uma \textit{string} binária, é a quantidade de \textit{bits} que são iguais a 1.} de uma representação-base normal da coordenada x do ponto que seja menor ou igual a 34. Note que este tipo de definição permite uma rápida verificação para a propriedade distintiva.
+Atualmente, o método do ponto distinto é o algoritmo mais eficiente para detectar um ciclo pseudo-aleatório quando \(n\) é grande. Para quebrar ECC2K-130, por exemplo, \cite{Bailey:2009} define a propriedade distintiva como o \textit{Hamming weight}\footnote{\textit{Hamming weight} de uma \textit{string} é o número de símbolos que são diferentes do símbolo-zero do alfabeto utilizado. No caso de uma \textit{string} binária, é a quantidade de \textit{bits} que são iguais a 1.} de uma representação-base normal da coordenada x do ponto que seja menor ou igual a 34. Note que este tipo de definição permite uma rápida verificação para a propriedade distintiva.
 
 %
 % Pollard-rho com automorfismo
@@ -147,7 +147,7 @@ $$
 $$
 onde $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\psi^l(R) = R$.
 
-O método de Pollard Rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para cada classe de equivalência $[R]$ e uma função $g$ tal que
+O método de Pollard-rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para cada classe de equivalência $[R]$ e uma função $g$ tal que
 $$
 g(R) = \overline{f(R)}
 $$
