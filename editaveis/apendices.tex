@@ -48,5 +48,47 @@ Para o caso em que $l = 2$, suponha que a equação $x^3 + Ax + B$ tenha uma rai
 
 Dessa forma, se for provado que a equação $x^3 + Ax + B$ possui uma raíz em $\mathbb{F}_q$, então $t \equiv 0 \mbox{ (mod 2)}$, caso contrário, se a raíz não existe, então $t \equiv 1 \mbox{ (mod 2)}$.\cite{McGee:2006}
 
+Uma forma verificar se a equação $x^3 + Ax + B$ possui uma raíz em $\mathbb{F}_q$ é fazendo o cálculo do seu máximo divisor comum com o polinômio $x^q - x$. Não será demonstrado nesse trabalho que o polinômio $x^q - x$ possui $q$ raízes distintas em $\mathbb{F}_q$, logo calculando-se $\mbox{mdc}(x^3 + Ax + B, x^q - x)$ será possível saber se a equação possui uma raiz em $\mathbb{F}_q$. Caso o mdc entre os polinômios seja igual a um, então a equação $x^3 + Ax + B$ não possui raiz em $\mathbb{F}_q$ e consequentemente $t \equiv 1\mbox{(mod 2)}$.\cite{McGee:2006}
 
+\subsubsection{Caso com $l>2$}
+Para calcular $t \mbox{ mod } l$ para $l > 2$, é necessário fazer uso de uma matématica mais rebuscada. Para o propósito desse trabalho, serão dadas algumas definições e o algoritmo para realizar o calculo.
+
+Dada uma curva elíptica $E$, o seu \textbf{j-invariante} é dado por
+\begin{equation}
+j = j(E) = 1728 \frac{4A^3}{4A^3 + 27B^2}\label{eq:j_inv}
+\end{equation}
+onde $A^3 + 27B^2 \neq 0$. \cite{Mandy:2007}
+
+Outro conceito importante para o algoritmo de Schoof é o de polinômios de divisão. Tais polinômios são definidos sobre as coordenadas de um ponto da curva elíptica e seu resultado é zero para pontos de determinada ordem. Explicando melhor, define-se $E[n]$ como o conjunto dos pontos de $E$ que possuem ordem $n$, a saber
+$$
+E[n] = \{P \in E(\mathbb{F}_q)\quad |\quad nP = \mathcal{O}\}
+$$
+Assim, o polinômio de divisão $\psi_n$ de uma curva $E$ possui a propriedade $\psi_n(x,y) = 0$ se e somente se o ponto com coordenadas $(x,y) \in E(\mathbb{F}_q$ possui ordem $n$, ou seja, $(x,y) \in E[n]$.\cite{McGee:2006}
+
+Esses polinômios $\psi_m(x,y)$ podem ser obtidos recursivamente por
+\begin{flalign*}
+& \psi_0 = 0 \\
+& \psi_1 = 1 \\
+& \psi_2 = 2y \\
+& \psi_3 = 3x^4 + 6Ax^2 + 12Bx - A^2 \\
+& \psi_4 = 4y(x^6 + 5Ax^4 + 20Bx^3 - 5A^2x^2 - 4ABx - 8B^2 - A^3) \\
+& \psi_{2m+1} = \psi_{m+2}\psi_m^3 - \psi_{m-1}\psi_{m+1}^3 \\
+& \psi_{2m} = \frac{\psi_m(\psi_{m+2}\psi_{m-1}^2 - \psi_{m-2}\psi_{m+1}^2)}{2y}
+\end{flalign*}
+com $m > 2$. \cite{Mandy:2007}
+
+Agora, o algoritmo\cite{Mandy:2007} para calcular $t \mbox{ mod } l$ para $l > 2$
+\begin{enumerate}
+\item Calcular $p_l \equiv p\mbox{ mod } l$ com $|p_l| < l/2$.
+\item Calcular a coordenada $x'$ de
+$$(x',y') = (x^{p^2}, y^{p^2}) + p_l(x,y) \mbox{ mod } \psi_l$$
+\item Para cada $h = 1,2,\cdots,\frac{l-1}{2}$, calcular a coordenada $x_h$ de $(x_h, y_h) = j(x,y)$
+  \begin{enumerate}[label=(\alph*)]
+  \item Se $x' - x_h^p \equiv 0 (\mbox{mod }\psi_l)$, ir para (b). Senão, tentar o próximo valor de $h$.
+  \item Calcular $y'$ e $y_h$. Caso $$\frac{y'-y_h}{y} \equiv 0 (\mbox{mod }\psi_l)$$ então $t \equiv h (\mbox{mod }l)$. Caso contrário, $t \equiv -h (\mbox{mod }l)$.
+  \end{enumerate}
+\item Caso o item (a) da etapa anterior não encontre valor de $h$ que satisfaça a equivalência, então fazer $\omega^2 \equiv p (\mbox{mod }l)$. Caso $\omega$ não exista, então $t \equiv 0 (\mbox{mod }l)$.
+\item Se $\mbox{mdc}(\mbox{numerador}(x^p - x_\omega), \psi_l) = 1$, então $t \equiv 0 (\mbox{mod }l)$. Senão, calcular $$\mbox{mdc}(\mbox{numerador}(\frac{y^p - y_\omega}{y}), \psi_l)$$
+Se mdc $\neq 1$, então $t \equiv 2\omega (\mbox{mod }l)$, caso contrário $a \equiv -2\omega (\mbox{mod }l)$.
+\end{enumerate}
 \end{apendicesenv}
