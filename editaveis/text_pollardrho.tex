@@ -119,7 +119,7 @@ Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produ
 O algoritmo \textit{Floyd's cycle-finding} \--- descrita na seção \ref{floyd} \--- encontra uma colisão na sequência gerada por um único processador. A seguinte estratégia possibilita uma procura eficiente de uma colisão nas sequências geradas por diferentes processadores. Uma \textit{propriedade distintiva} facilmente testável de pontos é selecionada. Por exemplo, um ponto deve ser \textit{distinto} se os primeiros \(t\) \textit{bits} de sua coordenada \(x\) são iguais a zero. Seja \(\theta\) a proporção em $\langle P \rangle$ tendo essa propriedade distintiva. Sempre que um processador encontra um ponto distinto, ele transmite o ponto a um servidor central que o armazena em uma lista ordenada. Quando o servidor recebe o mesmo ponto distinto pela segunda vez, ele calcula o logaritmo discreto desejado pela Equação \ref{eq:x} e termina a execução de todos os processadores. O número esperado de passos por processador antes de uma colisão ocorrer é de $(\sqrt{\pi n/2})/M$. Um ponto distinto subsequente é esperado para após $1/\theta$ passos. Consequentemente o número esperado de operações de curva elíptica desempenhadas por cada processador antes de uma colisão de pontos distintos é de
 
 \begin{equation}
-\dfrac{1}{M} \sqrt{\dfrac{\pi n}{2}} + \dfrac{1}{\theta} \label{eq:execParalized}
+\dfrac{1}{M} \sqrt{\dfrac{\pi n}{2}} + \dfrac{1}{\theta} \label{eq:execParallelized}
 \end{equation}
 
 A sua versão paralelizada do algoritmo Pollard-rho obtém um aumento de velocidade que é linear em relação à quantidade de processadores empregados. Uma observação que deve ser feita é que os processadores não tem de comunicar-se entre si, e além disso tem uma comunicação limitada com o servidor central. Portanto, o espaço total necessário no servidor pode ser controlado com uma seleção cautelosa da propriedade distintiva.
@@ -154,7 +154,7 @@ $$
 
 Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{ mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{ mod \textit{n}}$.
 
-A função $g(R)$ é utilizada como função de iteração para o algoritmo Pollard rho paralelizado. Essa modificação garante ao algoritmo uma melhoria no tempo de execução do Pollard rho paralelizado, dessa forma, a equação \ref{eq:execParalized} passa a ser
+A função $g(R)$ é utilizada como função de iteração para o algoritmo Pollard rho paralelizado. Essa modificação garante ao algoritmo uma melhoria no tempo de execução do Pollard rho paralelizado, dessa forma, a equação \ref{eq:execParallelized} passa a ser
 $$
 \frac{1}{M} \sqrt{ \frac{\pi n}{2t} } + \frac{1}{\theta}
 $$
