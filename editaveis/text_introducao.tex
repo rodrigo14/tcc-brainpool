@@ -13,13 +13,18 @@ Por outro lado, embora a teoria do ECC já exista há algum tempo, só recenteme
 \begin{enumerate}
 	\item \textbf{Objetivo Geral}
 
-Objetivo deste trabalho consiste em realizar pesquisas acerca da criptografia de curvas elípticas e implementar o algoritmo de ataque Pollard-rho e suas variações, comparando a performance destes variações entre si.
+Objetivo deste trabalho consiste em realizar pesquisas acerca da criptografia de curvas elípticas e implementar o algoritmo Pollard-rho - que se propõe a resolver o problema matemático no qual está baseada a segurança deste sistema criptografico - e suas variações, comparando o tempo de execução destas variações entre si.
 
 	\item \textbf{Objetivos Específicos}
 	\begin{enumerate}
-		\item Apresentar conceitos matemáticos importantes que compõem o funcionamento da curvas elípticas e da criptografia de curvas elípticas.
-		\item Demonstrar o problema do logaritmo discreto e algoritmos que tentam resolvê-lo no contexto de ECC.
-		\item Implementar o algoritmo Pollard-rho e suas variações e aplicá-los à uma curva elíptica.
-		\item Apresentar as comparações de resultados práticos dos desempenhos dos algoritmos de ataque implementados.
+		\item Apresentar conceitos matemáticos importantes sobre curvas elípticas e sua aplicação na criptografia.
+		\item Demonstrar o problema do logaritmo discreto e algoritmos para resolvê-lo no contexto de ECC.
+		\item Implementar o algoritmo Pollard-rho e suas variações.
+		\item Utilizar os algoritmos implementados para solucionar o problema do logaritmo discreto para curvas elípticas mais simples, que não tenham utilização prática para criptografia de curvas elípticas. Serão utilizadas curvas elípticas mais simples por dois motivos:
+		\begin{itemize}
+			\item Para validar o trabalho.
+			\item A literatura pesquisada cita a dificuldade e o poder computacional necessário para solucionar tal problema com curvas muito complexas.
+		\end{itemize}
+		\item Apresentar as comparações de resultados práticos dos desempenhos dos algoritmos implementados.
 	\end{enumerate}
 \end{enumerate}
