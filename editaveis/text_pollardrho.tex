@@ -154,8 +154,8 @@ $$
 
 Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{ mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{ mod \textit{n}}$.
 
-A função $g(R)$ é utilizada como função de iteração para o algoritmo Pollard rho paralelizado. Essa modificação garante ao algoritmo uma melhoria no tempo de execução do Pollard rho paralelizado, dessa forma, a equação \ref{eq:execParallelized} passa a ser
+A função $g(R)$ é utilizada como função de iteração para o algoritmo Pollard-rho paralelizado. Essa modificação garante ao algoritmo uma melhoria no tempo de execução do Pollard-rho paralelizado, dessa forma, a equação \ref{eq:execParallelized} passa a ser
 $$
 \frac{1}{M} \sqrt{ \frac{\pi n}{2t} } + \frac{1}{\theta}
 $$
-ou seja, o uso da função $g(R)$ acarreta uma melhoria no tempo de execução do algoritmo por um fator de $\sqrt{t}$.\cite{Guide}
+ou seja, o uso da função $g(R)$ acarreta uma melhoria no tempo de execução do algoritmo por um fator de $\sqrt{t}$. \cite{Guide}
