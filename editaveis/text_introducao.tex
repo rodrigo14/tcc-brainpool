@@ -19,11 +19,12 @@ Objetivo deste trabalho consiste em realizar pesquisas acerca da criptografia de
 	\begin{enumerate}
 		\item Apresentar conceitos matemáticos importantes sobre curvas elípticas e sua aplicação na criptografia.
 		\item Demonstrar o problema do logaritmo discreto e algoritmos para resolvê-lo no contexto de ECC.
-		\item Implementar o algoritmo Pollard-rho e suas variações.
+		\item Implementar um algoritmo de força bruta para resolver o problema do logaritmo discreto para curvas elípticas.
+		\item Implementar o algoritmo Pollard-rho e suas variações: com único processador, com múltiplos processadores e utilizando um automorfismo como função de iteração para o Pollard-rho com múltiplos processadores.
 		\item Utilizar os algoritmos implementados para solucionar o problema do logaritmo discreto para curvas elípticas mais simples, que não tenham utilização prática para criptografia de curvas elípticas. Serão utilizadas curvas elípticas mais simples por dois motivos:
 		\begin{itemize}
-			\item Para validar o trabalho.
-			\item A literatura pesquisada cita a dificuldade e o poder computacional necessário para solucionar tal problema com curvas muito complexas.
+			\item Para validar o trabalho em tempo hábil, ou seja, deseja-se obter um resultado verificável em um prazo que esteja de acordo com o calendário acadêmico da UnB para o primeiro semestre de 2016. Pois a literatura pesquisada faz referências sobre o tempo necessário para resolver o problema do logaritmo discreto para curvas de interesse criptográfico, sendo este impraticável para o escopo deste trabalho.
+			\item A literatura pesquisada cita a dificuldade e o poder computacional necessário para solucionar tal problema com curvas muito complexas, fazendo alusão inclusive à experimentos já realizados utilizando-se milhares de computadores. Como não dispomos do mesmo poder computacional, optamos por resolver o problema para curvas mais simples.
 		\end{itemize}
 		\item Apresentar as comparações de resultados práticos dos desempenhos dos algoritmos implementados.
 	\end{enumerate}
