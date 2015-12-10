@@ -155,29 +155,28 @@ Se o conjunto \(\mathbb{F}\) é finito, então o corpo é denominado \textit{cor
 % CRIPTOGRAFIA
 %
 \section{Criptografia} \label{sec:criptografia}
-Criptografia é a ciência que trata de cifrar a escrita, de modo a torná-la ininteligível para os que não tenham os métodos convencionados para ter acesso a ela. Em Tecnologia da Informação, esta definição é ampliada a fim de englobar não só a escrita, mas qualquer tipo de documento ou dados que devam ser tratados secretamente. Um Sistema de Criptografia define um sistema em que um texto (ou documento, ou qualquer tipo de dado) é transformado através da criptografia em um texto cifrado (\textit{ciphertext}) ou o texto cifrado é transformado de volta à informação original (\textit{plaintext}), através de algoritmos. A primeira ação é denominada cifragem ou criptografar, e a segunda é chamada de decifração ou decriptação. \cite{Portnoi:2005}
+A criptografia é uma ciência que tem por objetivo estudar as formas de cifrar e decifrar a escrita, de modo a torná-la ininteligível para aqueles que não devem ter acesso à informação nela contida. Em Tecnologia da Informação, a criptografia é utilizada para cifrar não apenas a escrita, mas qualquer tipo de dados que necessitem de um tratamento mais restrito quanto ao seu acesso. Um Sistema de Criptografia define procedimentos para cifrar um texto (ou documento, ou qualquer tipo de dado), transformando-o em um texto cifrado (\textit{ciphertext}) e decifrar o mesmo texto cifrado, obtendo-se novamente o texto original (\textit{plaintext}), através de algoritmos. A primeira ação é denominada cifragem ou criptografar, e a segunda é chamada de decifração ou decriptação. \cite{Portnoi:2005}
 
-Com a criptografia pretende-se garantir que uma mensagem só será lida e compreendida pelo destinatário autorizado, e para isso, é necessário que se cumpram quatro requisitos:
+Para garantir que uma mensagem seja interpretada somente pelos seus destinatários legítimos, são necessários que se cumpram quatro requisitos: \cite{Portnoi:2005}
 
 \begin{itemize}
-\item \textit{confidencialidade}: obtida pela encriptação dos dados, assegura que só os receptores autorizados terão acesso às informações da mensagem.
-\item \textit{integridade}: assegura que a informação não será alterada durante o processo de transporte da informação. É obtida por meio da assinatura digital.
-\item \textit{autenticação}: o remetente e o receptor podem confirmar as identidades uns dos outros assim como a origem e o destino da informação. É obtida por meio da assinatura digital e dos certificados.
-\item \textit{irretratabilidade}: ou não-repúdio é obtida por meio da assinatura digital e certificados, o remetente pode assiná-lo de forma digital, limitando legalmente a responsabilidade.
+\item \textit{confidencialidade}: é a encriptação dos dados de forma que somente seja inteligível aos receptores legítimos.
+\item \textit{integridade}: durante a encriptação dos dados, é necessário garantir que a informação não seja modificada pelo algoritmo de cifragem, ou seja, a forma como os dados se apresentam deve ser modificada, mas sua informação deve permanecer a mesma.
+\item \textit{autenticação}: é a garantia de que o emissor e o receptor são realmente quem dizem ser, ou seja, é a forma de verificar as identidades uns dos outros assim como a origem e o destino da informação. A autenticação é obtida através da assinatura digital e dos certificados.
+\item \textit{irretratabilidade}: impede que o emissor ou o receptor negue a mensagem transmitida, dessa forma, o emissor pode provar que o receptor recebeu a mensagem e o receptor pode provar que o emissor a enviou.
 \end{itemize}
 
 %
 % CRIPTOGRAFIA SIMÉTRICA
 %
 \subsection{Criptografia simétrica}
-A criptografia simétrica foi o primeiro tipo de criptografia criado. Funciona transformando um texto em uma mensagem cifrada por meio da definição de uma chave secreta, que será utilizada posteriormente para decriptar a mensagem, tornando novamente um texto simples. \cite{Cavalcante:2015}
+A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia utilizado. Baseia-se no uso de uma chave secreta para criptografar e decriptografar a mensagem. É importante notar que a mesma chave utilizada para cifrar a mensagem é utilizada para decifrá-la. Dessa forma, é necessário que o emissor e o receptor tenham conhecimento da chave, assim, é necessário utilizar um canal seguro para compartilhar a chave. Esse tipo de criptografia é bastante utilizado em transmissões de dados em que não é necessário um grande nível de segurança ou que exista uma forma barata de estabelecer um canal seguro tais como como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas, no armazenamento da informação em um disco rígido.\cite{Cavalcante:2015}
 
-A criptografia simétrica utiliza apenas uma chave para codificar e decodificar uma mensagem. É usada em transmissões de dados em que não é necessário um grande nível de segurança como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas, no armazenamento da informação em um disco rígido.
-
-A criptografia simétrica é relativamente rápida, contudo como desvantagem, não só o transmissor deve conhecer a chave como também o receptor. Além disso, o volume total dos dados transmitidos é limitado pelo tamanho da chave.
+Apesar de ser muito rápida, possui basicamente duas desvantagems, a primeira é a necessidade de um canal seguro para o compartilhamento da chave secreta e a segunda é que, o volume dos dados transmitidos fica limitado pelo tamanho da chave, ou seja, quanto maior o volume de dados, maior deverá ser a chave secreta.
 
 %
 % CRIPTOGRAFIA ASSIMÉTRICA
 %
 \subsection{Criptografia assimétrica}
-Utiliza duas chaves, uma para criptografar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Esta técnica é muito utilizada para o envio de mensagens onde se deseja que somente o destinatário, portador da chave privada, consiga ler a mensagem. O emissor da mensagem utiliza a chave pública para criptografar a mensagem e a envia. Quando o receptor receber a mensagem, ele então utilizará a chave privada para decifrar a mensagem. Este esquema provê a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
+A criptografia assimétrica, também conhecida como criptografia de chave pública, utiliza duas chaves distintas, uma para criptografar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Assim, o emissor tem acesso à chave pública do receptor e utiliza esta para cifrar a mensagem. O receptor ao receber a mensagem, utiliza sua chave privada para decifrá-la. Esse tipo de criptografia não precisa de um canal seguro para compartilhamento da chave, pois a chave pública está disponível para qualquer um que queira enviar a mensagem para o receptor, porém, somente o receptor possui a chave privada.
+Este esquema provê a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
