@@ -56,11 +56,7 @@ O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que sat
 \section{Estruturas Algébricas}
 
 Antes de iniciar os estudos em aritmética de curvas elípticas, é importante
-fixar alguns conceitos de álgebra. De acordo com Hefez,
-
-\begin{citacao}
-``Estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas em que em determinados conjuntos são definidas operações com propriedades semelhantes.'' \cite{Hefez:2008} (p. 12)
-\end{citacao}
+fixar alguns conceitos de álgebra. De acordo com Hefez, estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas, onde determinados conjuntos são definidas operações com propriedades semelhantes. \cite{Hefez:2008} (p. 12)
 
 %
 % GRUPOS
@@ -127,7 +123,7 @@ que é um subconjunto de $G$. Como o conjunto $G$ é um conjunto finito, então 
 
 A \textbf{ordem do elemento} $a \in G$ é o menor inteiro positivo $k$ tal que $a^k = e$. Como o elemento $a$ gera o conjunto $H$, diz-se que $a$ é um \textbf{gerador} do conjunto $H$, e consequentemente, a ordem do conjunto $H$ é igual à ordem de $a$. Quando um grupo é formado por um elemento gerador, diz-se que tal grupo é um \textit{grupo cíclico}. \cite{Coutinho:2014}
 
-Pelo teorema de Lagrange, é possível concluir que a ordem de $H$ divide a ordem de $G$. Uma importante consequência dessa afirmação é que, se um grupo $G$ possui ordem $p$ prima, então seus subgrupos devem ter ordem $1$ ou $p$. Porém, como um subgrupo $H$ formado pelas potências de um elemento $a$ deve possuir pelo menos o elemento neutro $e$ e um gerador $a$, ou seja, deve possuir pelo menos dois elementos, então todos os subgrupos de $G$, com exceção do subgrupo trivial formado pelo elemento neutro, devem ter ordem $p$. Em consequência disso, qualquer elemento $b \in G$ é um gerador do grupo e todo grupo de ordem prima é um grupo cíclico, embora nem todo grupo cíclico possua ordem prima, p.e., o grupo formado formado pelo conjunto $G=\{1,2,3,4\} \mbox{(mod 5)}$ e a operação de multiplicação, tem ordem $k = 4$, porém admite o elemento 2 como gerador. \cite{Coutinho:2014}
+Pelo teorema de Lagrange, é possível concluir que a ordem de $H$ divide a ordem de $G$. Uma importante consequência dessa afirmação é que, se um grupo $G$ possui ordem $p$ prima, então seus subgrupos devem ter ordem $1$ ou $p$. Porém, como um subgrupo $H$ formado pelas potências de um elemento $a$ deve possuir pelo menos o elemento neutro $e$ e um gerador $a$, ou seja, deve possuir pelo menos dois elementos, então todos os subgrupos de $G$, com exceção do subgrupo trivial formado pelo elemento neutro, devem ter ordem $p$. Em consequência disso, qualquer elemento $b \in G$ é um gerador do grupo e todo grupo de ordem prima é um grupo cíclico, embora nem todo grupo cíclico possua ordem prima. Por exemplo, o grupo formado formado pelo conjunto $G=\{1,2,3,4\} \mbox{(mod 5)}$ e a operação de multiplicação têm ordem $k = 4$, porém admite-se o elemento 2 como gerador. \cite{Coutinho:2014}
 
 %
 % HOMOMORFISMOS DE GRUPO
@@ -170,7 +166,7 @@ Para garantir que uma mensagem seja interpretada somente pelos seus destinatári
 % CRIPTOGRAFIA SIMÉTRICA
 %
 \subsection{Criptografia simétrica}
-A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia utilizado. Baseia-se no uso de uma chave secreta para criptografar e decriptografar a mensagem. É importante notar que a mesma chave utilizada para cifrar a mensagem é utilizada para decifrá-la. Dessa forma, é necessário que o emissor e o receptor tenham conhecimento da chave, assim, é necessário utilizar um canal seguro para compartilhar a chave. Esse tipo de criptografia é bastante utilizado em transmissões de dados em que não é necessário um grande nível de segurança ou que exista uma forma barata de estabelecer um canal seguro tais como como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas, no armazenamento da informação em um disco rígido.\cite{Cavalcante:2015}
+A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia utilizado. Baseia-se no uso de uma chave secreta para criptografar e decriptografar a mensagem. É importante notar que a mesma chave utilizada para cifrar a mensagem é utilizada para decifrá-la. Dessa forma, é necessário que o emissor e o receptor tenham conhecimento da chave, assim, é necessário utilizar um canal seguro para compartilhar a chave. Esse tipo de criptografia é bastante utilizado em transmissões de dados em que não é necessário um grande nível de segurança ou que exista uma forma barata de estabelecer um canal seguro tais como como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas, no armazenamento da informação em um disco rígido. \cite{Cavalcante:2015}
 
 Apesar de ser muito rápida, possui basicamente duas desvantagems, a primeira é a necessidade de um canal seguro para o compartilhamento da chave secreta e a segunda é que, o volume dos dados transmitidos fica limitado pelo tamanho da chave, ou seja, quanto maior o volume de dados, maior deverá ser a chave secreta.
 
