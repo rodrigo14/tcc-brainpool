@@ -13,7 +13,7 @@ O \textbf{teorema da divisão} diz que: dados dois inteiros $a, b$, com $b > 0$,
 
 onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração desse teorema não será abordada nesse trabalho.
 
-A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como $3q$, $3q + 1$ ou $3q + 2$. Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for $k$, então haverá $k$ \textbf{classes de congruência mod k}. A aritmética modular estuda essa relação entre cada inteiro da sequência $S$ e sua classe de congruência mod \(k\) \cite{Lewinter:2015}.
+A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como \(3q\), \(3q + 1\) ou \(3q + 2\). Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for \(n\), então haverá \(n\) \textbf{classes de resto mod n}. A aritmética modular estuda essa relação entre cada inteiro da sequência \(S\) e sua classe de congruência mod \(n\) \cite{Lewinter:2015}.
 
 Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros \(a\) e \(b\), diz-se que \(a\) é \textit{congruente} a \(b\) módulo \(m\) se \(m\) divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre \(a\) e \(b\) é representada pela notação abaixo.
 \begin{equation}
@@ -36,14 +36,15 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
   \item $[a \pmod n \times b \pmod n] \pmod n = (a \times b) \pmod n$
 \end{enumerate}
 
-A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) é um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, onde gcd\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
+A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) é um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, onde mdc\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
-  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{gcd}(n,d)}\right) \label{eq:3}
+  \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{mdc}(n,d)}\right) \label{eq:3}
 \end{equation}
 
 O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que satisfaz a operação \(a \times b = 1 \pmod  n\), e somente pode ser obtido quando existe \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor do inverso multiplicativo \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
 
+% A CORRIGIR
 \par Outra operação que pode ser definida sobre corpos é a exponenciação modular, que calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Assim, $b$ é a base, $k$ o expoente e $m$ o módulo da exponenciação modular, que pode ser expressa como na equação \ref{eq:4}.
 
 \begin{equation}
