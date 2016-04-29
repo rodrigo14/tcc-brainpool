@@ -7,7 +7,7 @@
 % DEFINIÇÃO
 %
 \subsection{Definição}
-Curvas elípticas nada tem a ver com elipses. Elas têm esse nome porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse \cite{Stallings:2011}. Uma curva elíptica \(E\) é um conjunto de soluções de uma equação cúbica definida sobre um corpo \(\mathbb{F}\) é descrita da seguinte forma:
+Curvas elípticas têm esse nome porque são descritas por equações cúbicas, semelhantes às usadas para calcular a circunferência de uma elipse \cite{Stallings:2011}. Uma curva elíptica \(E\) é um conjunto de soluções de uma equação cúbica definida sobre um corpo \(\mathbb{F}\) é descrita da seguinte forma:
 \begin{equation}
 y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:5}
 \end{equation}
@@ -42,7 +42,7 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 \subsection{Leis de grupo para Curvas Elípticas}
 Seja o conjunto de pontos $E(\mathbb{F})$ da curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\), é possível definir uma operação sobre esse conjunto de pontos, que será chamada de adição e indicada por $+$. Essa operação de adição e o conjunto de pontos $E(\mathbb{F})$ da curva elíptica formam um grupo abeliano \cite{Stallings:2011}.
 
-A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver figura \ref{fig:pontos}). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que os pontos \(P, Q\) possuam a mesma coordenada $x$ e coordenadas $y$ diferentes). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
+A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver Figura \ref{fig:pontos}). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que os pontos \(P, Q\) possuam a mesma coordenada $x$ e coordenadas $y$ diferentes). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
 
 Se as coordenadas \(x\) dos pontos \(P\) e \(Q\) são iguais e as coordenadas $y$ são diferentes, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
 
@@ -85,7 +85,7 @@ A Equação \ref{eq:6} tem a mesma forma da Equação \ref{eq:7}. As regras para
 \centering
 \includegraphics[scale=0.6, bb=0 0 515 478]{figuras/curva_sobre_corpo_finito.eps}
 \caption{Curva elíptica $E_{23}(1, 1)$}
-\label{fig:curvas}
+\label{fig:curva_exemplo}
 \end{figure}
 
 \begin{enumerate}
@@ -111,7 +111,7 @@ A Equação \ref{eq:6} tem a mesma forma da Equação \ref{eq:7}. As regras para
 % ORDEM DE UMA CURVA ELIPTICA
 %
 \subsection{Quantidade de pontos em uma curva elíptica}
-Seja a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_q$. O conjunto de todos os pontos que pertencem à curva elíptica é representado por $E(\mathbb{F}_p)$ (ver \ref{eq:pontosCurva}). A quantidade de pontos que compõe esse conjunto é a \textbf{ordem de $E$ sobre $\mathbb{F}_q$} e será representada pela notação $\#E(\mathbb{F}_q)$. \cite{Guide}
+Seja a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_q$. O conjunto de todos os pontos que pertencem à curva elíptica é representado por $E(\mathbb{F}_q)$ (ver \ref{eq:pontosCurva}). A quantidade de pontos que compõe esse conjunto é a \textbf{ordem de $E$ sobre $\mathbb{F}_q$} e será representada pela notação $\#E(\mathbb{F}_q)$. \cite{Guide}
 
 A ordem da curva elíptica é importante para o sistema criptográfico baseado em curvas elípticas, pois sua segurança depende dos fatores primos da ordem \cite{Alvarado:2005}. Se a ordem da curva elíptica pode ser fatorada em números primos pequenos, a sua segurança pode ser facilmente quebrada utilizando o algoritmo de Pohlig-Hellman, que não será abordado em profundidade nesse trabalho.
 
