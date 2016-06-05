@@ -6,16 +6,38 @@ Neste capítulo serão mostrados os conceitos matemáticos necessários para o e
 %
 \section{Aritmética Modular}
 
+O \textbf{teorema de Eudoxius} afirma que, dados dois inteiros \(a\) e \(b\) com \(b \neq 0\), então, ou \(a\) é múltiplo de \(b\), ou se encontra entre dois múltiplos 
+consecutivos de \(b\), assim, existe um inteiro \(q\) tal que\cite{Santos:2014}
+
+\begin{equation} \label{eudoxius}
+  qb \leq a < (q + 1)b\quad\mbox{para \(b > 0\)}
+\end{equation}
+
+\begin{equation}
+  qb \leq a < (q - 1)b\quad\mbox{para \(b < 0\)}
+\end{equation}
+
 O \textbf{teorema da divisão} diz que: dados dois inteiros $a, b$, com $b > 0$, ao dividir \(a\) por \(b\), obtém-se um único par de inteiros $q, r$ que obedecem ao seguinte relacionamento:
 \begin{equation}
   a=qb+r \qquad 0 \leq r<b;\ q=\lfloor a/b \rfloor
 \end{equation}
 
-onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração desse teorema não será abordada nesse trabalho.
+onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração será feita utilizando o teorema de Eudoxius descrito acima. Dessa forma, existe um inteiro \(q\) que satisfaz a equação~\ref{eudoxius}, o que implica que \(0 \leq a - qb\) e que \(a - qb < b\). Definindo \(r = a - qb\), teremos demonstrado a existência de \(q\) e \(r\). A unicidade de \(q\) e 
+\(r\) pode ser demonstrada por contradição. Suponhamos que exista outro par de inteiros \(q_1\) e \(r_1\) que satisfaçam a equação
+\begin{equation}
+  a = q_1b + r_1
+\end{equation}
+então \((qb + r) - (q_1b - r_1) = 0\), assim temos que \(b(q - q_1) = r_1 - r\), ou seja, \(b|(r_1 - r)\). Mas isso só é possível se \(r_1 - r = 0\) 
+pois \(r < b\) e \(r_1 < b\), dessa forma temos que \(r_1 = r\) 
+e assim fica também demonstrada a unicidade de \(q\) e \(r\).\cite{Santos:2014}
 
-A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência como \(3q\), \(3q + 1\) ou \(3q + 2\). Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for \(n\), então haverá \(n\) \textbf{classes de resto mod n}. A aritmética modular estuda essa relação entre cada inteiro da sequência \(S\) e sua classe de congruência mod \(n\) \cite{Lewinter:2015}.
 
-Quando dois inteiros pertencem à mesma classe de congruência, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros \(a\) e \(b\), diz-se que \(a\) é \textit{congruente} a \(b\) módulo \(m\) se \(m\) divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre \(a\) e \(b\) é representada pela notação abaixo.
+A aritmética modular trata da relação entre os inteiros e seus resíduos quando são divididos por algum inteiro positivo denominado \textbf{módulo} \cite{Lewinter:2015}. 
+Para exemplificar melhor, considere a sequência de números naturais $S = 3, 4, 5, \dots$ e o módulo sendo $b = 3$, é possível reescrever qualquer número dessa sequência 
+como \(3q\), \(3q + 1\) ou \(3q + 2\). Dessa forma, qualquer número da sequência se encaixa em uma dessas três classes. Analogamente, se o módulo for \(n\), então haverá 
+\(n\) \textbf{classes de resto mod n}. A aritmética modular estuda essa relação entre cada inteiro da sequência \(S\) e sua classe de resto mod \(n\) \cite{Lewinter:2015}.
+
+Quando dois inteiros pertencem à mesma classe de resto, diz-se que estes são \textit{congruentes mod k}. Uma definição mais formal de congruência é: dados dois inteiros \(a\) e \(b\), diz-se que \(a\) é \textit{congruente} a \(b\) módulo \(m\) se \(m\) divide a diferença $(a-b)$, ou seja, $m \mid (a-b)$. A relação de congruência entre \(a\) e \(b\) é representada pela notação abaixo.
 \begin{equation}
   a \equiv b \pmod m \label{eq:1}
 \end{equation}
@@ -36,6 +58,10 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
   \item $[a \pmod n \times b \pmod n] \pmod n = (a \times b) \pmod n$
 \end{enumerate}
 
+% DESENVOLVER O MDC
+Antes de tratar a divisão módulo \(n\), é importante fixar o conceito de \textbf{máximo divisor comum}(MDC) entre dois números inteiros. O MDC entre dois inteiros \(a\) e \(b\) 
+é o maior inteiro que divide simultaneamente \(a\) e \(b\).
+
 A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, onde mdc\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
@@ -44,8 +70,7 @@ A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) um núm
 
 O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que satisfaz a operação \(a \times b = 1 \pmod  n\), e somente pode ser obtido quando existe \((a, n) = 1\) (isto é, \(a\) e \(n\) são coprimos). O valor do inverso multiplicativo \(b\) pode ser obtido através do Algoritmo de Euclides Estendido \cite{Halim:2013}.
 
-% A CORRIGIR
-\par Outra operação que pode ser definida sobre corpos é a exponenciação modular, que calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Assim, $b$ é a base, $k$ o expoente e $m$ o módulo da exponenciação modular, que pode ser expressa como na equação \ref{eq:4}.
+\par Outra operação que pode ser definida é a exponenciação modular, que calcula o resto de um número inteiro \(b\) quando elevado a um número inteiro \(k\) e é dividido por um inteiro positivo \(m\). Assim, $b$ é a base, $k$ o expoente e $m$ o módulo da exponenciação modular, que pode ser expressa como na equação \ref{eq:4}.
 
 \begin{equation}
   c \equiv b^k\pmod m \label{eq:4}
@@ -81,7 +106,7 @@ $(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
 
 Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano} (ou \textbf{comutativo}) em homenagem ao matemático Niels Abel. \cite{Gilbert:2004}
 
-Exemplos de grupos abelianos são $(Z, +)$, $(R, +)$, ambos com identidade 0 e com infinitos elementos. ``O número de elementos de um grupo é a sua \textbf{ordem}'' \cite{Coutinho:2014} (pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
+Exemplos de grupos abelianos são $(\mathds{Z}, +)$, $(\mathds{R}, +)$, ambos com identidade 0 e com infinitos elementos. ``O número de elementos de um grupo é a sua \textbf{ordem}'' \cite{Coutinho:2014} (pg. 134). Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
 
 %
 % SUBGRUPOS
@@ -102,6 +127,10 @@ Todo grupo possui pelo menos dois subgrupos. Se \(e\) indica o elemento neutro d
 %
 \subsection{Teorema de Lagrange}
 Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, no qual estabelece que, se \(G\) é um grupo finito e \(H\) é um subgrupo de \(G\), então a ordem de \(H\) sempre divide a ordem de \(G\) \cite{Shoup:2005}. A demostração deste teorema não será abordada nesse trabalho, mas seu resultado será de grande utilidade mais à frente, no estudo da criptografia de curvas elípticas.
+
+%
+% CLASSES LATERAIS E DEMONSTRAÇAO DO TEOREMA DE LAGRANGE
+%
 
 %
 % SUBGRUPOS CÍCLICOS
