@@ -149,7 +149,7 @@ onde $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\
 
 O método de Pollard-rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para cada classe de equivalência $[R]$ e uma função $g$ tal que
 $$
-g(R) = \overline{f(R)}
+g(R) = f(\overline{R})
 $$
 
 Sendo conhecido um inteiro $\lambda \in [0, n - 1]$ tal que $\psi(P) = \lambda P$ e os inteiros $a,b$ tal que $X = aP + bQ$, então pode-se calcular $\overline{X} = \overline{a}P + \overline{b}Q$ eficientemente por $\overline{a} = \lambda^{j}a \mbox{ mod \textit{n}}$ e $\overline{b} = \lambda^{j}b \mbox{ mod \textit{n}}$.
