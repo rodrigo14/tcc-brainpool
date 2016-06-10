@@ -20,7 +20,7 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 					abreviaturas.tex simbolos.tex text_introducao.tex \
 					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
 					elementosdotexto.tex elementosdopostexto.tex \
-					apendices.tex anexos.tex text_fundamentacao.tex text_cronograma.tex \
+					apendices.tex anexos.tex text_fundamentacao.tex  \
 					text_ecc.tex text_criptoanalise.tex text_pollardrho.tex text_metodologia.tex \
 					text_consideracoesfinais.tex text_experimentos.tex
 
@@ -36,10 +36,10 @@ SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES)
 
 .PHONY: all clean dist-clean
 
-all: 
+all:
 	@make $(TARGET)
 	@make clean
-     
+
 $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
 	$(BIBTEX) $(AUX_FILE)
