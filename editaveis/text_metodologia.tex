@@ -3,7 +3,6 @@ Metodologias específicas colaboram para estabelecer diretrizes e boas práticas
 
 Com o intuito de guiar a pesquisa de forma adequada, esse capítulo aborda sobre os diversos tipos de metodologias de pesquisa, de modo a definir qual se adequa melhor ao projeto.
 
-
 %
 % CLASSIFICAÇÃO DA PESQUISA
 %
@@ -67,6 +66,9 @@ Os seguintes pacotes de trabalho, não necessariamente nessa ordem, são fundame
 \item \textbf{Parte escrita:} Escrita da parte textual do trabalho.
 \end{itemize}
 
+%
+% FERRAMENTAS
+%
 \section{Ferramentas}
 A seguir serão apresentadas as ferramentas utilizadas e o ambiente de desenvolvimento, desde as configurações físicas do computador ao software utilizado.
 
@@ -131,7 +133,13 @@ Armazenamento        & ATA Disk 100 MB                               \\
     \bottomrule
 
     \end{tabularx}
-\caption{Bibliotecas e ferramentas utilizadas no desenvolvimento.}
+\caption{Bibliotecas e ferramentas utilizadas no desenvolvimento}
 \label{table:libs}
 
 \end{table}
+
+%
+% GERAÇÃO DE CURVAS
+%
+\section{Geração de Curvas}
+Não é propósito deste trabalho realizar a geração de curvas elípticas e o cálculo da ordem dessas curvas. Para isso foi utilizado a biblioteca SageMath, que supre essas necessidades. Esta é uma biblioteca matemática open-source escrita em Python por uma comunidade de programadores e matemáticos, que buscam uma alternativa para os principais sistemas proprietários de software matemático como Magma, Maple, Mathematica e Matlab. SageMath é um projeto que fornece vários conceitos como teoria dos números, teoria dos grafos, combinatória, álgebra, criptografia, matemática aplicada, estatística, cálculo simbólico, etc. Para curvas elíticas, esta biblioteca implementa um rápido algoritmo de contagem de pontos (algoritmo Schoof-Elkies-Atkin).
