@@ -82,20 +82,34 @@ O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que sat
 %
 \section{Relações de Equivalência}
 
-Em matemática, relação é o estudo de como os elementos de um conjunto $E$, ou de dois conjuntos distintos(relação binária), se relacionam entre si\cite{Domingues:2003}. O conceito de relação pode ser compreendido de maneira mais fácil partindo-se da definição de outro conceito, o de produto cartesiano.
-DEFINIÇÃO: Sejam dois conjuntos não vazios \(E\) e \(F\), o \textit{produto cartesiano} entre esses dois conjuntos, representado por \(E \times F\), é o conjunto de todos os pares ordenados \((x, y)\), tais que \(x \in E\) e \(y \in F\).
+Em matemática, relação é o estudo de como os elementos de um conjunto $E$, ou de dois conjuntos distintos, se relacionam entre si\cite{Domingues:2003}. O conceito de relação pode ser compreendido facilmente partindo-se da definição de outro conceito, o de \textit{produto cartesiano}.
+
+Sejam dois conjuntos não vazios \(E\) e \(F\), o \textbf{produto cartesiano} entre esses dois conjuntos, representado por \(E \times F\), é o conjunto de todos os pares ordenados \((x, y)\), tais que \(x \in E\) e \(y \in F\).
 
 \begin{equation}
   E \times F = {(x, y) | x \in E \mbox{ e } y \in F}
 \end{equation}
 
-Assim, defini-se \textit{relação binária} de \(E\) em \(F\) como qualquer subconjunto de \(E \times F\), ou seja, uma relação qualquer que une um \(x \in E\) a um \(y \in F\)\cite{Domingues:2003}. Quando definida sobre um conjunto \(E\), algumas propriedades da relação são:
+Sabendo-se o conceito de produto cartesiano, defini-se \textit{relação binária} de \(E\) em \(F\) como qualquer subconjunto de \(E \times F\), ou seja, uma relação \(\mathcal{R}\) une um \(x \in E\) a um \(y \in F\) em um par ordenado \((x, y)\), e dizemos que \textit{\(x\) se relaciona com \(y\) mediante \(\mathcal{R}\)}, que pode ser representado por \(x\mathcal{R}y\)\cite{Domingues:2003}. Lembrando-se que, uma relação \(\mathcal{R}\) pode ser definida somente sobre um conjunto \(E\), ou seja, a relação \(\mathcal{R}\) é um subconjunto do produto cartesiano \(E \times E\).
+
+Quando definida sobre um conjunto \(E\), algumas propriedades que a relação \(\mathcal{R}\) pode atender são:
 
 \begin{itemize}
-  \item Reflexiva: 
-  \item Simétrica:
-  \item Transitiva:
-  \item Anti-simétrica:
+  \item \textbf{Reflexiva}: a relação \(\mathcal{R}\) é reflexiva se todo elemento \(x \in E\) se relaciona consigo mesmo, ou seja, \(x\mathcal{R}x\). Por exemplo, para \(E = \{a, b, c\}\), a relação 
+  $$\mathcal{R} = \{(a, a), (b, b), (c, c), (a, b), (a, c)\}$$
+  é reflexiva, pois para cada elemento \(x \in E\), existe um par ordenado \((x, x)\) em \(\mathcal{R}\)\cite{Domingues:2003}. 
+
+  \item \textbf{Simétrica}: a relação \(\mathcal{R}\) é simétrica se é válido afirmar que \(y\mathcal{R}x\) sempre que \(x\mathcal{R}y\), com \(x, y \in E\). Por exemplo, a relação 
+  $$\mathcal{R} = \{(a, a), (a, b), (b, a), (c, c)\}$$
+  é simétrica sobre \(E = \{a, b, c\}\), pois é facilmente verificável que \(y\mathcal{R}x\) sempre que \(x\mathcal{R}y\)\cite{Domingues:2003}.
+
+  \item \textbf{Transitiva}: a relação \(\mathcal{R}\) é transitiva se é válido afirmar que \(x\mathcal{R}z\) sempre que \(x\mathcal{R}y\) e \(y\mathcal{R}z\). Por exemplo, a relação 
+  $$\mathcal{R} = \{(a, b), (b, c), (a, c), (c, c)\}$$
+  é transitiva sobre \(E = \{a, b, c\}\), pois pode-se verificar que \(a\mathcal{R}b\) e \(b\mathcal{R}c\) implica em \(a\mathcal{R}c\)\cite{Domingues:2003}.
+
+  \item \textbf{Anti-simétrica}: a propriedade anti-simétrica de uma relação \(\mathcal{R}\), como o nome já diz, é o contrário da propriedade simétrica, ou seja, se o par ordenado \((x, y) \in \mathcal{R}\), então \((y, x) \notin \mathcal{R}\), exceto se \(x = y\). Por exemplo, a relação 
+  $$\mathcal{R} = \{(a, a), (a, b), (b, c), (c, c)\}$$
+  é anti-simétrica sobre \(E = \{a, b, c\}\), pois para cada par \((x, y) \in \mathcal{R}\), com \(x \neq y\), o par \((y, x) \notin \mathcal{R}\).
 \end{itemize}
 
 Uma relação que satisfaz as propriedades reflexiva, simétrica e transitiva citadas acima, é chamada de \textit{relação de equivalência}\cite{Domingues:2003}.
