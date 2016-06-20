@@ -112,8 +112,33 @@ Quando definida sobre um conjunto \(E\), algumas propriedades que a relação \(
   é anti-simétrica sobre \(E = \{a, b, c\}\), pois para cada par \((x, y) \in \mathcal{R}\), com \(x \neq y\), o par \((y, x) \notin \mathcal{R}\).
 \end{itemize}
 
-Uma relação que satisfaz as propriedades reflexiva, simétrica e transitiva citadas acima, é chamada de \textit{relação de equivalência} \cite{Domingues:2003}.
+Uma relação que satisfaz as propriedades reflexiva, simétrica e transitiva citadas acima, é chamada de \textbf{relação de equivalência} \cite{Domingues:2003}.
 
+Seja o conjunto \(E\) e a relação de equivalência \(\mathcal{R}\) sobre \(E\), para cada elemento \(a \in E\) existe uma \textbf{classe de equivalência} representada por \(\overline{a}\) e constituída por todos os elementos em \(E\) que estão relacionados com \(a\) mediante a relação \(\mathcal{R}\)
+$$
+  \overline{a} = \{x \in E | x \mathcal{R} a \}
+$$
+e diz-se que \(\overline{a}\) é a classe de equivalência determinada por \(a\), módulo \(\mathcal{R}\) \cite{Domingues:2003}. Por exemplo, na relação de equivalência 
+$$
+\mathcal{R} = \{(a, a), (b, b), (c, c), (d, d), (a, b), (b, a), (b, c), (c, b), (a, c), (c, a)\}
+$$
+sobre o conjunto \(E = \{a, b, c, d\}\), a classe de equivalência determinada por \(a\) módulo \(\mathcal{R}\) é dada por
+$$
+  \overline{a} = \{a, b, c\}
+$$
+pois apenas os elementos \(a\), \(b\) e \(c\) estão relacionados com \(a\) mediante \(\mathcal{R}\).
+
+O conjunto formado pelas classes de equivalência módulo \(\mathcal{R}\) é chamado de \textbf{conjunto-quociente} de \(E\) por \(\mathcal{R}\) e indicado por \(E/\mathcal{R}\) \cite{Domingues:2003}. Por exemplo, para o exemplo anterior, as classes de equivalência são
+$$
+  \overline{a} = \{a, b, c\}, \quad
+  \overline{b} = \{b, a, c\}, \quad
+  \overline{c} = \{c, a, b\}, \quad
+  \overline{d} = \{d\}
+$$
+logo, o conjunto-quociente de \(E\) por \(\mathcal{R}\) é dado por
+$$
+  E/\mathcal{R} = \{\{a, b, c\}, \{d\}\}
+$$
 
 %
 % ESTRUTURAS ALGÉBRICAS
