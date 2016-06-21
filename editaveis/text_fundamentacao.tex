@@ -169,8 +169,9 @@ $(a * b) * c = a * (b * c)$ para todo $a,b,c \in G$.
 \end{enumerate}
 
 Se a operação é \textbf{comutativa}, ou seja, se $a * b = b * a$ para todo $a, b \in G$, então o grupo é denominado \textbf{abeliano} (ou \textbf{comutativo}) em homenagem ao matemático Niels Abel \cite{Gilbert:2004}.
+Exemplos de grupos abelianos são $(\mathds{Z}, +)$, $(\mathds{R}, +)$, ambos com identidade 0 e com infinitos elementos. 
 
-Exemplos de grupos abelianos são $(\mathds{Z}, +)$, $(\mathds{R}, +)$, ambos com identidade 0 e com infinitos elementos. A \textbf{ordem do grupo} é dada pela quantidade de elementos que este possui \cite{Coutinho:2014}. Assim, um grupo que possui infinitos elementos, por exemplo, o grupo $(\mathds{Z}, +)$, diz-se que possui ordem infinita, já os grupos que possuem uma quantidade finita de elementos, diz-se possuir orderm finita. Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
+A \textbf{ordem do grupo} é dada pela quantidade de elementos que este possui \cite{Coutinho:2014}. Assim, um grupo que possui infinitos elementos, por exemplo, o grupo $(\mathds{Z}, +)$, diz-se que possui ordem infinita, já os grupos que possuem uma quantidade finita de elementos, diz-se possuir ordem finita. Para este trabalho, os grupos de maior interesse são aqueles que possuem ordem finita.
 
 %
 % SUBGRUPOS
@@ -190,11 +191,29 @@ Todo grupo possui pelo menos dois subgrupos. Esses dois subgrupos são chamados 
 % TEOREMA DE LAGRANGE
 %
 \subsection{Teorema de Lagrange}
-Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, no qual estabelece que, se \(G\) é um grupo finito e \(H\) é um subgrupo de \(G\), então a ordem de \(H\) sempre divide a ordem de \(G\) \cite{Shoup:2005}. A demostração deste teorema não será abordada nesse trabalho, mas seu resultado será de grande utilidade mais à frente, no estudo da criptografia de curvas elípticas.
+Um teorema de grande importância para o estudo da criptografia é o teorema de Lagrange, no qual estabelece que, se \(G\) é um grupo finito e \(H\) é um subgrupo de \(G\), então a ordem de \(H\) sempre divide a ordem de \(G\) \cite{Shoup:2005}. Para a demostração desse teorema, além dos conceitos já apresentados, faz-se necessário apresentar o conceito de classes laterais e algumas propriedades que podem ser extraídas a partir destas.
 
 %
-% CLASSES LATERAIS E DEMONSTRAÇAO DO TEOREMA DE LAGRANGE
+% CLASSES LATERAIS 
 %
+\subsubsection{Classes Laterais}
+Seja um grupo \(G\), um subgrupo \(H\) de \(G\), e um elemento \(a \in G\), chama-se \textbf{classe lateral à direita}, módulo \(H\), determinada por \(a\), qualquer subconjunto de \(G\) formado pelos elementos \(Ha\) tais que \(Ha = \{ha\ |\  h \in H\}\) \cite{Gilbert:2004}. Por exemplo, considere um grupo multiplicativo formado pelo conjunto \(\mathbb{Z}_7^* = \{1, 2, 3, 4, 5, 6\}\), agora considere o subconjunto \(H = \{1, 4, 5\}\). As classes laterais à direita são dadas por
+\begin{gather*}
+  H\cdot1 = \{1\ \cdot\ 1,\ 4\ \cdot\ 1,\ 5\ \cdot\ 1\} = \{1, 4, 5\} \\
+  H\cdot2 = \{1\ \cdot\ 2,\ 4\ \cdot\ 2,\ 5\ \cdot\ 2\} = \{2, 1, 3\} \\
+  H\cdot3 = \{1\ \cdot\ 3,\ 4\ \cdot\ 3,\ 5\ \cdot\ 3\} = \{3, 5, 1\} \\
+  H\cdot4 = \{1\ \cdot\ 4,\ 4\ \cdot\ 4,\ 5\ \cdot\ 4\} = \{4, 2, 6\} \\
+  H\cdot5 = \{1\ \cdot\ 5,\ 4\ \cdot\ 5,\ 5\ \cdot\ 5\} = \{5, 6, 4\} \\
+  H\cdot6 = \{1\ \cdot\ 6,\ 4\ \cdot\ 6,\ 5\ \cdot\ 6\} = \{6, 3, 2\}
+\end{gather*}
+De forma análoga, as \textbf{classes laterais à esquerda} são definidas pelos subconjuntos \(aH = \{ah\ |\ h \in H\}\).
+Pode-se perceber que todas as classes laterais tem a mesma cardinalidade, ou seja, possuem a mesma quantidade de elementos.
+
+%
+% DEMONSTRAÇAO DO TEOREMA DE LAGRANGE
+%
+\subsubsection{Demonstração do Teorema de Lagrange}
+
 
 %
 % SUBGRUPOS CÍCLICOS
@@ -270,4 +289,4 @@ A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia 
 %
 \subsection{Criptografia assimétrica}
 A criptografia assimétrica, também conhecida como criptografia de chave pública, utiliza duas chaves distintas, uma para cifrar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Assim, o emissor tem acesso à chave pública do receptor e utiliza esta para cifrar a mensagem. O receptor ao receber a mensagem, utiliza sua chave privada para decifrá-la. Esse tipo de criptografia não precisa de um canal seguro para compartilhamento da chave, pois a chave pública está disponível para qualquer um que queira enviar a mensagem para o receptor, porém, somente o receptor possui a chave privada \cite{Cavalcante:2015}.
-Este sistema é capaz provê a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
+Este sistema é capaz de prover a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
