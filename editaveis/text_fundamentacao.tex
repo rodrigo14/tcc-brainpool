@@ -81,6 +81,7 @@ O inverso multiplicativo de $a$ módulo \(n\) é o número inteiro \(b\) que sat
 % RELAÇÕES DE EQUIVALÊNCIA
 %
 \section{Relações de Equivalência}
+\label{relacoes_equivalencia}
 
 Em matemática, relação é o estudo de como os elementos de um conjunto $E$, ou de dois conjuntos distintos, se relacionam entre si \cite{Domingues:2003}. O conceito de relação pode ser compreendido facilmente partindo-se da definição de outro conceito, o de \textit{produto cartesiano}.
 
@@ -140,6 +141,14 @@ $$
   E/\mathcal{R} = \{\{a, b, c\}, \{d\}\}
 $$
 
+Um partição de um conjunto não vazio \(E\) é formada pela classe \(\mathcal{F}\) dos seus subconjuntos não vazios tal que sejam satisfeitas as propriedades \cite{Domingues:2003}:
+\begin{enumerate}
+  \item Para quaisquer dois membros da classe \(\mathcal{F}\), ou eles são iguais, ou são disjuntos, ou seja, não possuem elementos em comum.
+  \item A união dos membros da classe \(\mathcal{F}\) é igual ao conjunto \(E\).
+\end{enumerate}
+
+É importante notar que a união das classes de equivalência é igual ao próprio conjunto \(E\), isto porque uma relação de equivalência sobre um conjunto \(E\) faz com que \(E/\mathcal{R}\) seja uma partição do conjunto \(E\) \cite{Domingues:2003}.
+
 %
 % ESTRUTURAS ALGÉBRICAS
 %
@@ -197,24 +206,35 @@ Um teorema de grande importância para o estudo da criptografia é o teorema de 
 % CLASSES LATERAIS 
 %
 \subsubsection{Classes Laterais}
-Seja um grupo \(G\), um subgrupo \(H\) de \(G\), e um elemento \(a \in G\), chama-se \textbf{classe lateral à direita}, módulo \(H\), determinada por \(a\), qualquer subconjunto de \(G\) formado pelos elementos \(Ha\) tais que \(Ha = \{ha\ |\  h \in H\}\) \cite{Gilbert:2004}. Por exemplo, considere um grupo multiplicativo formado pelo conjunto \(\mathbb{Z}_7^* = \{1, 2, 3, 4, 5, 6\}\), agora considere o subconjunto \(H = \{1, 4, 5\}\). As classes laterais à direita são dadas por
-\begin{gather*}
-  H\cdot1 = \{1\ \cdot\ 1,\ 4\ \cdot\ 1,\ 5\ \cdot\ 1\} = \{1, 4, 5\} \\
-  H\cdot2 = \{1\ \cdot\ 2,\ 4\ \cdot\ 2,\ 5\ \cdot\ 2\} = \{2, 1, 3\} \\
-  H\cdot3 = \{1\ \cdot\ 3,\ 4\ \cdot\ 3,\ 5\ \cdot\ 3\} = \{3, 5, 1\} \\
-  H\cdot4 = \{1\ \cdot\ 4,\ 4\ \cdot\ 4,\ 5\ \cdot\ 4\} = \{4, 2, 6\} \\
-  H\cdot5 = \{1\ \cdot\ 5,\ 4\ \cdot\ 5,\ 5\ \cdot\ 5\} = \{5, 6, 4\} \\
-  H\cdot6 = \{1\ \cdot\ 6,\ 4\ \cdot\ 6,\ 5\ \cdot\ 6\} = \{6, 3, 2\}
-\end{gather*}
-De forma análoga, as \textbf{classes laterais à esquerda} são definidas pelos subconjuntos \(aH = \{ah\ |\ h \in H\}\).
-Pode-se perceber que todas as classes laterais tem a mesma cardinalidade, ou seja, possuem a mesma quantidade de elementos.
+Seja um grupo \(G\), um subgrupo \(H\) de \(G\), e um elemento \(a \in G\), chama-se \textbf{classe lateral à direita}, módulo \(H\), determinada por \(a\), qualquer subconjunto de \(G\) formado pelos elementos \(Ha\) tais que \(Ha = \{ha\ |\  h \in H\}\) \cite{Gilbert:2004}. Por exemplo, considere um grupo multiplicativo formado pelo conjunto \(G = \{1, -1, i, -i\}\), agora considere o subconjunto \(H = \{1, -1\}\) \cite{Domingues:2003}. As classes laterais à direita são dadas por
+\begin{align*}
+  &1\cdot H = \{1\ \cdot\ 1,\ 1 \cdot -1\} = \{1, -1\} \\
+  &-1\cdot H = \{-1\ \cdot\ 1,\ -1 \cdot -1\} = \{-1, 1\} \\
+  &i\cdot H = \{i\ \cdot\ 1,\ i \cdot -1\} = \{i, -i\} \\
+  &-i\cdot H = \{-i\ \cdot\ 1,\ -i \cdot -1\} = \{-i, i\}
+\end{align*}
+De forma análoga, as \textbf{classes laterais à esquerda} são definidas pelos subconjuntos \(aH = \{ah\ |\ h \in H\}\). Assim, se o grupo for um grupo abeliano, então \(aH = Ha\) \cite{Domingues:2003}.
+O conjunto-quociente de \(G\) por \(H\), nesse caso, é dado por
+$$
+  G / H = \{\{1H\}, \{iH\}\}
+$$
+O \textbf{índice de \(H\) em \(G\)} é a quantidade de classes laterais distintas que compõe o conjunto-quociente, sendo denotado por \((G : H)\). No caso acima, o índice é igual a dois, pois o conjunto quociente é formado pelas classes laterais \(\{1H\}\) e \(\{iH\}\) \cite{Domingues:2003}.
+
+Pode-se perceber que todas as classes laterais tem a mesma cardinalidade, ou seja, possuem a mesma quantidade de elementos, que é a mesma quantidade de elementos que possui o conjunto \(H\) \cite{Shoup:2005}.
 
 %
 % DEMONSTRAÇAO DO TEOREMA DE LAGRANGE
 %
 \subsubsection{Demonstração do Teorema de Lagrange}
-
-
+Seja um grupo \(G\) e um subgrupo \(H\), suponha que o índice de \(H\) em \(G\) seja dado por \((G : H) = r\) e que o conjunto-quociente seja \(G / H = \{a_1H, a_2H, \ldots, a_rH\}\). Sabe-se, de acordo com a seção~\ref{relacoes_equivalencia}, que a união de todos os elementos de \(G/H\) é igual ao próprio conjunto \(G\) e também, pela seção anterior, que cada classe lateral que compõe \(G/H\) possui cardinalidade igual a do subconjunto \(H\). Dessa forma, a ordem de \(G\) é igual a soma das ordens das classes laterais, o que pode ser escrito da seguinte forma
+$$
+  o(G) = o(H) + o(H) + \ldots + o(H)
+$$
+onde \(o(G)\) indica a ordem do conjunto \(G\). Como \((G : H) = r\), então pode-se escrever
+$$
+  o(G) = (G : H)\cdot o(H) = r\cdot o(H)
+$$
+e portanto, \(o(H)\ |\ o(G)\), ou seja, a ordem do subgrupo \(H\) divide a ordem do grupo \(G\) \cite{Domingues:2003}.
 %
 % SUBGRUPOS CÍCLICOS
 %
