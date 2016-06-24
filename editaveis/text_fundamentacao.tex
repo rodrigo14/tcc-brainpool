@@ -91,7 +91,7 @@ Sejam dois conjuntos não vazios \(E\) e \(F\), o \textbf{produto cartesiano} en
   E \times F = {(x, y) | x \in E \mbox{ e } y \in F}
 \end{equation}
 
-Sabendo-se o conceito de produto cartesiano, defini-se \textit{relação binária} de \(E\) em \(F\) como qualquer subconjunto de \(E \times F\), ou seja, uma relação \(\mathcal{R}\) une um \(x \in E\) a um \(y \in F\) em um par ordenado \((x, y)\), e dizemos que \textit{\(x\) se relaciona com \(y\) mediante \(\mathcal{R}\)}, que pode ser representado por \(x\mathcal{R}y\) \cite{Domingues:2003}. Lembrando-se que, uma relação \(\mathcal{R}\) pode ser definida somente sobre um conjunto \(E\), ou seja, a relação \(\mathcal{R}\) é um subconjunto do produto cartesiano \(E \times E\).
+Sabendo-se o conceito de produto cartesiano, define-se \textit{relação binária} de \(E\) em \(F\) como qualquer subconjunto de \(E \times F\), ou seja, uma relação \(\mathcal{R}\) une um \(x \in E\) a um \(y \in F\) em um par ordenado \((x, y)\), e dizemos que \textit{\(x\) se relaciona com \(y\) mediante \(\mathcal{R}\)}, que pode ser representado por \(x\mathcal{R}y\) \cite{Domingues:2003}. Lembrando-se que, uma relação \(\mathcal{R}\) pode ser definida somente sobre um conjunto \(E\), ou seja, a relação \(\mathcal{R}\) é um subconjunto do produto cartesiano \(E \times E\).
 
 Quando definida sobre um conjunto \(E\), algumas propriedades que a relação \(\mathcal{R}\) pode atender são:
 
@@ -108,9 +108,9 @@ Quando definida sobre um conjunto \(E\), algumas propriedades que a relação \(
   $$\mathcal{R} = \{(a, b), (b, c), (a, c), (c, c)\}$$
   é transitiva sobre \(E = \{a, b, c\}\), pois pode-se verificar que \(a\mathcal{R}b\) e \(b\mathcal{R}c\) implica em \(a\mathcal{R}c\) \cite{Domingues:2003}.
 
-  \item \textbf{Anti-simétrica}: a propriedade anti-simétrica de uma relação \(\mathcal{R}\), como o nome já diz, é o contrário da propriedade simétrica, ou seja, se o par ordenado \((x, y) \in \mathcal{R}\), então \((y, x) \notin \mathcal{R}\), exceto se \(x = y\). Por exemplo, a relação 
+  \item \textbf{Antissimétrica}: a propriedade antissimétrica de uma relação \(\mathcal{R}\), como o nome já diz, é o contrário da propriedade simétrica, ou seja, se o par ordenado \((x, y) \in \mathcal{R}\), então \((y, x) \notin \mathcal{R}\), exceto se \(x = y\). Por exemplo, a relação 
   $$\mathcal{R} = \{(a, a), (a, b), (b, c), (c, c)\}$$
-  é anti-simétrica sobre \(E = \{a, b, c\}\), pois para cada par \((x, y) \in \mathcal{R}\), com \(x \neq y\), o par \((y, x) \notin \mathcal{R}\).
+  é antissimétrica sobre \(E = \{a, b, c\}\), pois para cada par \((x, y) \in \mathcal{R}\), com \(x \neq y\), o par \((y, x) \notin \mathcal{R}\).
 \end{itemize}
 
 Uma relação que satisfaz as propriedades reflexiva, simétrica e transitiva citadas acima, é chamada de \textbf{relação de equivalência} \cite{Domingues:2003}.
@@ -250,7 +250,7 @@ H = \{e, a, a^2, a^3, \ldots\}
 $$
 que é um subconjunto de $G$. Como o conjunto $G$ é um conjunto finito, então o conjunto $H$ também é finito e existem inteiros positivos $n > m$, tais que $a^m = a^n$, por exemplo, se \(m = 0\) temos que \(a^m = a^0 = e\), que é o elemento neutro, e também existe um inteiro \(n > 0\) tal que \(a^n = e\). 
 
-Considere que o inverso de $a$ seja $a^{-1}$, multiplicando ambos os lados desta equação por $(a^{-1})^m$, obtem-se $a^{m - m} = a^{n-m} = e$, que é o elemento neutro \cite{Coutinho:2014}. Daí pode-se afirmar que
+Considere que o inverso de $a$ seja $a^{-1}$, multiplicando ambos os lados desta equação por $(a^{-1})^m$, obtém-se $a^{m - m} = a^{n-m} = e$, que é o elemento neutro \cite{Coutinho:2014}. Daí pode-se afirmar que
 \begin{enumerate}
 \item Dado um elemento $a \in G$, existe um inteiro positivo $k$ tal que $a^k = e$.
 \item Se $a^k = e$, então o inverso de $a$ é dado por $a^{k-1}$, pois $a * a^{k-1} = a^k = e$. Por ser uma potência de $a$, o inverso de $a$ também pertence ao conjunto $H$.
