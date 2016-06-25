@@ -20,9 +20,12 @@ Neste capítulo serão apresentados os resultados obtidos pelo algoritmo Pollard
 \end{enumerate}
 
 \section{Implementação e execução dos algoritmos}
+Para realizar a implementação do Pollard-rho com único processador (serial) seguiu-se a descrição do pseudo-algoritmo no Anexo \ref{alg:single} juntamente com a teoria explanada na seção \ref{sec:single}. Foi implementado uma versão modificada do algoritmo serial para que o código pudesse executar de forma paralela, afim de poder utilizar todos os processadores disponíveis da máquina. Essa medida obteve melhorias nos tempos de execução, os quais serão apresentados na seção \ref{sec:execution_time}.
 
+O algoritmo mais eficiente, em termos de tempo de processamento, foi o Pollard-rho com múltiplos processadores (multiprocessado), como já esperado na seção \ref{sec:parallelized}. A utilização de um servidor central para o armazenamento de pontos é o ponto positivo do algoritmo, pois o processo que calcula os pontos ganha em velocidade em não ter a responsabilidade de checar a colisão de pontos. O ponto negativo dessa abordagem é que o servidor não pode armazenar infinitos pontos, pois existe o limite de memória RAM. Para isso utilizou-se a propriedade distintiva (seção \ref{sec:distinguished}).
 
 \section{Tempos de execução}
+\label{sec:execution_time}
 
 \begin{table}[]
 \centering
