@@ -11,12 +11,23 @@ Curvas elípticas têm esse nome porque são descritas por equações cúbicas, 
 \begin{equation}
 y^2 + axy + by = x^3 + cx^2 + dx + e \label{eq:5}
 \end{equation}
-Onde \(a, b, c, d\) e \(e\) são elementos do corpo \(\mathbb{F}\) e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de \(\mathbb{F}\). A notação utilizada para indicar que uma curva elíptica \(E\) está definida sobre um corpo \(\mathbb{F}\) é $E(\mathbb{F})$, e o corpo \(\mathbb{F}\) é chamado de corpo subjacente da curva \cite{Guide}. Equações deste tipo são conhecidas como \textit{equações de Weierstrass}. Com frequência, no estudo de criptografia de curvas elípticas, costuma-se utilizar a forma reduzida de Weierstrass, descrita pela equação abaixo, obtida através de uma mudança de variáveis.
+onde \(a, b, c, d\) e \(e\) são elementos do corpo \(\mathbb{F}\) e \(x\) e \(y\) são as variáveis da equação e assumem valores dentro de \(\mathbb{F}\). A notação utilizada para indicar que uma curva elíptica \(E\) está definida sobre um corpo \(\mathbb{F}\) é $E(\mathbb{F})$, e o corpo \(\mathbb{F}\) é chamado de corpo subjacente da curva \cite{Guide}. Equações deste tipo são conhecidas como \textit{equações de Weierstrass}. Com frequência, no estudo de criptografia de curvas elípticas, costuma-se utilizar a forma reduzida de Weierstrass, descrita pela equação
 \begin{equation}
 y^2 = x^3 + ax + b \label{eq:6}
 \end{equation}
+obtida através da mudança de variáveis
+\begin{equation}
+  (x, y) \rightarrow \left(\frac{x - 3a^2 - 12c}{36},\ \frac{y - 3ax}{216} + \frac{a^3 + 4ac - b}{24}\right)
+\end{equation}
+e \(\mathbb{F}\) com característica diferente de \(2\) e de \(3\) \cite{Guide}.
 
-É imprescindível que os valores de \(a\) e \(b\) sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente \cite{Guide}.
+É imprescindível que os valores de \(a\) e \(b\) sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente, ou seja, a curva é suave(Figura ~\ref{fig:cuspide}), não possui auto-interseções(curva singular) e nem cúspides \cite{Guide}.
+\begin{figure}
+%\centering
+\includegraphics[scale=0.6, bb=0 0 515 478]{figuras/curva_suave_singular_cuspide.eps}
+\caption{(A) Curva suave, (B) Curva singular e (C) Cúspide}
+\label{fig:cuspide}
+\end{figure}
 
 O \textbf{conjunto dos pontos} que pertencem à curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\) é descrito por:
 
