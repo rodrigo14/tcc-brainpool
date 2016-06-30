@@ -20,16 +20,26 @@ Neste capítulo serão apresentados os resultados obtidos pelo algoritmo Pollard
 \end{enumerate}
 
 \section{Escolha das curvas}
-As curvas escolhidas para a execução dos testes foram geradas com o auxílio da biblioteca SageMath. Quanto aos parâmetros, foi escolhido um número primo \(p\) para representar o corpo finito no qual a curva está definida. Os parâmetros \(a\) e \(b\) foram selecionados seguindo a regra estabelecida na Equação \ref{eq:7}. Após isso, foi feito o cálculo prévio da ordem da curva que tenha o valor menor ou igual \(p - 1\) e que também seja primo, afim de evitar o ataque utilizando o algoritmo de Pohlig-Hellman (Seção \ref{sec:algs}).
+As curvas escolhidas para a execução dos testes foram geradas com o auxílio da biblioteca SageMath. Quanto aos parâmetros, foi escolhido um número primo \(p\) para representar o corpo finito no qual a curva está definida. Os parâmetros \(a\) e \(b\) foram selecionados seguindo a regra estabelecida na Equação \ref{eq:7}. Após isso, foi feito o cálculo da ordem da curva, se a ordem é prima, a curva é utilizada, caso contrário, será descartada e outra curva será gerada seguindo os mesmos passos citados, até que seja encontrada uma curva com a ordem prima. Dessa forma, pode-se evitar ataques baseados na fatoração da ordem da curva, tais como o ataque utilizando o algoritmo de Pohlig-Hellman (Seção \ref{sec:algs}).
 
 Gerou-se diferentes curvas variando o valor de \(p\) de 32 a 160 bits para, posteriormente, realizar a comparação de tempo entre os algoritmos. Foram também selecionados dois pontos \(P\) e \(Q\) pertencentes à curva. Por fim, todas essas informações foram armazenadas em um arquivo de texto para ser processado pelos algoritmos.
 
 \section{Implementação e execução dos algoritmos}
-Para realizar a implementação do Pollard-rho com único processador (serial) seguiu-se a descrição do pseudo-algoritmo no Anexo \ref{alg:single} juntamente com a teoria explanada na Seção \ref{sec:single}. O ponto inicial foi escolhido de forma randômica para cada vez que o algoritmo fosse executado e foi utilizado apenas um processador, pois esta abordagem não possui suporte à paralelização.
 
-Foi implementado uma versão modificada do algoritmo serial para que o código pudesse executar de forma paralela, afim de poder utilizar todos os processadores disponíveis da máquina. Essa medida obteve melhorias nos tempos de execução, os quais serão apresentados na Seção \ref{sec:execution_time}.
+\subsection{Pollard-rho serial}
+Para realizar a implementação do Pollard-rho com único processador (serial) seguiu-se a descrição do pseudo-algoritmo no Anexo \ref{alg:single} juntamente com a teoria explanada na Seção \ref{sec:single}. O ponto inicial foi escolhido de forma arbitrária para cada vez que o algoritmo fosse executado e foi utilizado apenas um processador, pois esta abordagem não possui suporte à paralelização.
 
-O algoritmo mais eficiente, em termos de tempo de processamento, foi o Pollard-rho com múltiplos processadores (multiprocessado), como já esperado na seção \ref{sec:parallelized}. A utilização de um servidor central para o armazenamento de pontos é o ponto positivo do algoritmo, pois o processo que calcula os pontos ganha em velocidade em não ter a responsabilidade de checar a colisão de pontos. O ponto negativo dessa abordagem é que o servidor não pode armazenar infinitos pontos, pois existe o limite de memória RAM. Para isso utilizou-se a propriedade distintiva (seção \ref{sec:distinguished}).
+A maior vantagem desse algoritmo é que ele necessita de uma quantidade ínfima de memória, pois utiliza o ciclo de Floyd, descrito na seção~\ref{floyd}. Dessa forma, este algoritmo pode ficar executando por tempo indeterminado mesmo em uma máquina com pouca memória.
+
+\subsection{Pollard-rho com paralelização}
+Buscando aproveitar a baixa quantidade de memória utilizada pelo Pollard-rho serial, e diminuir o tempo necessário para resolver o problema do logaritmo discreto, foi implementada uma versão modificada do algoritmo serial para que o código pudesse executar de forma paralela, afim de poder utilizar todos os processadores disponíveis da máquina. Essa medida obteve melhorias nos tempos de execução, os quais serão apresentados na Seção \ref{sec:execution_time}.
+
+\subsection{Pollard-rho com múltiplos processadores}
+O algoritmo mais eficiente, em termos de tempo de processamento, foi o Pollard-rho com múltiplos processadores (multiprocessado), como já esperado na seção \ref{sec:parallelized}. A utilização de um servidor central para o armazenamento de pontos é o ponto positivo do algoritmo, pois o processo que calcula os pontos ganha em velocidade por não ter a responsabilidade de checar a colisão entre os pontos e também por evitar a necessidade de um recurso compartilhado entre os processos, já que o servidor central é o único responsável por armazenar e checar a colisão entre os pontos. 
+
+O ponto negativo dessa abordagem é que o servidor não pode armazenar infinitos pontos, pois existe o limite de memória RAM. Para isso utilizou-se a propriedade distintiva (seção \ref{sec:distinguished}), que vai limitar a quantidade de pontos que o servidor irá armazenar. Porém, caso essa propriedade seja muito restritiva, a possibilidade de encontrar uma colisão diminui, pois o servidor central terá um espaço amostral de pontos menor para encontrar uma colisão, e consequentemente, o tempo de execução do algoritmo irá aumentar. Dessa forma, é necessário encontrar um equilíbrio para essa propriedade distintiva, pois quanto menos restritiva, maior a quantidade de memória utilizada para armazenar os pontos, quanto mais restritiva, menor a quantidade de pontos armazenados e maior o tempo para encontrar uma colisão entre estes pontos.
+
+Durante a execução desse algoritmo, o problema de memóra RAM tornou-se evidente, pois, apesar de utilizar uma propriedade distintiva para armazenar os pontos, a memória se tornava insuficiente após aproximadamente 25 horas de execução do algoritmo, resultando em erro de memória ao tentar ``quebrar'' uma curva de 66 bits.
 
 \section{Tempo de execução}
 \label{sec:execution_time}
