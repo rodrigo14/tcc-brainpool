@@ -1,9 +1,14 @@
 \chapter{Considerações finais}
+O presente trabalho apresentou os principais conceitos matemáticos da criptografia de curvas elípticas relacionados à resolução do problema do logaritmo discreto (ECDLP) e o algoritmo Pollard-rho e suas diferentes versões, comparando a perfomance de cada um.
+
+Para realização deste trabalho foi preciso ter um espírito investigativo para pesquisar, descobrir e optar pelas ferramentas que sejam as mais adequadas afim de desenvolver um trabalho com a melhor qualidade otimizando o esforço depreendido. Cada escolha das ferramentas utilizadas foram frutos de uma visão crítica no qual as decisões são baseadas. Essas são características aprendidas no curso de Engenharia de Software. Conhecimentos técnicos desde fundamentações matemáticas relativos à criptografia a gerenciamento de memória, de processos e de arquivos foram importantes para que os algoritmos de Pollard-rho pudessem ser implementados, que é o objetivo principal deste trabalho.
+
 
 \section{Trabalhos futuros}
+Como sugestões de continuidade do projeto, existem algumas etapas ou passos importantes para melhorar ainda mais o desempenho dos algoritmos. São elas:
 
 \begin{enumerate}
-	\item \textit{Fazer uma pesquisa mais aprofundada sobre a propriedade distintiva dos pontos:} por ser uma propriedade determinante para a execução do algoritmo Pollard-rho com múltiplos processadores, essa propriedade merece um estudo mais detalhado.
-	\item \textit{Utilizar o automorfismo para melhorar o desempenho do algoritmo Pollard-rho:} apesar de ter sido apresentada a teoria necessária para aplicar o Pollard-rho com automorfismo, nesse trabalho não foi implementado o algoritmo utilizando essa melhoria, pois seria demasiadamente caro achar uma função $\psi$ que seja um automorfismo para cada uma das curvas geradas.
-	\item \textit{Realizar o cálculo da ordem da curva:} nesse trabalho, a ordem da curva fora previamente calculada utilizando o software SageMath, pois o escopo do mesmo é o Algoritmo Pollard-rho e suas variantes.
+	\item \textit{Aprofundar a pesquisa sobre a propriedade distintiva dos pontos}: por ser uma propriedade determinante para a execução do algoritmo Pollard-rho com múltiplos processadores, por si só é uma etapa que merece um estudo mais aprofundado.
+	\item \textit{Implementar o algoritmo Pollard-rho com automorfismo}: apesar de ter sido apresentada a teoria necessária para aplicar o Pollard-rho com automorfismo, este algoritmo não foi contemplado na parte de resultados do trabalho, pois exige um alto nível de complexidade de implementação para que pudesse ser concluído neste trabalho. Pois é necessário encontrar uma função \(\psi\) que seja um automorfismo para cada uma das curvas geradas e isso requer um grande esforço.
+	\item \textit{Implementar uma versão do código em C/C++}: apesar da facilidade, eficiência e ter um foco matemático, Python é uma linguagem de alto nível interpretada, enquanto a linguagem C/C++ é de médio nível, pois combina características de linguagens de alto e baixo níveis, por isso vale a pena realizar testes para essa linguagem e comparar observar seus resultados.
 \end{enumerate}
