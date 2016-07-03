@@ -78,4 +78,15 @@ Já os algoritmos Pollard-rho serial e paralelo não possuem o problema da memó
 
 A melhoria de desempenho do algoritmo paralelo em relação ao serial é justificada por uma questão estatística, pois o algoritmo serial escolhe um ponto inicial de forma aleatória, e dependendo dessa escolha, o algoritmo pode demorar mais tempo para encontrar uma colisão. Já na versão paralelizada, o mesmo algoritmo serial é executado em paralelo por vários processos, onde cada um deles é inicializado com um ponto inicial. Dessa forma, um desses processos vai partir de um ponto inicial mais propício a encontrar uma colisão do que os outros processos, e consequentemente, este processo irá encontrar uma colisão em um tempo menor do que os outros.
 
+Os resultados da tabela \ref{table:results} podem ser colocados em um gráfico \textit{Mono-Log}, onde a coordenada $x$ do gráfico representa o tamanho da curva em \textit{bits} e a coordenada $y$ representa o tempo, em segundos, necessário para resolver o problema do logaritmo discreto. O resultado é o gráfico da figura~\ref{grafico1}.
+
+Pelo gráfico da figura~\ref{grafico1} é possível perceber que os resultados experimentais se aproximam de uma reta. Isto demonstra que pode-se obter uma função que irá calcular o tempo aproximado para resolver o problema do logarítmo discreto partindo do tamanho da curva em bits, e que esta função é exponcial do tipo \(y = ke^{cx}\), onde $e$ é a base dos logarítmos neperianos.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6, bb=0 0 515 478]{figuras/grafico1.eps}
+\caption{Tamanho em \textit{bits} X Tempo em segundos}
+\label{grafico1}
+\end{figure}
+
 É importante saber que na geração dos resultados deste trabalho foi possível utilizar apenas uma máquina para a execução dos algoritmos, o que garante que as características de hardware utilizadas foram as mesmas, porém essa medida acaba comprometendo bastante tempo do cronograma. Até porque foram executados ao menos quatro vezes a mesma curva, por conta da característica do algoritmo que seleciona um ponto inicial de forma aleatória a cada nova execução. Os resultados da tabela mostram valores referentes à média dos tempos coletados para os valores de \textit{bits}.
