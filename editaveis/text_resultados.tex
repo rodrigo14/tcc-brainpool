@@ -147,8 +147,8 @@ Outro experimento realizado foi medir o desempenho do algoritmo Pollard-rho mult
 3m13s    & 1m37s   & 4m01s   & 6m44s   & 0m19s   & 4m01s   & 4m02s   \\ \hline
 1m42s    & 6m36s   & 3m41s   & 2m22s   & 5m18s   & 2m00s   & 3m22s   \\ \hline
 8m31s    & 4m25s   & 1m16s   & 4m39s   & 5m30s   & 2m06s   & 1m50s   \\ \hline
-ms    & ms   & 7m14s   & 1m07s   & 6m57s   & 2m59s   & 2m10s   \\ \hline
-ms    & ms   & 6m49s   & 5m32s   & 3m51s   & 4m18s   & 1m07s   \\ \hline
+9m34s    & 5m32s   & 7m14s   & 1m07s   & 6m57s   & 2m59s   & 2m10s   \\ \hline
+10m31s   & 4m47s   & 6m49s   & 5m32s   & 3m51s   & 4m18s   & 1m07s   \\ \hline
 \end{tabular}
 \caption{Resultado dos algoritmos Pollard-rho multiprocessado para quantidades diferentes de processadores}
 \label{table:results_mproc}
@@ -162,8 +162,8 @@ Calculando-se a média aritmética, a variância e o desvio-padrão para os valo
 \hline
 \rowcolor[gray]{0.9}
 \multicolumn{1}{|c|}{\textbf{Cores}} & \textbf{Média aritmética}  & \textbf{Variância} & \textbf{Desvio-padrão} \\ \hline
-1                                    &                            &                    &                        \\ \hline
-2                                    &                            &                    &                        \\ \hline
+1                                    & 399.7                      & 46971.34           & 216.73                 \\ \hline
+2                                    & 256.6                      & 8496.04            & 92.17                  \\ \hline
 3                                    & 288.4                      & 15236.49           & 123.44                 \\ \hline
 4                                    & 252.1                      & 11981.88           & 109.46                 \\ \hline
 5                                    & 189.2                      & 17911.51           & 133.83                 \\ \hline
@@ -174,6 +174,6 @@ Calculando-se a média aritmética, a variância e o desvio-padrão para os valo
 \label{table:estatistica_mproc}
 \end{table}
 
-Devido a aleatoriedade do algoritmo, é possível perceber que o tempo médio para ``quebrar'' uma curva não diminuiu, como era esperado, com o aumento do número de processadores(\textit{cores}). As médias se manteram muito próximas, exceção para um \textit{core}, e ainda, o desvio-padrão está entre um minuto e meio a dois minutos. Com isso, para um computador com apenas quatro \textit{cores}, a quantidade de \textit{cores} utilizados não deverá ocasionar nenhuma melhoria de desempenho. Deve ser feito um estudo mais aprofundado utilizando uma quantidade maior de \textit{cores}, por exemplo, utilizando GPUs, para estabelecer uma relação entre desempenho e quantidade de \textit{cores} utilizados.
+Observando os dados da tabela \ref{table:estatistica_mproc}, pode-se observar que existe uma melhoria de desempenho quando em função da quantidade de processadores utilizados. É possível perceber também que, com uma quantidade maior de processadores, o desvio-padrão diminui, ou seja, os dados dos testes não tiveram variações abruptas em relação à média. Os testes utilizando apenas um processador(\textit{core}) foi o teste que apresentou maior variação em torno da média, por isso, teve o maior desvio padrão. Os testes utilizando dois processadores apresentaram uma média de tempo menor do que os testes utilizando três processadores, porém o desvio padrão para três processadores foi maior, o que indica que tem que alguns testes apresentaram resultados mais distantes da média esperada.
 
 É importante saber que na geração dos resultados deste trabalho foi possível utilizar apenas uma máquina para a execução dos algoritmos, o que garante que as características de hardware utilizadas foram as mesmas, porém essa medida acaba comprometendo bastante tempo do cronograma. Até porque foram executados ao menos quatro vezes a mesma curva, por conta da característica do algoritmo que seleciona um ponto inicial de forma aleatória a cada nova execução. Os resultados da tabela~\ref{table:results} mostram valores referentes à média dos tempos coletados para os valores de \textit{bits}.
