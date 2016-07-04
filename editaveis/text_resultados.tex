@@ -96,7 +96,7 @@ Para obter a equação que relacione o tempo necessário em segundos para ``queb
 \end{equation}
 em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico~\ref{grafico1}, e substituidos os valores de \(x\) e \(y\) na equação (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
 $$
-\left\{ \begin{array}{c}	
+\left\{ \begin{array}{c}
 ln(Y_A) = ln(a) + b(X_A)\\
 ln(Y_B) = ln(a) + b(X_B)
 \end{array}
@@ -131,7 +131,7 @@ O gráfico~\ref{eq_graph} permite visualizar melhor o comportamento dos algoritm
 \label{eq_graph}
 \end{figure}
 
-Outro experimento realizado foi medir o desempenho do algoritmo Pollard-rho multiprocessado em função da quantidade de processadores(\textit{cores}). Para isso, foi selecionada uma curva de 48 \textit{bits}. Os testes foram realizados com a quantidade de processadores indo de um até quatro. Os resultados estão descritos na tabela~\ref{table:results_mproc}.
+Outro experimento realizado foi medir o desempenho do algoritmo Pollard-rho multiprocessado em função da quantidade de processadores (\textit{cores}). Para isso, foi selecionada uma curva de 48 \textit{bits}. Os testes foram realizados com a quantidade de processadores indo de um até quatro. Os resultados estão descritos na tabela~\ref{table:results_mproc}.
 
 \begin{table}[h]
 \centering
@@ -154,7 +154,7 @@ ms    & ms   & ms   & 5m32s   & 3m51s   & 4m18s   & 1m07s   & ms \\ \hline
 \label{table:results_mproc}
 \end{table}
 
-Calculando-se a média aritmética, a variância e o desvio-padrão para os valores da tabela~\ref{table:results_mproc} obtém-se os valores da tabela~\ref{table:estatistica_mproc}
+Calculando-se a média aritmética, a variância e o desvio-padrão para os valores da tabela~\ref{table:results_mproc} obtém-se os valores da tabela~\ref{table:estatistica_mproc}.
 
 \begin{table}[h]
 \centering
@@ -175,6 +175,6 @@ Calculando-se a média aritmética, a variância e o desvio-padrão para os valo
 \label{table:estatistica_mproc}
 \end{table}
 
-Devido a aleatoriedade do algoritmo, é possível perceber que o tempo médio para ``quebrar'' uma curva não diminuiu, como era esperado, com o aumento do número de processadores(\textit{cores}). As médias se manteram muito próximas, exceção para um \textit{core}, e ainda, o desvio-padrão está entre um minuto e meio a dois minutos. Com isso, para um computador com apenas quatro \textit{cores}, a quantidade de \textit{cores} utilizados não deverá ocasionar nenhuma melhoria de desempenho. Deve ser feito um estudo mais aprofundado utilizando uma quantidade maior de \textit{cores}, por exemplo, utilizando GPUs, para estabelecer uma relação entre desempenho e quantidade de \textit{cores} utilizados
+Devido a aleatoriedade do algoritmo, é possível perceber que o tempo médio para ``quebrar'' uma curva não diminuiu, como era esperado, com o aumento do número de processadores(\textit{cores}). As médias se manteram muito próximas, exceção para um \textit{core}, e ainda, o desvio-padrão está entre um minuto e meio a dois minutos. Com isso, para um computador com apenas quatro \textit{cores}, a quantidade de \textit{cores} utilizados não deverá ocasionar nenhuma melhoria de desempenho. Deve ser feito um estudo mais aprofundado utilizando uma quantidade maior de \textit{cores}, por exemplo, utilizando GPUs, para estabelecer uma relação entre desempenho e quantidade de \textit{cores} utilizados.
 
 É importante saber que na geração dos resultados deste trabalho foi possível utilizar apenas uma máquina para a execução dos algoritmos, o que garante que as características de hardware utilizadas foram as mesmas, porém essa medida acaba comprometendo bastante tempo do cronograma. Até porque foram executados ao menos quatro vezes a mesma curva, por conta da característica do algoritmo que seleciona um ponto inicial de forma aleatória a cada nova execução. Os resultados da tabela~\ref{table:results} mostram valores referentes à média dos tempos coletados para os valores de \textit{bits}.
