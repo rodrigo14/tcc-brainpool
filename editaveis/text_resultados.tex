@@ -135,20 +135,20 @@ Outro experimento realizado foi medir o desempenho do algoritmo Pollard-rho mult
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 \rowcolor[gray]{0.9}
-\textbf{1 core}  & \textbf{2 cores} & \textbf{3 cores} & \textbf{4 cores} & \textbf{5 cores} & \textbf{6 cores} & \textbf{7 cores} & \textbf{8 cores}\\ \hline
-2m47s    & 5m20s   & 5m35s   & 6m32s   & 2m27s   & 2m15s   & 1m37s   & 4m46s \\ \hline
-8m35s    & 3m16s   & 7m14s   & 2m44s   & 1m53s   & 2m22s   & 3m58s   & 4m59s \\ \hline
-7m12s    & 5m13s   & 2m37s   & 3m23s   & 3m20s   & 3m03s   & 0m12s   & 5m15s \\ \hline
-11m25s   & 3m26s   & 5m55s   & 4m55s   & 1m11s   & 4m38s   & 1m59s   & 3m24s \\ \hline
-3m07s    & 2m30s   & 3m42s   & 4m01s   & 0m46s   & 1m45s   & 3m46s   & ms \\ \hline
-3m13s    & 1m37s   & 4m01s   & 6m44s   & 0m19s   & 4m01s   & 4m02s   & ms \\ \hline
-1m42s    & 6m36s   & 3m41s   & 2m22s   & 5m18s   & 2m00s   & 3m22s   & ms \\ \hline
-8m31s    & 4m25s   & 1m16s   & 4m39s   & 5m30s   & 2m06s   & 1m50s   & ms \\ \hline
-ms    & ms   & ms   & 1m07s   & 6m57s   & 2m59s   & 2m10s   & ms \\ \hline
-ms    & ms   & ms   & 5m32s   & 3m51s   & 4m18s   & 1m07s   & ms \\ \hline
+\textbf{1 core}  & \textbf{2 cores} & \textbf{3 cores} & \textbf{4 cores} & \textbf{5 cores} & \textbf{6 cores} & \textbf{7 cores} \\ \hline
+2m47s    & 5m20s   & 5m35s   & 6m32s   & 2m27s   & 2m15s   & 1m37s   \\ \hline
+8m35s    & 3m16s   & 7m14s   & 2m44s   & 1m53s   & 2m22s   & 3m58s   \\ \hline
+7m12s    & 5m13s   & 2m37s   & 3m23s   & 3m20s   & 3m03s   & 0m12s   \\ \hline
+11m25s   & 3m26s   & 5m55s   & 4m55s   & 1m11s   & 4m38s   & 1m59s   \\ \hline
+3m07s    & 2m30s   & 3m42s   & 4m01s   & 0m46s   & 1m45s   & 3m46s   \\ \hline
+3m13s    & 1m37s   & 4m01s   & 6m44s   & 0m19s   & 4m01s   & 4m02s   \\ \hline
+1m42s    & 6m36s   & 3m41s   & 2m22s   & 5m18s   & 2m00s   & 3m22s   \\ \hline
+8m31s    & 4m25s   & 1m16s   & 4m39s   & 5m30s   & 2m06s   & 1m50s   \\ \hline
+ms    & ms   & 7m14s   & 1m07s   & 6m57s   & 2m59s   & 2m10s   \\ \hline
+ms    & ms   & 6m49s   & 5m32s   & 3m51s   & 4m18s   & 1m07s   \\ \hline
 \end{tabular}
 \caption{Resultado dos algoritmos Pollard-rho multiprocessado para quantidades diferentes de processadores}
 \label{table:results_mproc}
@@ -164,12 +164,11 @@ Calculando-se a média aritmética, a variância e o desvio-padrão para os valo
 \multicolumn{1}{|c|}{\textbf{Cores}} & \textbf{Média aritmética}  & \textbf{Variância} & \textbf{Desvio-padrão} \\ \hline
 1                                    &                            &                    &                        \\ \hline
 2                                    &                            &                    &                        \\ \hline
-3                                    &                            &                    &                        \\ \hline
+3                                    & 288.4                      & 15236.49           & 123.44                 \\ \hline
 4                                    & 252.1                      & 11981.88           & 109.46                 \\ \hline
 5                                    & 189.2                      & 17911.51           & 133.83                 \\ \hline
 6                                    & 176.9                      & 3864.99            &  62.17                 \\ \hline
 7                                    & 144.3                      & 6229.57            &  78.93                 \\ \hline
-8                                    &                            &                    &                        \\ \hline
 \end{tabular}
 \caption{Valores algoritmo Pollard-rho multiprocessado para quantidades diferentes de processadores}
 \label{table:estatistica_mproc}
