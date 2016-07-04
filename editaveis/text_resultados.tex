@@ -90,6 +90,32 @@ Pelo gráfico da figura~\ref{grafico1} é possível perceber que os resultados e
 \label{grafico1}
 \end{figure}
 
+Para obter a equação que relacione o tempo necessário em segundos para ``quebrar'' uma curva de $n$ bits, foi aplicada a função \(ln(x)\) em ambos os lados da equação \(y = ke^{cx}\), obtendo-se
+\begin{equation} \label{eq_linear}
+	ln(y) = ln(k) + cx\cdot ln(e) = ln(k) + cx
+\end{equation}
+em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico~\ref{grafico1}, e substituidos os valores de \(x\) e \(y\) na equação (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
+$$
+\left\{ \begin{array}{c}	
+ln(Y_A) = ln(a) + b(X_A)\\
+ln(Y_B) = ln(a) + b(X_B)
+\end{array}
+\right.
+$$
+
+Com esse sistema, ao fazer \(ln(Y_B) - ln(Y_A)\), obtem-se o valor de \(b\), e em seguida o valor de \(ln(a)\). Dessa forma, as equações que relacionam o tamanho da curva em \textit{bits} ao tempo necessário em segundos para ``quebrá-la'' foram as seguintes
+\begin{itemize}
+	\item \textit{Pollard-rho serial}: $$y = e^{-10.33 + 0.354x}$$
+	\item \textit{Pollard-rho paralelizado}: $$y = e^{-11.94 + 0.372x}$$
+	\item \textit{Pollard-rho multiprocessado}: $$y = e^{-13.9 + 0.375x}$$
+\end{itemize}
+
+Com essas equações, é possível obter o tempo aproximado em segundos para quebrar uma curva de \(n\) \textit{bits} utilizando os algoritmos implementados. Por exemplo, para saber quanto tempo o algoritmo Pollard-rho serial levaria para ``quebrar'' uma curva de 80 \textit{bits}, basta substituir na fórmula obtida para essa algoritmo
+$$
+	y = e^{-10.33 + 0.354*80}
+$$
+o valor obtido é \(y = 65006641.53\) segundos, ou seja, fazendo a conversão para dias, levaria 752.39 dias para quebrar uma curva de 80 \textit{bits} com o algoritmo Pollard-rho serial.
+
 Outro experimento realizado foi medir o desempenho do algoritmo Pollard-rho multiprocessado em função da quantidade de processadores(\textit{cores}). Para isso, foi selecionada uma curva de 48 \textit{bits}. Os testes foram realizados com a quantidade de processadores indo de um até quatro. Os resultados estão descritos na tabela~\ref{table:results_mproc}.
 
 \begin{table}[h]
