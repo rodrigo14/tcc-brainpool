@@ -28,7 +28,7 @@ Gerou-se diferentes curvas variando o valor de \(p\) de 32 a 160 bits para, post
 \section{Implementação e execução dos algoritmos}
 
 \subsection{Pollard-rho serial}
-Para realizar a implementação do Pollard-rho com único processador (serial) seguiu-se a descrição do pseudo-algoritmo no Anexo \ref{alg:single} juntamente com a teoria explanada na Seção \ref{sec:single}. O ponto inicial foi escolhido de forma arbitrária para cada vez que o algoritmo fosse executado e foi utilizado apenas um processador, pois esta abordagem não possui suporte à paralelização.
+Para realizar a implementação do Pollard-rho com único processador (serial) seguiu-se a descrição do pseudoalgoritmo no Anexo \ref{alg:single} juntamente com a teoria explanada na Seção \ref{sec:single}. O ponto inicial foi escolhido de forma arbitrária para cada vez que o algoritmo fosse executado e foi utilizado apenas um processador, pois esta abordagem não possui suporte à paralelização.
 
 A maior vantagem desse algoritmo é que ele necessita de uma quantidade ínfima de memória, pois utiliza o ciclo de Floyd, descrito na seção \ref{floyd}. Dessa forma, este algoritmo pode ficar executando por tempo indeterminado mesmo em uma máquina com pouca memória.
 
@@ -94,7 +94,7 @@ Para obter a equação que relacione o tempo necessário em segundos para ``queb
 \begin{equation} \label{eq_linear}
 	ln(y) = ln(k) + cx\cdot ln(e) = ln(k) + cx
 \end{equation}
-Em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico \ref{grafico1}, e substituidos os valores de \(x\) e \(y\) na equação (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
+Em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico \ref{grafico1}, e substituídos os valores de \(x\) e \(y\) na equação (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
 \begin{equation*}
 \left\{ \begin{array}{c}
 ln(Y_A) = ln(a) + b(X_A)\\
