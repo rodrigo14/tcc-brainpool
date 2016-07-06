@@ -156,7 +156,14 @@ A mesma curva foi executada 100 vezes para cada caso de teste, variando do núme
 
 Observando os dados da tabela \ref{table:estatistica_mproc}, pode-se observar de maneira geral que existe uma melhoria de desempenho do tempo de execução em função da quantidade de processadores utilizados. É possível perceber também que, com uma quantidade maior de processadores, o desvio-padrão tende a diminuir, ou seja, os dados dos testes não tiveram variações abruptas em relação à média. Os testes utilizando apenas um processador (\textit{core}) foi o teste que apresentou maior variação em torno da média, por isso, teve o maior desvio padrão. Inclusive este caso é mais lento que o algoritmo serial, pois nem todos os pontos são considerados, apenas os pontos considerados distintos.
 
-Nota-se que a partir de seis processadores o tempo de execução se difere do esperado, como pode ser visto pelo gráfico %\ref{graph:average}
+Nota-se que a partir de seis processadores o tempo de execução se difere do esperado, como pode ser visto pelo gráfico \ref{graph:average}
 . Isso se deve ao fato de que a comunicação entre processos (servidor e cliente) é feita via \textit{pipe} e este canal pode estar sendo sobrecarregado do lado do servidor por conta do processamento dos pontos distintos provenientes dos vários clientes. E isso acaba se tornando o gargalo da implementação.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6, bb=0 0 515 478]{figuras/average.eps}
+\caption{Tempo de execução($s$) em função da quantidade de processadores}
+\label{graph:average}
+\end{figure}
 
 É importante saber que na geração dos resultados deste trabalho foi possível utilizar apenas uma máquina para a execução dos algoritmos, o que garante que as características de hardware utilizadas foram as mesmas, porém essa medida acaba comprometendo bastante tempo do cronograma. Até porque foram executados ao menos quatro vezes a mesma curva, por conta da característica do algoritmo que seleciona um ponto inicial de forma aleatória a cada nova execução. Os resultados da tabela \ref{table:results} mostram valores referentes à média dos tempos coletados para os valores de \textit{bits}.
