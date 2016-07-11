@@ -78,7 +78,7 @@ Os axiomas de grupo são satisfeitos da seguinte forma:
 % CURVAS ELÍPTICAS SOBRE CORPO FINITO
 %
 \subsection{Curvas elípticas sobre corpo finito}
-A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são restritos a elementos de um corpo finito \cite{Stallings:2011}, ou seja, sendo a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_p$, seus coeficientes assumem valores inteiros entre 0 e $p - 1$, pois os cálculos são realizados módulo \(p\). Quando definida sobre um corpo finito, a equação da curva deve indicar qual é esse corpo através da notação $mod$, como ocorre na equação \ref{eq:7}, em que a curva está definida sobre um corpo finito $\mathbb{F}_p$.
+A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são restritos a elementos de um corpo finito \cite{Stallings:2011}, ou seja, sendo a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_p$, seus coeficientes assumem valores inteiros entre 0 e $p - 1$, pois os cálculos são realizados módulo \(p\). Quando definida sobre um corpo finito, a equação da curva deve indicar qual é esse corpo através da notação $mod$, como ocorre na Eq. \ref{eq:7}, em que a curva está definida sobre um corpo finito $\mathbb{F}_p$.
 
 \begin{equation}
 y^2 \mod p = (x^3 + ax + b) \mod p \label{eq:7}
@@ -90,7 +90,7 @@ Pode-se mostrar que um grupo abeliano finito é definido com base no conjunto $E
 (4a^3 + 27b^2) \mod p \neq 0
 \end{equation}
 
-A Equação \ref{eq:6} tem a mesma forma da Equação \ref{eq:7}. As regras para adição sobre $E_p(a, b)$ correspondem à técnica algébrica descrita para as curvas elípticas definidas sobre números reais. Para todos os pontos $P, Q \in E_p(a, b)$.
+A Eq. \ref{eq:6} tem a mesma forma da Eq. \ref{eq:7}. As regras para adição sobre $E_p(a, b)$ correspondem à técnica algébrica descrita para as curvas elípticas definidas sobre números reais. Para todos os pontos $P, Q \in E_p(a, b)$.
 
 \begin{figure}[h]
 \centering
@@ -139,7 +139,7 @@ O \textbf{traço} de $E$ sobre $\mathbb{F}_p$ é $t = 2\sqrt{p}$. Sabendo-se o t
 % CRIPTOGRAFIA DE CURVAS ELÍPTICAS
 %
 \subsection{Criptografia de curvas elípticas} \label{sec:ecc}
-Primeiro, selecione um inteiro grande \(p\) que seja primo e parâmetros da curva elíptica \(a\) e \(b\) de acordo com a equação \ref{eq:5} ou \ref{eq:6}. Isso define o grupo de pontos $E_p(a, b)$. Em seguida escolha um ponto base $G \in E_p(a, b)$, cuja a ordem seja um valor muito grande \(n\). $E_p(a, b)$ e \(G\) são os parâmetros do criptossistema, conhecidos por todos os participantes.
+Primeiro, selecione um inteiro grande \(p\) que seja primo e parâmetros da curva elíptica \(a\) e \(b\) de acordo com a Eq. \ref{eq:5} ou \ref{eq:6}. Isso define o grupo de pontos $E_p(a, b)$. Em seguida escolha um ponto base $G \in E_p(a, b)$, cuja a ordem seja um valor muito grande \(n\). $E_p(a, b)$ e \(G\) são os parâmetros do criptossistema, conhecidos por todos os participantes.
 
 Um acordo de chaves entre os usuários \textbf{A} e \textbf{B} pode ser realizado da seguinte maneira:
 \begin{enumerate}

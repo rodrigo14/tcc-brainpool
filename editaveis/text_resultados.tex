@@ -21,7 +21,7 @@ Neste capítulo serão apresentados os resultados obtidos pelo algoritmo Pollard
 \end{enumerate}
 
 \section{Escolha das curvas}
-As curvas escolhidas para a execução dos testes foram geradas com o auxílio da biblioteca SageMath. Quanto aos parâmetros, foi escolhido um número primo \(p\) para representar o corpo finito no qual a curva está definida. Os parâmetros \(a\) e \(b\) foram selecionados seguindo a regra estabelecida na Equação \ref{eq:7}. Após isso, foi feito o cálculo da ordem da curva, se a ordem é prima, a curva é utilizada, caso contrário, será descartada e outra curva será gerada seguindo os mesmos passos citados, até que seja encontrada uma curva com a ordem prima. Dessa forma, pode-se evitar ataques baseados na fatoração da ordem da curva, tais como o ataque utilizando o algoritmo de Pohlig-Hellman (Seção \ref{sec:algs}).
+As curvas escolhidas para a execução dos testes foram geradas com o auxílio da biblioteca SageMath. Quanto aos parâmetros, foi escolhido um número primo \(p\) para representar o corpo finito no qual a curva está definida. Os parâmetros \(a\) e \(b\) foram selecionados seguindo a regra estabelecida na Eq. \ref{eq:7}. Após isso, foi feito o cálculo da ordem da curva, se a ordem é prima, a curva é utilizada, caso contrário, será descartada e outra curva será gerada seguindo os mesmos passos citados, até que seja encontrada uma curva com a ordem prima. Dessa forma, pode-se evitar ataques baseados na fatoração da ordem da curva, tais como o ataque utilizando o algoritmo de Pohlig-Hellman (Seção \ref{sec:algs}).
 
 Gerou-se diferentes curvas variando o valor de \(p\) de 32 a 160 bits para, posteriormente, realizar a comparação de tempo entre os algoritmos. Foram também selecionados dois pontos \(P\) e \(Q\) pertencentes à curva. Por fim, todas essas informações foram armazenadas em um arquivo de texto para ser processado pelos algoritmos.
 
@@ -94,7 +94,7 @@ Para obter a equação que relacione o tempo necessário em segundos para ``queb
 \begin{equation} \label{eq_linear}
 	ln(y) = ln(k) + cx\cdot ln(e) = ln(k) + cx
 \end{equation}
-Em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico \ref{grafico1}, e substituídos os valores de \(x\) e \(y\) na equação (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
+Em seguida, foram escolhidos dois pontos \(A\) e \(B\) de uma das curvas do gráfico \ref{grafico1}, e substituídos os valores de \(x\) e \(y\) na Eq. (\ref{eq_linear}) respectivamente pelas coordenadas de \(A\) e \(B\), obtendo-se o sistema
 \begin{equation*}
 \left\{ \begin{array}{c}
 ln(Y_A) = ln(a) + b(X_A)\\
