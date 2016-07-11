@@ -1,7 +1,7 @@
 \chapter{Pollard-rho para resolver ECDLP} \label{PR}
 Em 1978, Pollard sugeriu o método Monte-Carlo\footnote{Monte-Carlo é um método estatístico que se baseiam em amostragens aleatórias massivas para obter resultados numéricos, isto é, repetindo sucessivas simulações um elevado número de vezes, para calcular probabilidades de forma heurística.} para resolver o problema do logaritmo discreto. Desde então, o método foi modificado para resolver o ECDLP. Como o algoritmo Pollard-rho é atualmente o algoritmo mais rápido para resolver o ECDLP, então a segurança do ECC depende da eficiência desse algoritmo. Teoricamente, se o algoritmo Pollard-rho é capaz de resolver o ECDLP eficientemente e em um tempo relativamente curto, então o criptossistema estará inseguro. \cite{Mandy:2007}
 
-A estratégia do algoritmo é produzir uma sequência de termos gerados aleatoriamente $(a_k, b_k, R_k)$, em que \(R_k\) é um ponto na curva \(E\) e \(a_k\)  e \(b_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá se tornar periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Pelo paradoxo do aniversário
+A estratégia do algoritmo é produzir uma sequência de termos gerados aleatoriamente $(c_k, d_k, R_k)$, em que \(R_k\) é um ponto na curva \(E\) e \(c_k\)  e \(d_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá se tornar periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Pelo paradoxo do aniversário
 \footnote{Suponha que uma urna tenha \(n\) bolas numeradas de 1 a \(n\). As bolas são aleatoriamente retiradas uma de cada vez e colocadas de volta na urna. Portanto, o número esperado para que as bolas se repitam é de aproximadamente de $\sqrt{\pi n/2}$. Se \(n\) = 365 e as bolas representam diferentes dias do ano, então pode-se dizer que o número esperado de pessoas que tem de ser reunidas em uma sala para que pelo menos duas delas tenham nascido no mesmo dia é de aproximadamente $\sqrt{\pi 365/2} \approx 24$. Esse número é surpreendentemente pequeno e, consequentemente, daí vem a nomenclatura ``paradoxo do aniversário''. \cite{Guide}},
 o número de iterações médio para que se obtenha uma colisão é de aproximadamente $\sqrt{\pi n/2} \approx 1.2533 \sqrt{n}$. Usa-se essa periodicidade para resolver ECDLP. Como nem sempre a sequência volta para o primeiro termo, um diagrama da sequência parecerá com a letra grega \(\rho\) (ver Figura \ref{fig:rho}). Por este motivo esse método é chamado de Pollard-rho. Essa sequência de termos gerados é chamada de ``percurso''. \cite{Guide}
 
@@ -18,9 +18,9 @@ A seguir serão apresentados o algoritmo de Pollard-rho e suas variações.
 
 \section{Pollard-rho original} \label{Pollard_original}
 
-Uma forma simplificada de encontrar uma colisão seria selecionar inteiros aleatórios $a, b \in [0, n-1]$ e armazenar as triplas $(a, b, aP + bQ)$ em uma tabela ordenada pelo terceiro componente até que um ponto $aP + bQ$ seja obtido pela segunda vez. A desvantagem desse algoritmo é que a capacidade de armazenamento necessária para o cálculo é de $\sqrt{\pi n/2}$ triplas.
+Uma forma simplificada de encontrar uma colisão seria selecionar inteiros aleatórios $c, d \in [0, n-1]$ e armazenar as triplas $(c, d, cP + dQ)$ em uma tabela ordenada pelo terceiro componente até que um ponto $cP + dQ$ seja obtido pela segunda vez. A desvantagem desse algoritmo é que a capacidade de armazenamento necessária para o cálculo é de $\sqrt{\pi n/2}$ triplas.
 
-Com o algoritmo Pollard-rho, é possível encontrar os pares ($a_m, b_m$) e ($a_{2m}, b_{2m})$ aproximadamente no mesmo tempo que o algoritmo citado acima, mas tem desprezíveis requisitos de armazenamento. A ideia é definir uma função de iteração $f : \langle P \rangle \to \langle P \rangle$ de modo que $X \in \langle P \rangle$ e $a, b \in [0, n-1]$ com $X = aP + bQ$. Além disso, \(f\) deve ter características de uma função aleatória. \cite{Guide}
+Com o algoritmo Pollard-rho, é possível encontrar os pares ($c_m, d_m$) e ($c_{2m}, d_{2m})$ aproximadamente no mesmo tempo que o algoritmo citado acima, mas tem desprezíveis requisitos de armazenamento. A ideia é definir uma função de iteração $f : \langle P \rangle \to \langle P \rangle$ de modo que $X \in \langle P \rangle$ e $a, b \in [0, n-1]$ com $X = aP + bQ$. Além disso, \(f\) deve ter características de uma função aleatória. \cite{Guide}
 
 Seja um grupo $G = E(\mathbb{F}_p)$, tal que a ordem de $\#E(\mathbb{F}_p) = |G| = n$, e \(P\) e \(Q \in E(\mathbb{F}_p)\) tal que $Q = xP$ em \(G\). O objetivo é calcular \(x\). Segue os passos do algoritmo original proposto por Pollard:
 
@@ -37,46 +37,46 @@ P + R_k, &R_k \in S_3
 \end{cases}
 \end{eqnarray}
 
-\item Seja $R_k = a_kP + b_kQ$, e portanto
+\item Seja $R_k = c_kP + d_kQ$, e portanto
 
 \begin{eqnarray}
-a_{k+1} =
+c_{k+1} =
 \begin{cases}
-a_k, &R_k \in S_1 \\
-2a_k \pmod n, &R_k \in S_2 \\
-a_k + 1, &R_k \in S_3
+c_k, &R_k \in S_1 \\
+2c_k \pmod n, &R_k \in S_2 \\
+c_k + 1, &R_k \in S_3
 \end{cases}
 \end{eqnarray}
 
 e
 
 \begin{eqnarray}
-b_{k+1} =
+d_{k+1} =
 \begin{cases}
-b_k + 1, &R_k \in S_1 \\
-2b_k \pmod n, &R_k \in S_2 \\
-b_k, &R_k \in S_3
+d_k + 1, &R_k \in S_1 \\
+2d_k \pmod n, &R_k \in S_2 \\
+d_k, &R_k \in S_3
 \end{cases}
 \end{eqnarray}
 
-\item Os termos iniciais são: $R_0 = P, a_0 = 1, b_0 = 0$ e os pares gerados $(R_k, R_{2k})$ até encontrar uma correspondência $R_m = R_{2m}$, para qualquer \(m\).
+\item Os termos iniciais são: $R_0 = P, c_0 = 1, d_0 = 0$ e os pares gerados $(R_k, R_{2k})$ até encontrar uma correspondência $R_m = R_{2m}$, para qualquer \(m\).
 
 \item Uma vez encontrados, calcule:
 
 \begin{eqnarray*}
-R_m = a_mP + b_mQ \\
-R_{2_m} = a_{2_m}P + b_{2m}Q
+R_m = c_mP + d_mQ \\
+R_{2_m} = c_{2m}P + d_{2m}Q
 \end{eqnarray*}
 
 \item Com isso, é possível calcular \(x\):
 
 \begin{equation} \label{eq:x}
-x = \frac{a_{2m} - a_m}{b_m - b_{2m}} \pmod n
+x = \frac{c_{2m} - c_m}{d_m - d_{2m}} \pmod n
 \end{equation}
 
 \end{enumerate}
 
-O termo $(b_m - b_{2m})^{-1} \pmod n$ em (\ref{eq:x}) somente é possível calcular quando o gcd$(b_m - b_{2m}, n) = 1$, ou seja, quando \(b_m\) e \(b_{2m}\) são coprimos entre si. Caso contrário, o algoritmo retorna um valor indefinido.
+O termo $(d_m - d_{2m})^{-1} \pmod n$ em (\ref{eq:x}) somente é possível calcular quando o gcd$(d_m - d_{2m}, n) = 1$, ou seja, quando \(d_m\) e \(d_{2m}\) são coprimos entre si. Caso contrário, o algoritmo retorna um valor indefinido.
 
 %
 % Pollar-rho com um processador
@@ -99,7 +99,7 @@ O pseudoalgoritmo está descrito em anexo (\ref{alg:single}).
 \subsection{Algoritmo Busca-Ciclos de Floyd} \label{floyd}
 Pollard-rho é uma variante do algoritmo busca-ciclos de Floyd (\textit{Floyd's cycle-finding}), que é importante para detectar a ocorrência de um ciclo em sequências arbitrárias, seja em estruturas de dados ou geradas por sequências pseudo-aleatórias e grafos. Este algoritmo, também é chamado de algoritmo ``lebre e tartaruga'', no qual se utiliza apenas dois ponteiros que se movem através da sequência com diferentes velocidades.
 
-Para encontrar \(R_i = R_j\), o algoritmo calcula as triplas $(a_i, b_i, R_i)$ e $(a_{2i}, b_{2i}, R_{2i})$ até que \(R_i = R_{2i}\). Para cada iteração, calcula-se \(R_{i+1} = f(R_i)\) e \(R_{2(i+1)} = f(f(R_{2i}))\), o que significa que este algoritmo utiliza uma quantidade mínima de armazenamento. O algoritmo busca-ciclos de Floyd é baseado na seguinte ideia. \cite{Ping:2011} \cite{Brent:2008}
+Para encontrar \(R_i = R_j\), o algoritmo calcula as triplas $(c_i, d_i, R_i)$ e $(c_{2i}, d_{2i}, R_{2i})$ até que \(R_i = R_{2i}\). Para cada iteração, calcula-se \(R_{i+1} = f(R_i)\) e \(R_{2(i+1)} = f(f(R_{2i}))\), o que significa que este algoritmo utiliza uma quantidade mínima de armazenamento. O algoritmo busca-ciclos de Floyd é baseado na seguinte ideia. \cite{Ping:2011} \cite{Brent:2008}
 
 \textbf{Teorema 1} (\cite{Knuth:1997}). Para uma sequência periódica \(\{R_0, R_1, R_2, ...\}\), existe um \(i > 0\) tal que \(R_i = R_{2i}\) e o menor valor de \(i\) que pertença ao intervalo \(\mu \leq i \leq \mu + \lambda\). \(\mu\) e \(\lambda\) são o pré-período (cauda) e o período (ciclo) da sequência \(R_i\), respectivamente.
 
