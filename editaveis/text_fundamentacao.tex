@@ -1,5 +1,5 @@
 \chapter{Fundamentação Teórica}
-Neste capítulo serão mostrados os conceitos matemáticos necessários para o entendimento dos objetivos propostos.
+Neste capítulo serão mostrados os conceitos matemáticos necessários para fundamentar a busca dos objetivos propostos.
 
 %
 % ARITMÉTICA MODULAR
@@ -294,7 +294,7 @@ A criptografia, em geral, fornece quatro serviços: \cite{Portnoi:2005}
 \begin{itemize}
 \item \textit{confidencialidade}: é a cifração dos dados de forma que somente seja inteligível aos receptores legítimos.
 \item \textit{integridade}: durante a cifração dos dados, é necessário garantir que a informação não seja modificada pelo algoritmo de cifração, ou seja, a forma como os dados se apresentam deve ser modificada, mas sua informação deve permanecer a mesma.
-\item \textit{autenticação}: é a garantia de que o emissor e o receptor são realmente quem dizem ser, ou seja, é a forma de verificar as identidades uns dos outros assim como a origem e o destino da informação. A autenticação é obtida através da assinatura digital e dos certificados.
+\item \textit{autenticação}: é a garantia de que o emissor e o receptor são realmente quem dizem ser, ou seja, é a forma de verificar as identidades uns dos outros assim como a origem e o destino da informação. A autenticação pode ser obtida por meio de assinatura digital. Outra forma de obtê-la seria através de HMAC ou Cifração autenticada(\textit{Authenticated Encryption}).
 \item \textit{irretratabilidade}: impede que o emissor ou o receptor negue a mensagem transmitida, dessa forma, o emissor pode provar que o receptor recebeu a mensagem e o receptor pode provar que o emissor a enviou.
 \end{itemize}
 
@@ -302,11 +302,11 @@ A criptografia, em geral, fornece quatro serviços: \cite{Portnoi:2005}
 % CRIPTOGRAFIA SIMÉTRICA
 %
 \subsection{Criptografia simétrica}
-A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia utilizado. Baseia-se no uso de uma chave secreta para cifrar e decifrar a mensagem. É importante notar que a mesma chave utilizada para cifrar a mensagem é utilizada para decifrá-la. Dessa forma, é necessário que o emissor e o receptor saibam interpretar a chave secreta, assim, é necessário utilizar um canal seguro para compartilhar tal chave. Esse tipo de criptografia é bastante utilizado em transmissões de dados que exista uma forma barata de estabelecer um canal seguro, tais como como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas ou no armazenamento da informação em um disco rígido, dentre outras \cite{Cavalcante:2015}.
+A criptografia simétrica, ou convencional, foi o primeiro tipo de criptografia utilizado. Baseia-se no uso de uma chave secreta para cifrar e decifrar a mensagem. É importante notar que a mesma chave utilizada para cifrar a mensagem é utilizada para decifrá-la. Dessa forma, é necessário que o emissor e o receptor saibam interpretar a chave secreta, assim, é necessário utilizar um canal seguro para compartilhar tal chave. Esse tipo de criptografia é bastante utilizado em transmissões de dados para as quais exista uma forma barata de estabelecer um canal seguro, tais como como mensagens enviadas de um computador para outro, nas comunicações entre duas máquinas ou no armazenamento da informação em um disco rígido, dentre outras \cite{Cavalcante:2015}.
 
 %
 % CRIPTOGRAFIA ASSIMÉTRICA
 %
 \subsection{Criptografia assimétrica}
 A criptografia assimétrica, também conhecida como criptografia de chave pública, utiliza duas chaves distintas, uma para cifrar os dados (chamada de chave pública) e outra para decifrar os dados (chamada de chave privada). Neste caso a chave pública é divulgada enquanto que a chave privada permanece secreta. Assim, o emissor tem acesso à chave pública do receptor e utiliza esta para cifrar a mensagem. O receptor ao receber a mensagem, utiliza sua chave privada para decifrá-la. Esse tipo de criptografia não precisa de um canal seguro para compartilhamento da chave, pois a chave pública está disponível para qualquer um que queira enviar a mensagem para o receptor, porém, somente o receptor possui a chave privada \cite{Cavalcante:2015}.
-Este sistema é capaz de prover a confidencialidade dos dados e também autenticação pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.
+Este sistema é capaz de prover a confidencialidade dos dados pois somente o proprietário da chave privada será capaz de decifrar a mensagem. Em algoritmos dessa natureza, um dado que é criptografado com uma chave só poderá ser decifrado com a utilização da outra chave e vice-versa.

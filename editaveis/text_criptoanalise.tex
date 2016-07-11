@@ -30,7 +30,7 @@ e chamamos \(x\) como logaritmo discreto elíptico de \(Q\) em relação a \(P\)
 %
 \subsection{Algoritmos conhecidos para resolver ECDLP}
 \label{sec:algs}
-Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas super-singular e anômalo. A solução para a Equação \ref{eq:ecdlp2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
+Ataques mais conhecidos sobre ECC têm complexidade exponencial. Essa afirmação é válida para curvas genéricas e exclui ataques em subclasses especiais, como curvas super-singular e anômalas. A solução para a Equação \ref{eq:ecdlp2} pode ser calculada usando as seguintes técnicas: \cite{Pelzl:2006}
 
 \begin{itemize}
 \item Força-bruta: Este método adiciona sequencialmente o ponto $P \in E(\mathbb{F}_p)$ a ele mesmo. A cadeia de adição $P, 2P, 3P, 4P, ...$ acabará por chegar em \(Q\) descobrindo assim o valor de \(n\), de acordo com a Equação \ref{eq:ecdlp1}. No pior caso, este cálculo pode levar até $n - 1$ passos em que \(n\) é da ordem de \(P\). Desta forma, o ataque pode se tornar inviável para prática quando \(n\) é muito grande.
