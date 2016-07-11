@@ -1,9 +1,9 @@
 \chapter{Pollard-rho para resolver ECDLP} \label{PR}
 Em 1978, Pollard sugeriu o método Monte-Carlo\footnote{Monte-Carlo é um método estatístico que se baseiam em amostragens aleatórias massivas para obter resultados numéricos, isto é, repetindo sucessivas simulações um elevado número de vezes, para calcular probabilidades de forma heurística.} para resolver o problema do logaritmo discreto. Desde então, o método foi modificado para resolver o ECDLP. Como o algoritmo Pollard-rho é atualmente o algoritmo mais rápido para resolver o ECDLP, então a segurança do ECC depende da eficiência desse algoritmo. Teoricamente, se o algoritmo Pollard-rho é capaz de resolver o ECDLP eficientemente e em um tempo relativamente curto, então o criptossistema estará inseguro. \cite{Mandy:2007}
 
-A estratégia do algoritmo é produzir uma sequência de termos gerados randomicamente $(a_k, b_k, R_k)$, onde \(R_k\) é um ponto na curva \(E\) e \(a_k\)  e \(b_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá torna-se periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Usa-se essa periodicidade para resolver ECDLP. Como nem sempre a sequência volta para o primeiro termo, um diagrama da sequência parecerá com a letra grega \(\rho\) (ver Figura \ref{fig:rho}). Por este motivo esse método é chamado de Pollard-rho. Essa sequência de termos gerados é chamada de ``percurso''.
+A estratégia do algoritmo é produzir uma sequência de termos gerados aleatoriamente $(a_k, b_k, R_k)$, em que \(R_k\) é um ponto na curva \(E\) e \(a_k\)  e \(b_k\) estão em $\mathbb{F}_p$ sobre a qual a curva elíptica \(E\) está definida. Como $E(\mathbb{F}_p)$ é um grupo finito, a sequência eventualmente irá torna-se periódica e voltará para um termo anterior da sequência \--- tal ocorrência é chamada de \textit{colisão}. Usa-se essa periodicidade para resolver ECDLP. Como nem sempre a sequência volta para o primeiro termo, um diagrama da sequência parecerá com a letra grega \(\rho\) (ver Figura \ref{fig:rho}). Por este motivo esse método é chamado de Pollard-rho. Essa sequência de termos gerados é chamada de ``percurso''.
 
-Seja \(\mu\) o tamanho da cauda e \(\lambda\) o tamanho do ciclo. Após um número finito de iterações, obtêm-se os termos $R_k = R_{k+\lambda}$, onde $k > \mu$ e $\lambda > 1$. Neste ponto, já deverá ter sido encontrado uma correspondência entre os termos e poderá empregar resultados de matemática discreta para resolver os problemas de logaritmo discreto gerado pelos elementos do conjunto finito.
+Seja \(\mu\) o tamanho da cauda e \(\lambda\) o tamanho do ciclo. Após um número finito de iterações, obtêm-se os termos $R_k = R_{k+\lambda}$, em que $k > \mu$ e $\lambda > 1$. Neste ponto, já deverá ter sido encontrado uma correspondência entre os termos e poderá empregar resultados de matemática discreta para resolver os problemas de logaritmo discreto gerado pelos elementos do conjunto finito.
 
 A seguir serão apresentados o algoritmo de Pollard-rho e suas variações.
 
@@ -84,7 +84,7 @@ A modificação desse algoritmo encontra os pares ($a_m, b_m$) e ($a_{2m}, b_{2m
 Seja $\{S_1, S_2, ..., S_L\}$ uma partição aleatória de $\langle P \rangle$ em uma quantidade \(L\) de conjuntos de aproximadamente do mesmo tamanho. Então um ponto $X \in \langle P \rangle$ pode ser designado a \(S_j\) se os cinco \textit{bits} menos significantes da coordenada \(x\) de \(X\) representam o inteiro \(j-1\). Desta forma, define-se $j = H(X)$ se $X \in S_j$, no qual \(H\) é uma função de partição. Finalmente, seja $c_j, d_j \in [0, n-1]$ para $1 \leq j \leq L$. Então $f : \langle P \rangle \to  \langle P \rangle$ é definido por
 
 \begin{equation*}
-f(X) = X + c_jP + d_jQ \textrm{, onde } j = H(X)
+f(X) = X + c_jP + d_jQ \textrm{, em que } j = H(X)
 \end{equation*}
 
 O pseudoalgoritmo está descrito em anexo (\ref{alg:single}).
@@ -107,7 +107,7 @@ O melhor caso desse algoritmo são necessários \(\mu\) iterações e o pior cas
 \section{Pollard-rho multiprocessadores} \label{sec:parallelized}
 Suponha agora que \(M\) processadores estão disponíveis para resolver uma instância de ECDLP. Uma abordagem normal seria de executar o algoritmo Pollard-rho independente para cada processador (com diferentes pontos \(X_0\) aleatórios escolhidos inicialmente) até que algum dos processadores finalize. Uma análise cuidadosa mostra que o número esperado de operações de curva elíptica executadas por cada processador até que algum finalize é de $3\sqrt{n/M}$. Assim a aceleração esperada é dada pelo fator $\sqrt{M}$. \cite{Guide}
 
-Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir que as sequências $\{X_i\}_{i \geq 0}$ geradas pelos vários processadores possam colidir umas com as outras. Ou seja, cada processador escolhe randomicamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se as sequências de dois processadores diferentes colidirem entre si, como ilustrado na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a colisão em Y, o primeiro ponto distinto subsequente \cite{Van:1996}.
+Van Oorschot e Wiener propuseram uma variante do algoritmo Pollard-rho que produz um fator de aceleração \(M\) quando \(M\) processadores são empregados. A ideia é permitir que as sequências $\{X_i\}_{i \geq 0}$ geradas pelos vários processadores possam colidir umas com as outras. Ou seja, cada processador escolhe aleatoriamente seu próprio ponto inicial \(X_0\), mas todos processadores utilizam a mesma função de iteração \(f\) para calcular os pontos subsequentes \(X_i\). Desta forma, se as sequências de dois processadores diferentes colidirem entre si, como ilustrado na Figura \ref{fig:paralellized}, as duas sequências serão idênticas daquele ponto em diante. A sequência gerada pelos processadores 3 e 4 se colidem em X. O algoritmo informa a colisão em Y, o primeiro ponto distinto subsequente \cite{Van:1996}.
 
 \begin{figure}[h]
 \centering
@@ -146,7 +146,7 @@ Seja o grupo de pontos da curva elíptica $E(\mathbb{F}_q)$. Considere o ponto P
 $$
 [R] = \{R, \psi(R), \psi^2(R), \dots, \psi^{l-1}(R)\}
 $$
-onde $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\psi^l(R) = R$.
+em que $l$ é o menor divisor positivo da ordem $t$ da função $\psi$, tal que $\psi^l(R) = R$.
 
 O método de Pollard-rho com automorfismo consiste em utilizar uma função iterativa $f$ que seja definida nas classes de equivalência. Para isso, será definido um representante $\overline{R}$ para cada classe de equivalência $[R]$ e uma função $g$ tal que
 $$

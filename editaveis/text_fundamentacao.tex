@@ -22,7 +22,7 @@ O \textbf{teorema da divisão} diz que: dados dois inteiros $a, b$, com $b > 0$,
   a=qb+r \qquad 0 \leq r<b;\ q=\lfloor a/b \rfloor
 \end{equation}
 
-onde $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração será feita utilizando o teorema de Eudoxius descrito acima. Dessa forma, existe um inteiro \(q\) que satisfaz a equação~\ref{eudoxius}, o que implica que \(0 \leq a - qb\) e que \(a - qb < b\). Definindo \(r = a - qb\), teremos demonstrado a existência de \(q\) e \(r\). A unicidade de \(q\) e 
+em que $\lfloor x \rfloor$ é o maior inteiro menor ou igual a \(x\) e $q,r$ são chamados respectivamente de \textit{quociente} e \textit{resto} ou \textit{resíduo} da divisão de \(a\) por \(b\) \cite{Santos:2014}. A demonstração será feita utilizando o teorema de Eudoxius descrito acima. Dessa forma, existe um inteiro \(q\) que satisfaz a equação~\ref{eudoxius}, o que implica que \(0 \leq a - qb\) e que \(a - qb < b\). Definindo \(r = a - qb\), teremos demonstrado a existência de \(q\) e \(r\). A unicidade de \(q\) e 
 \(r\) pode ser demonstrada por contradição. Suponhamos que exista outro par de inteiros \(q_1\) e \(r_1\) que satisfaçam a equação
 \begin{equation}
   a = q_1b + r_1
@@ -62,7 +62,7 @@ Por definição, o operador $\pmod n$ mapeia todos os inteiros para o conjunto d
 Antes de tratar a divisão módulo \(n\), é importante fixar o conceito de \textbf{máximo divisor comum}(MDC) entre dois números inteiros. O MDC entre dois inteiros \(a\) e \(b\) 
 é o maior inteiro que divide simultaneamente \(a\) e \(b\).
 
-A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, onde mdc\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
+A divisão módulo $n$ não está definida em todos os casos. Seja \(d\) um número inteiro que divide \(a\) e \(b\), verifica-se que a relação apresentada na Equação \ref{eq:3}, em que mdc\((n, d)\) é o máximo divisor comum entre \(n\) e \(d\).
 
 \begin{equation}
   \frac{a}{d} \equiv \frac{b}{d}\left(\mbox{mod}\ \frac{n}{\text{mdc}(n,d)}\right) \label{eq:3}
@@ -155,7 +155,7 @@ Um partição de um conjunto não vazio \(E\) é formada pela classe \(\mathcal{
 \section{Estruturas Algébricas}
 
 Antes de iniciar os estudos em aritmética de curvas elípticas, é importante
-fixar alguns conceitos de álgebra. De acordo com Hefez, estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas, onde determinados conjuntos definem operações com propriedades semelhantes \cite{Hefez:2008}.
+fixar alguns conceitos de álgebra. De acordo com Hefez, estruturas algébricas são modelos abstratos para tratar em bloco várias situações matemáticas concretas, em que determinados conjuntos definem operações com propriedades semelhantes \cite{Hefez:2008}.
 
 %
 % GRUPOS
@@ -230,7 +230,7 @@ Seja um grupo \(G\) e um subgrupo \(H\), suponha que o índice de \(H\) em \(G\)
 $$
   o(G) = o(H) + o(H) + \ldots + o(H)
 $$
-onde \(o(G)\) indica a ordem do conjunto \(G\). Como \((G : H) = r\), então pode-se escrever
+em que \(o(G)\) indica a ordem do conjunto \(G\). Como \((G : H) = r\), então pode-se escrever
 $$
   o(G) = (G : H)\cdot o(H) = r\cdot o(H)
 $$
@@ -264,7 +264,7 @@ Pelo teorema de Lagrange, é possível concluir que a ordem de $H$ divide a orde
 % HOMOMORFISMOS DE GRUPO
 %
 \subsection{Homomorfismos de grupos}
-Sejam os grupos $(G, \cdot)$ e $(H, \cdot)$, uma função $f: G \rightarrow H$ é chamada de \textit{homomorfismo} se $f(a \cdot b) = f(a) \cdot f(b)$ onde $a, b \in G$. Se a operação dos grupos for diferente, por exemplo, $(G, \cdot)$ e $(H, \star)$, então a condição é dada por $f(a \cdot b) = f(a) \star f(b)$ \cite{Gilbert:2004}.
+Sejam os grupos $(G, \cdot)$ e $(H, \cdot)$, uma função $f: G \rightarrow H$ é chamada de \textit{homomorfismo} se $f(a \cdot b) = f(a) \cdot f(b)$ em que $a, b \in G$. Se a operação dos grupos for diferente, por exemplo, $(G, \cdot)$ e $(H, \star)$, então a condição é dada por $f(a \cdot b) = f(a) \star f(b)$ \cite{Gilbert:2004}.
 
 % Explicar o que é uma função bijetora (notas de rodapé)
 Sendo $f: G \rightarrow H$ uma função de homomorfismo entre os grupos \(G\) e \(H\), se a função for bijetora, então ela é denominada \textit{isomorfismo}, e ainda, se os grupos \(G\) e \(H\) são iguais e a função é um isomorfismo, então ela é denominada \textit{automorfismo} \cite{Shokranian:2010}.
@@ -273,7 +273,7 @@ Sendo $f: G \rightarrow H$ uma função de homomorfismo entre os grupos \(G\) e 
 % CORPOS FINITOS
 %
 \subsection{Corpos Finitos}
-Corpos finitos são estruturas algébricas compostas por um conjunto numérico \(\mathbb{F}\) juntamente com duas operações, sendo uma delas a operação de soma (denotada por $+$) e a outra a operação de multiplicação (denotada por $\cdot$) onde são satisfeitas as seguintes propriedades: \cite{Guide}
+Corpos finitos são estruturas algébricas compostas por um conjunto numérico \(\mathbb{F}\) juntamente com duas operações, sendo uma delas a operação de soma (denotada por $+$) e a outra a operação de multiplicação (denotada por $\cdot$) em que são satisfeitas as seguintes propriedades: \cite{Guide}
 
 \begin{enumerate}
 \item $(\mathbb{F}, +)$ é um grupo abeliano com elemento identidade sendo \(0\).
@@ -281,7 +281,7 @@ Corpos finitos são estruturas algébricas compostas por um conjunto numérico \
 \item Para todo $a, b, c \in \mathbb{F}$, é válida a propriedade distributiva $(a + b) \cdot c = a \cdot c + b \cdot c$.
 \end{enumerate}
 
-Se o conjunto \(\mathbb{F}\) é finito, então o corpo é denominado \textit{corpo finito}. A \textit{ordem} de um corpo finito indica a quantidade de elementos que constituem o corpo finito. Existe um corpo finito de ordem \(q\) se e somente se \(q\) é igual a uma potência prima, ou seja, $q = p^{m}$, onde \(p\) é um número primo. O número \(p\) é chamado de característica do corpo finito. Se $m = 1$ então o corpo é denominado \textit{corpo primo}, caso $m \geq 2$, o corpo é chamado de \textit{corpo extenso} \cite{Guide}.
+Se o conjunto \(\mathbb{F}\) é finito, então o corpo é denominado \textit{corpo finito}. A \textit{ordem} de um corpo finito indica a quantidade de elementos que constituem o corpo finito. Existe um corpo finito de ordem \(q\) se e somente se \(q\) é igual a uma potência prima, ou seja, $q = p^{m}$, em que \(p\) é um número primo. O número \(p\) é chamado de característica do corpo finito. Se $m = 1$ então o corpo é denominado \textit{corpo primo}, caso $m \geq 2$, o corpo é chamado de \textit{corpo extenso} \cite{Guide}.
 
 %
 % CRIPTOGRAFIA

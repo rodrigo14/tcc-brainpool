@@ -79,9 +79,9 @@ Já os algoritmos Pollard-rho serial e paralelo não possuem o problema da memó
 
 A melhoria de desempenho do algoritmo paralelo em relação ao serial é justificada por uma questão estatística, pois o algoritmo serial escolhe um ponto inicial de forma aleatória, e dependendo dessa escolha, o algoritmo pode demorar mais tempo para encontrar uma colisão. Já na versão paralelizada, o mesmo algoritmo serial é executado em paralelo por vários processos, onde cada um deles é inicializado com um ponto inicial. Dessa forma, um desses processos vai partir de um ponto inicial mais propício a encontrar uma colisão do que os outros processos e, consequentemente, este processo irá encontrar uma colisão em um tempo menor do que os outros.
 
-Os resultados da tabela \ref{table:results} podem ser colocados em um gráfico \textit{Mono-Log}, onde a coordenada $x$ do gráfico representa o tamanho da curva em \textit{bits} e a coordenada $y$ representa o tempo, em segundos, necessário para resolver o problema do logaritmo discreto. O resultado é o gráfico da figura \ref{grafico1}.
+Os resultados da tabela \ref{table:results} podem ser colocados em um gráfico \textit{Mono-Log}, em que a coordenada $x$ do gráfico representa o tamanho da curva em \textit{bits} e a coordenada $y$ representa o tempo, em segundos, necessário para resolver o problema do logaritmo discreto. O resultado é o gráfico da figura \ref{grafico1}.
 
-Pelo gráfico da figura \ref{grafico1} é possível perceber que os resultados experimentais se aproximam de uma reta. Isto demonstra que pode-se obter uma função que irá calcular o tempo aproximado para resolver o problema do logaritmo discreto partindo do tamanho da curva em bits, e que esta função é exponencial do tipo \(y = ke^{cx}\), onde $e$ é a base dos logaritmos neperianos.
+Pelo gráfico da figura \ref{grafico1} é possível perceber que os resultados experimentais se aproximam de uma reta. Isto demonstra que pode-se obter uma função que irá calcular o tempo aproximado para resolver o problema do logaritmo discreto partindo do tamanho da curva em bits, e que esta função é exponencial do tipo \(y = ke^{cx}\), em que $e$ é a base dos logaritmos neperianos.
 
 \begin{figure}[h]
 \centering
@@ -107,7 +107,7 @@ Com esse sistema, ao fazer \(ln(Y_B) - ln(Y_A)\), obtém-se o valor de \(b\), e 
 \begin{equation*}
 	y = e^{ln(a) + bx}
 \end{equation*}
-onde \(e \approx 2.718281828\).
+em que \(e \approx 2.718281828\).
 
 Dessa forma, as equações que relacionam o tamanho da curva em \textit{bits} ao tempo necessário em segundos para ``quebrá-la'' foram as seguintes
 \begin{itemize}
