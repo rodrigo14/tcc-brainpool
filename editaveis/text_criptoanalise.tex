@@ -10,7 +10,7 @@ Existem dois lados da Criptoanálise: a que procura criar uma criptografia segur
 % CRIPTOANÁLISE NO CONTEXTO DE CURVAS ELÍPTICAS
 %
 \section{Criptoanálise no contexto de curvas elípticas}
-No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo dos inteiros \(n_A\) e \(n_B\), que são as chaves privadas de \textbf{A} e \textbf{B} mencionados na seção \ref{sec:ecc}. Se estes inteiros são facilmente inferidos a partir de execuções dos protocolos ou do próprio conhecimento da chave pública, então o criptossistema não é mais seguro. Esse tipo de descoberta é classificado como ruptura total, no qual o atacante deduz as chaves secretas. \cite{Knudsen:1998}
+No caso de um criptossistema de curva elíptica, ela deverá depender do sigilo dos inteiros \(n_A\) e \(n_B\), que são as chaves privadas de \textbf{A} e \textbf{B} mencionados na Seção \ref{sec:ecc}. Se estes inteiros são facilmente inferidos a partir de execuções dos protocolos ou do próprio conhecimento da chave pública, então o criptossistema não é mais seguro. Esse tipo de descoberta é classificado como ruptura total, no qual o atacante deduz as chaves secretas. \cite{Knudsen:1998}
 
 %
 % ECDLP
@@ -45,7 +45,7 @@ Neste trabalho serão apresentados os métodos Pollard-rho original e suas varia
 % Quebrar ECC em um ano (No final)
 %
 \subsection{Quebrando ECC em um ano}
-De acordo com uma pesquisa \cite{Pelzl:2006}, definindo um limite de tempo específico, pode-se calcular o número de processadores necessários. Seguindo a tentativa de quebrar ECC com uma chave de tamanho \(k\) de bits em um tempo máximo de um ano (365 dias), é possível encontrar a quantidade de processadores necessários representadas pela Tabela 1.
+De acordo com uma pesquisa \cite{Pelzl:2006}, definindo um limite de tempo específico, pode-se calcular o número de processadores necessários. Seguindo a tentativa de quebrar ECC com uma chave de tamanho \(k\) de bits em um tempo máximo de um ano (365 dias), é possível encontrar a quantidade de processadores necessários representadas pela Tabela \ref{table:required_chips}.
 
 \begin{table}[]
 \centering
