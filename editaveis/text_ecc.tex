@@ -157,5 +157,5 @@ Um acordo de chaves entre os usuários \textbf{A} e \textbf{B} pode ser realizad
 n_A \times P_B = n_A \times (n_B \times G) = n_B \times (n_A \times G) = n_B \times P_A
 \end{equation*}
 
-Para quebrar esse esquema, um atacante precisa utilizar a curva $E_p(a, b)$ e o ponto base $G$, que são conhecidos, e uma das chaves públicas \(P_A\) ou \(P_B\) para descobrir respectivamente uma das chaves privadas \(n_A\) ou \(n_B\). Para isso, ele precisará encontrar um valor $x$ que satisfaça \(P_A = xG\), encontrando assim \(n_A = x\), ou \(P_B = xG\), encontrando \(n_B = x\). 
+Para quebrar esse esquema, um atacante precisa utilizar a curva $E_p(a, b)$ e o ponto base $G$, que são conhecidos, e uma das chaves públicas \(P_A\) ou \(P_B\) para descobrir respectivamente uma das chaves privadas \(n_A\) ou \(n_B\). Para isso, ele precisará encontrar um valor $x$ que satisfaça \(P_A = xG\), encontrando assim \(n_A = x\), ou \(P_B = xG\), encontrando \(n_B = x\). Este é um problema computacionalmente difícil de resolver, e é conhecido como o \textit{Problema do logarítmo discreto sobre curvas elípticas}.
 
