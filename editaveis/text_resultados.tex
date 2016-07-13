@@ -49,6 +49,7 @@ Durante a execução desse algoritmo, foram feitos diversos testes sobre a utili
 
 \begin{table}[h]
 \centering
+\caption{Resultado dos algoritmos Pollard-rho}
 \label{table:results}
 \begin{tabular}{|l|c|c|c|}
 \hline
@@ -66,7 +67,6 @@ Durante a execução desse algoritmo, foram feitos diversos testes sobre a utili
 65                             & 3d 20h45m48s    & -                     & 10h33m34s                \\ \hline
 66                             & 6d 04h30m10s    & -                     & -                        \\ \hline
 \end{tabular}
-\caption{Resultado dos algoritmos Pollard-rho}
 \end{table}
 
 Com os experimentos realizados durante este trabalho, foi possível realizar uma comparação empírica entre três variantes do algoritmo Pollard-rho para ataques à criptografia de curvas elípticas. Assim, foi possível verificar os pontos fortes e as fragilidades que cada uma das abordagens oferece, bem como verificar na prática a dificuldade computacional para resolver o problema do logaritmo discreto.
@@ -137,6 +137,8 @@ A mesma curva foi executada 100 vezes para cada caso de teste, variando do núme
 
 \begin{table}[h]
 \centering
+\caption{Valores do algoritmo Pollard-rho multiprocessado para quantidades diferentes de \textit{cores}}
+\label{table:estatistica_mproc}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \rowcolor[gray]{0.9}
@@ -150,8 +152,6 @@ A mesma curva foi executada 100 vezes para cada caso de teste, variando do núme
 6                        & 20.38              & 10.13                      \\ \hline
 7                        & 20.72              &  9.89                      \\ \hline
 \end{tabular}
-\caption{Valores do algoritmo Pollard-rho multiprocessado para quantidades diferentes de \textit{cores}}
-\label{table:estatistica_mproc}
 \end{table}
 
 Observando os dados da Tabela \ref{table:estatistica_mproc}, pode-se observar de maneira geral que existe uma melhoria de desempenho do tempo de execução em função da quantidade de processadores utilizados. É possível perceber também que, com uma quantidade maior de processadores, o desvio-padrão tende a diminuir, ou seja, os dados dos testes não tiveram variações abruptas em relação à média. Os testes utilizando apenas um processador (\textit{core}) foi o teste que apresentou maior variação em torno da média, por isso, teve o maior desvio padrão. Inclusive este caso é mais lento que o algoritmo serial, pois nem todos os pontos são considerados, apenas os pontos considerados distintos.
