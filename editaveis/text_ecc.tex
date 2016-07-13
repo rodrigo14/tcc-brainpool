@@ -21,7 +21,7 @@ obtida através da mudança de variáveis
 \end{equation}
 e \(\mathbb{F}\) com característica diferente de \(2\) e de \(3\) \cite{Guide}.
 
-É imprescindível que os valores de \(a\) e \(b\) sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente, ou seja, a curva é suave(Figura ~\ref{fig:cuspide}), não possui auto-interseções(curva singular) e nem cúspides \cite{Guide}.
+É imprescindível que os valores de \(a\) e \(b\) sejam escolhidos tais que $4a^3 + 27b^2 \ne 0$ \cite{Mandy:2007}. Essa condição garante que não existe ponto na curva que possua mais de uma reta tangente, ou seja, a curva é suave(Fig. (~\ref{fig:cuspide})), não possui auto-interseções(curva singular) e nem cúspides \cite{Guide}.
 \begin{figure}
 %\centering
 \includegraphics[scale=0.6, bb=0 0 515 478]{figuras/curva_suave_singular_cuspide.eps}
@@ -38,7 +38,7 @@ E(\mathbb{F}) = \{(x,y) \in \mathbb{F} \times \mathbb{F} \mid y^2 = x^3 + ax + b
 
 em que o ponto $\mathcal{O}$ é chamado de \textit{ponto no infinito}. \cite{Mandy:2007}. Será visto na próxima seção que, juntamente com uma operação de soma dos pontos da curva elíptica, o conjunto $E(\mathbb{F})$ forma um grupo abeliano com o ponto no infinito sendo $\mathcal{O}$ o elemento identidade \cite{Guide}.
 
-A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierstrass.
+A Figura (\ref{fig:curvas}) apresenta alguns exemplos de curvas elípticas usando a forma normal da equação de Weierstrass.
 
 \begin{figure}[h]
 \centering
@@ -53,7 +53,7 @@ A Figura \ref{fig:curvas} apresenta alguns exemplos de curvas elípticas usando 
 \subsection{Leis de grupo para Curvas Elípticas}
 Seja o conjunto de pontos $E(\mathbb{F})$ da curva elíptica \(E\) definida sobre um corpo \(\mathbb{F}\), é possível definir uma operação sobre esse conjunto de pontos, que será chamada de adição e indicada por $+$. Essa operação de adição e o conjunto de pontos $E(\mathbb{F})$ da curva elíptica formam um grupo abeliano \cite{Stallings:2011}.
 
-A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver Figura \ref{fig:pontos}). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que os pontos \(P, Q\) possuam a mesma coordenada $x$ e coordenadas $y$ diferentes). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
+A forma mais clara de entender a operação de adição sobre curvas elípticas é geometricamente (ver Fig. (\ref{fig:pontos})). Para somar dois pontos \(P\) e \(Q\) com coordenadas \(x\) diferentes, basta ligar uma linha reta entre eles e encontrar o terceiro ponto de interseção \(R\). Pela natureza das curvas elípticas, pode-se observar que existe um único ponto \(R\) que é o ponto de interseção (a menos que os pontos \(P, Q\) possuam a mesma coordenada $x$ e coordenadas $y$ diferentes). Para formar uma estrutura de grupo, é preciso  definir a adição sobre três pontos da seguinte forma: $P+Q=-R$. \cite{Stallings:2011}
 
 Se as coordenadas \(x\) dos pontos \(P\) e \(Q\) são iguais e as coordenadas $y$ são diferentes, então a reta que passa pelos dois pontos não intersecta a curva elíptica em nenhum outro ponto. Para definir a estrutura de grupo, considera-se que essa reta vertical intersecta a curva no ponto no infinito $\mathcal{O}$. \cite{Stallings:2011}
 
@@ -78,7 +78,7 @@ Os axiomas de grupo são satisfeitos da seguinte forma:
 % CURVAS ELÍPTICAS SOBRE CORPO FINITO
 %
 \subsection{Curvas elípticas sobre corpo finito}
-A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são restritos a elementos de um corpo finito \cite{Stallings:2011}, ou seja, sendo a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_p$, seus coeficientes assumem valores inteiros entre 0 e $p - 1$, pois os cálculos são realizados módulo \(p\). Quando definida sobre um corpo finito, a equação da curva deve indicar qual é esse corpo através da notação $mod$, como ocorre na Eq. \ref{eq:7}, em que a curva está definida sobre um corpo finito $\mathbb{F}_p$.
+A criptografia de curva elíptica utiliza curvas elípticas em que as variáveis e coeficientes são restritos a elementos de um corpo finito \cite{Stallings:2011}, ou seja, sendo a curva elíptica $E$ definida sobre o corpo finito $\mathbb{F}_p$, seus coeficientes assumem valores inteiros entre 0 e $p - 1$, pois os cálculos são realizados módulo \(p\). Quando definida sobre um corpo finito, a equação da curva deve indicar qual é esse corpo através da notação $mod$, como ocorre na Eq. (\ref{eq:7}), em que a curva está definida sobre um corpo finito $\mathbb{F}_p$.
 
 \begin{equation}
 y^2 \mod p = (x^3 + ax + b) \mod p \label{eq:7}
@@ -90,7 +90,7 @@ Pode-se mostrar que um grupo abeliano finito é definido com base no conjunto $E
 (4a^3 + 27b^2) \mod p \neq 0
 \end{equation}
 
-A Eq. \ref{eq:6} tem a mesma forma da Eq. \ref{eq:7}. As regras para adição sobre $E_p(a, b)$ correspondem à técnica algébrica descrita para as curvas elípticas definidas sobre números reais. Para todos os pontos $P, Q \in E_p(a, b)$.
+A Eq. (\ref{eq:6}) tem a mesma forma da Eq. (\ref{eq:7}). As regras para adição sobre $E_p(a, b)$ correspondem à técnica algébrica descrita para as curvas elípticas definidas sobre números reais. Para todos os pontos $P, Q \in E_p(a, b)$.
 
 \begin{figure}[h]
 \centering
@@ -119,8 +119,8 @@ A Eq. \ref{eq:6} tem a mesma forma da Eq. \ref{eq:7}. As regras para adição so
   \item A multiplicação é definida como adição repetida; por exemplo, $4P = P + P + P + P$.
 \end{enumerate}
 
-Por exemplo, para somar os pontos $P(6, 19)$ e $(9, 16)$, pertencentes à curva $E_{23}(1, 1)$ descrita na Figura \ref{fig:curva_exemplo}, basta substituir os valores \(x_P = 6\), \(y_P = 19\), \(x_Q = 9\), \(y_Q = 16\), \(a = 1\) e \(p = 23\) nas Eqs. \ref{x_result}
-, \ref{x_result} e \ref{lambda_result} para obter como resultado da soma o ponto \(R = (9, 7)\). Para multiplicar o ponto $P(6,19)$ por 2, ou seja, ao somá-lo com ele mesmo, obtém-se como resultado \(2P = (13, 16)\).
+Por exemplo, para somar os pontos $P(6, 19)$ e $(9, 16)$, pertencentes à curva $E_{23}(1, 1)$ descrita na Fig. (\ref{fig:curva_exemplo}), basta substituir os valores \(x_P = 6\), \(y_P = 19\), \(x_Q = 9\), \(y_Q = 16\), \(a = 1\) e \(p = 23\) nas Eqs. (\ref{x_result})
+, (\ref{x_result}) e (\ref{lambda_result}) para obter como resultado da soma o ponto \(R = (9, 7)\). Para multiplicar o ponto $P(6,19)$ por 2, ou seja, ao somá-lo com ele mesmo, obtém-se como resultado \(2P = (13, 16)\).
 
 
 % ORDEM DE UMA CURVA ELIPTICA
@@ -143,7 +143,7 @@ O \textbf{traço} de $E$ sobre $\mathbb{F}_p$ é $t = 2\sqrt{p}$. Sabendo-se o t
 % CRIPTOGRAFIA DE CURVAS ELÍPTICAS
 %
 \subsection{Criptografia de curvas elípticas} \label{sec:ecc}
-Primeiro, selecione um inteiro grande \(p\) que seja primo e parâmetros da curva elíptica \(a\) e \(b\) de acordo com a Eq. \ref{eq:5} ou \ref{eq:6}. Isso define o grupo de pontos $E_p(a, b)$. Em seguida escolha um ponto base $G \in E_p(a, b)$, cuja a ordem seja um valor muito grande \(n\). $E_p(a, b)$ e \(G\) são os parâmetros do criptossistema, conhecidos por todos os participantes.
+Primeiro, selecione um inteiro grande \(p\) que seja primo e parâmetros da curva elíptica \(a\) e \(b\) de acordo com a Eq. (\ref{eq:5}) ou (\ref{eq:6}). Isso define o grupo de pontos $E_p(a, b)$. Em seguida escolha um ponto base $G \in E_p(a, b)$, cuja a ordem seja um valor muito grande \(n\). $E_p(a, b)$ e \(G\) são os parâmetros do criptossistema, conhecidos por todos os participantes.
 
 Um acordo de chaves entre os usuários \textbf{A} e \textbf{B} pode ser realizado da seguinte maneira:
 \begin{enumerate}
