@@ -103,22 +103,26 @@ A Eq. \ref{eq:6} tem a mesma forma da Eq. \ref{eq:7}. As regras para adição so
   \item $P + \mathcal{O} = P$.
   \item Se $P = (x_P, y_P)$, então $P + (x_P, -y_P) = \mathcal{O}$. O ponto $(x_P, -y_P)$ é o negativo de \(P\), indicado como \(-P\).
   \item Se $P = (x_P, y_P)$ e $Q = (x_Q, y_Q)$ com $P \neq -Q$, então $R = P + Q = (x_R, y_R)$ é determinado pelas seguintes regras:
-    \begin{eqnarray*}
-    x_R &=& (\lambda^2 - x_P - x_Q) \mod p \\
-    y_R &=& (\lambda(x_P - x_R) - y_P) \mod p
-    \end{eqnarray*}
+    \begin{align}
+    x_R &=(\lambda^2 - x_P - x_Q) \mod p \label{x_result} \\
+    y_R &=(\lambda(x_P - x_R) - y_P) \mod p \label{y_result}
+    \end{align}
   em que
-    \begin{eqnarray*}
+    \begin{align}
+    \label{lambda_result}
     \lambda =
     \begin{cases}
     \left(\dfrac{y_Q - y_P}{x_Q - x_P}\right) \mod p \textrm{, se} \ P \neq Q \\ \\
     \left(\dfrac{3x_P^2 + a}{2y_P}\right) \mod p \textrm{, se} \ P = Q
     \end{cases}
-    \end{eqnarray*}
+    \end{align}
   \item A multiplicação é definida como adição repetida; por exemplo, $4P = P + P + P + P$.
 \end{enumerate}
 
-%
+Por exemplo, para somar os pontos $P(6, 19)$ e $(9, 16)$, pertencentes à curva $E_{23}(1, 1)$ descrita na Figura \ref{fig:curva_exemplo}, basta substituir os valores \(x_P = 6\), \(y_P = 19\), \(x_Q = 9\), \(y_Q = 16\), \(a = 1\) e \(p = 23\) nas Eqs. \ref{x_result}
+, \ref{x_result} e \ref{lambda_result} para obter como resultado da soma o ponto \(R = (9, 7)\). Para multiplicar o ponto $P(6,19)$ por 2, ou seja, ao somá-lo com ele mesmo, obtém-se como resultado \(2P = (13, 16)\).
+
+
 % ORDEM DE UMA CURVA ELIPTICA
 %
 \subsection{Quantidade de pontos em uma curva elíptica}
