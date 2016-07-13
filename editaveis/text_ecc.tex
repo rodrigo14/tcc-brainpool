@@ -145,16 +145,17 @@ O \textbf{traço} de $E$ sobre $\mathbb{F}_p$ é $t = 2\sqrt{p}$. Sabendo-se o t
 \subsection{Criptografia de curvas elípticas} \label{sec:ecc}
 Primeiro, selecione um inteiro grande \(p\) que seja primo e parâmetros da curva elíptica \(a\) e \(b\) de acordo com a Eq. (\ref{eq:5}) ou (\ref{eq:6}). Isso define o grupo de pontos $E_p(a, b)$. Em seguida escolha um ponto base $G \in E_p(a, b)$, cuja a ordem seja um valor muito grande \(n\). $E_p(a, b)$ e \(G\) são os parâmetros do criptossistema, conhecidos por todos os participantes.
 
-Um acordo de chaves entre os usuários \textbf{A} e \textbf{B} pode ser realizado da seguinte maneira:
+Um acordo de chaves entre os usuários \textbf{A} e \textbf{B} pode ser realizado da seguinte maneira: \cite{Stallings:2011}
 \begin{enumerate}
 \item \textbf{A} seleciona um inteiro \(n_A < n\). Essa é chave privada de \textbf{A}, então \textbf{A} gera sua chave pública $P_A = n_A \times G$
 \item Do mesmo modo, \textbf{B} seleciona um inteiro \(n_B < n\), sendo essa a chave privada de \textbf{B}. E então \textbf{B} calcula e divulga sua chave pública $P_B = n_B \times G$.
-\item \textbf{A} gera a chave secreta $k = n_A \times P_B$. \textbf{B} gera a chave secreta $k = n_B \times P_A$
+\item \textbf{A} e \textbf{B} agora podem compartilhar o mesmo ponto da curva elíptica, que será chamado de segredo compartilhado entre \textbf{A} e \textbf{B}. \textbf{A} obtém o segredo compartilhado através do cálculo $K = n_A \times P_B$. Da mesma forma, \textbf{B} obtém o segredo compartilhado através do cálculo $K = n_B \times P_A$
 \end{enumerate}
 
-Os dois cálculos na etapa 3 produzem o mesmo resultado, porque
+É possível verificar que \textbf{A} e \textbf{B} chegam ao mesmo segredo compartilhado da seguinte forma
 \begin{equation*}
 n_A \times P_B = n_A \times (n_B \times G) = n_B \times (n_A \times G) = n_B \times P_A
 \end{equation*}
 
-Para quebrar esse esquema, um atacante teria de ser capaz de calcular \(k\) a partir de \(kG\), o que é considerado difícil. Este problema é conhecido como \textbf{problema do logaritmo discreto sobre curvas elípticas}.
+Para quebrar esse esquema, um atacante precisa utilizar a curva $E_p(a, b)$ e o ponto base $G$, que são conhecidos, e uma das chaves públicas \(P_A\) ou \(P_B\) para descobrir respectivamente uma das chaves privadas \(n_A\) ou \(n_B\). Para isso, ele precisará encontrar um valor $x$ que satisfaça \(P_A = xG\), encontrando assim \(n_A = x\), ou \(P_B = xG\), encontrando \(n_B = x\). 
+
